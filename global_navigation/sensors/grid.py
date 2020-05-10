@@ -126,6 +126,11 @@ class Grid:
 		self.lock.release()
 		return tmp
 
+	def setPath(self,path):
+		self.lock.acquire()
+		self.path = path
+		self.lock.release()
+
 	def getPath(self):
 		self.lock.acquire()
 		tmp = self.path
@@ -177,4 +182,10 @@ class Grid:
 		else:
 			 nCopy = self.grid
 		cv2.imshow("Grid Field", nCopy)
+		self.lock.release()
+
+	def showPath(self):
+		self.lock.acquire()
+		nCopy = self.path
+		cv2.imshow("Path", nCopy)
 		self.lock.release()

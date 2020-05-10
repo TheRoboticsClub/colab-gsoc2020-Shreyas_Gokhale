@@ -49,40 +49,54 @@ class MyAlgorithm(threading.Thread):
     def kill(self):
         self.kill_event.set()
 
-    """ Write in this method the code necessary for looking for the shorter
+    def drawPath(self):
+        print("Drawing path")
+
+    """
+        Write in this method the code necessary for looking for the shorter
         path to the desired destiny.
         The destiny is chosen in the GUI, making double click in the map.
         This method will be call when you press the Generate Path button. 
-        Call to grid.setPath(path) method for setting the path. """
+        Call to grid.setPath(path) method for setting the path. 
+    """
 
     def generatePath(self):
         print("LOOKING FOR SHORTER PATH")
         map_grid = self.grid.getMap()
         dest = self.grid.getDestiny()
         source = self.grid.getPose()
-        if map_grid[dest[0]][dest[1]] == 1:
+
+        # Note: The grid coordinates are inverted
+
+        if map_grid[dest[1]][dest[0]] < 125:
             print("Clicked point not an empty space!")
             return 0
+        else:
+            print("Point selected has colour")
+            map_copy = np.array(map_grid)
+            dest_transpose = (dest[1], dest[0])
+            source_transpose = (source[1], source[0])
 
-        # Converting to binary
-        map_grid[map_grid >= 125] = 1
-        map_grid[map_grid < 125] = 0
-        a = time.time()
-        a_star = AStar.Astar(map_grid, source, dest)
-        path = a_star.get_path()
-        print(time.time() - a)
+            # Is value < 125 -> True ->  int -> 1
+            map_copy = (map_copy < 125).astype(int)
 
-        for node in path:
-            self.grid.setPathVal(node[0], node[1], 1)
+            a = time.time()
+            a_star = AStar.Astar(map_copy, source_transpose, dest_transpose)
+            path = a_star.get_path()
+            t = time.time() - a
 
-        self.grid.showGrid()
+            print("Shortest Path found in: %f Seconds" % t)
+
+            self.grid.setPathFinded()
+            for node in path:
+                self.grid.setPathVal(node[1], node[0], 1)
         pass
 
-        # # Represent the Gradient Field in a window using cv2.imshow
-
-    """ Write in this method the code necessary for going to the desired place,
+    """
+        Write in this method the code necessary for going to the desired place,
         once you have generated the shorter path.
-        This method will be periodically called after you press the GO! button. """
+        This method will be periodically called after you press the GO! button.
+    """
 
     def execute(self):
         # Add your code here

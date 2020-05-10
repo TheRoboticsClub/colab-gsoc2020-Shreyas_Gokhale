@@ -43,25 +43,9 @@ class Astar:
 
     def get_path(self):
         print("Getting Path")
-        #
-        # print("Start Node")
-        # print(self.start_node.parent)
-        # print(self.start_node.position)
-        # print(self.start_node.g)
-        # print(self.start_node.h)
-        # print(self.start_node.f)
-        #
-        # print("End Node")
-        # print(self.end_node.parent)
-        # print(self.end_node.position)
-        # print(self.end_node.g)
-        # print(self.end_node.h)
-        # print(self.end_node.f)
-
+        print(len(self.map))
         # Loop until you find the end
         while len(self.open_list) > 0:
-            # print(self.open_list)
-            # print(self.closed_list)
 
             # Get the current node
             current_node = self.open_list[0]
@@ -75,6 +59,8 @@ class Astar:
             self.open_list.pop(current_index)
             self.closed_list.append(current_node)
 
+            self.map[current_node.position[0]][current_node.position[1]] = 1
+
             # Found the goal
             if current_node == self.end_node:
                 path = []
@@ -83,6 +69,7 @@ class Astar:
                     path.append(current.position)
                     current = current.parent
                 return path[::-1]  # Return reversed path
+                #return path  # Return reversed path
 
             # Generate children
             children = []
@@ -103,7 +90,7 @@ class Astar:
 
                 # Create new node
                 new_node = Node(current_node, node_position)
-
+                print(node_position)
                 # Append
                 children.append(new_node)
 
