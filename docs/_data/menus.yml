@@ -1,0 +1,15 @@
+- title: home
+  url: /
+  external: false
+
+- title: about author
+  url: /about/
+  external: false
+
+- title: jderobot academy
+  url: https://jderobot.github.io/
+  external: true # set true if you using external link, see bellow
+
+- title: github repo
+  url: https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale
+  external: true

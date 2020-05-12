@@ -1,0 +1,87 @@
+# Site settings
+title: GSoC 2020 | Shreyas Gokhale
+description: >-
+  Creating new multirobot <br>
+  exercises for Jderobot Academy <br>
+  <b><a href="https://summerofcode.withgoogle.com/projects/#5877403320057856" target="_blank" rel="noopener">JdeMultiBot</a></b> <br>
+lang: en-US
+timezone: Europe/Berlin
+image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+repo: https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale
+mode: light # default theme "dark" | "light"
+
+# Profile settings
+author:
+  sitename: Google Summer of Code '20 Writeup <br>
+  name: Shreyas Gokhale
+  bio: >-
+    <b><a href="https://summerofcode.withgoogle.com/projects/#5877403320057856" target="_blank" rel="noopener">JdeMultiBot</a></b> <br>
+    Creating new multirobot <br>
+    exercises for Jderobot Academy <br>
+    
+    
+  username: shreyasgokhale
+  email: me@shreyasgokhale.com
+  avatar: /assets/img/logo.png
+
+# Url settings
+url: "https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/"
+baseurl: 
+permalink: /:title/
+google_analytics:
+fb_appid:
+
+# Collection setting
+collections:
+  posts:
+    output: true
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: post
+      comments: false
+
+# Jekyll Compose default front matter
+jekyll_compose:
+  post_default_front_matter:
+    modified:
+    tags: []
+    description:
+  draft_default_front_matter:
+    modified:
+    tags: []
+    description:
+
+# Build settings
+sass:
+  style: compressed
+
+include:
+  - _redirects
+  - .htaccess
+
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - CHANGELOG.md
+  - README.md
+  - node_modules
+  - CODE_OF_CONDUCT.md
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sass-converter
+  - jekyll-sitemap
+  - jekyll-postfiles
