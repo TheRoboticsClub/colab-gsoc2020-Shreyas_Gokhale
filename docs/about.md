@@ -1,6 +1,6 @@
 ---
 title: Shreyas Gokhale
-permalink: /about/
+permalink: /colab-gsoc2020-Shreyas_Gokhale/about/
 layout: page
 excerpt: >-
     I am a dual degree masters student in Embedded Systems at TU Eindhoven and TU Berlin. I am passionate about robotics and IoT and currently purusing my masters thesies at Fraunhofer FOKUS, Berlin about "Collaborative Exploration and Mapping of Indoor Robots".

@@ -6,7 +6,7 @@ description: >-
   <b><a href="https://summerofcode.withgoogle.com/projects/#5877403320057856" target="_blank" rel="noopener">JdeMultiBot</a></b> <br>
 lang: en-US
 timezone: Europe/Berlin
-image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
+image: /assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
 repo: https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale
 mode: light # default theme "dark" | "light"
 
@@ -22,12 +22,12 @@ author:
     
   username: shreyasgokhale
   email: me@shreyasgokhale.com
-  avatar: /assets/img/logo.png
+  avatar: assets/img/logo.png
 
 # Url settings
-url: "https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/"
-baseurl: "/colab-gsoc2020-Shreyas_Gokhale"
-permalink: /:title/
+url: 
+baseurl: 
+permalink: /colab-gsoc2020-Shreyas_Gokhale/:title/
 google_analytics:
 fb_appid:
 
