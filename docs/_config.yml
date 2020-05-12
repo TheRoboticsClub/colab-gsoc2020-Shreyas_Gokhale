@@ -26,7 +26,7 @@ author:
 
 # Url settings
 url: "https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/"
-baseurl: 
+baseurl: "/colab-gsoc2020-Shreyas_Gokhale"
 permalink: /:title/
 google_analytics:
 fb_appid:
@@ -41,6 +41,7 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   syntax_highlighter: rouge
+  math_engine: mathjax
 
 # Default front matter
 defaults:
@@ -60,7 +61,7 @@ jekyll_compose:
     modified:
     tags: []
     description:
-
+      
 # Build settings
 sass:
   style: compressed
