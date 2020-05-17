@@ -1,6 +1,6 @@
 ---
 title: Tags
-permalink: /colab-gsoc2020-Shreyas_Gokhale/tags/
+permalink: tags/
 layout: page
 excerpt: Sorted article by tags.
 ---
