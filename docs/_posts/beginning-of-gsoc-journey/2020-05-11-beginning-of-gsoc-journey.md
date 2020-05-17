@@ -2,7 +2,7 @@
 title: Beginning of GSoC 2020!
 date: 2020-05-11 14:00:00 +05:30
 tags: [path-planning, global-navigation, community-bonding]
-permalink: /colab-gsoc2020-Shreyas_Gokhale/:title/
+permalink: /colab-gsoc2020-Shreyas_Gokhale/:title
 description: Exploring Jderobot academy in the first week of comunnity bonding.
 ---
 
