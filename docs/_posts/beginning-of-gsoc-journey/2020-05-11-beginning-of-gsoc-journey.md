@@ -1,64 +1,32 @@
 ---
 title: Beginning of GSoC 2020!
 date: 2020-05-11 14:00:00 +05:30
-tags: [path-planning, global-navigation, community-bonding]
+tags: [blog, community-bonding]
 permalink: /:title
-description: Exploring Jderobot academy in the first week of comunnity bonding.
+description: My first introduction to the Jderobot Academy.
 ---
+# Hola GSoC 2020!
 
-# Global Navigation
+To be honest, I didn't even knew what Google's Summer of Code is until 1 May 2019, 
+when a friend told me about it during a trek. I loved the idea of contributing to the open source community
+during otherwise wasteful summer holidays! I wanted to apply, but it was too late to apply for 2019.
 
-Created: May 08, 2020 6:50 PM
-Tags: Solving Exercise
-URL: https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/global_navigation/
+As a masters student, due graduate by year 2019, I decided that if by some means I am still not
+graduated by 2020, I'll apply for GSoC. And (~~un~~) fortunately, I was able to! 
 
-## Pre Processing
+## Motivation
+I stumbled upon Jderobot Academy and it immediately struck a cord with me. As someone who learned ROS 
+ROS with trial and error, Jderobot Academy provides a well directed path towards learning robotics.
+If only I knew the academy before! 
 
-- Started by adding everything on pycharm
-- Created a pip venv for easy access
-- in case pyqt5 of problem, use this -> 
-[https://stackoverflow.com/questions/18042919/how-to-install-pyqt5-on-a-new-virtualenv-and-work-on-an-idle](https://stackoverflow.com/questions/18042919/how-to-install-pyqt5-on-a-new-virtualenv-and-work-on-an-idle)
+As browsed the exercises, I liked the Amazon Robotics exercise in particular.
+Automated warehouses play an important role in modern Industry 4.0 based factories.
+In companies such as Amazon, multiple robot agents coordinate with each other to optimize delivery times.
+When a job such as “pickup from shelves” is scheduled, a task is assigned to one of these agents based on a number of factors, such as its proximity to the location or its path towards the goal. In many cases, the agents roam freely, communicate with each other, and have to avoid obstacles and humans in their path.
+The exercise, which is indeed cleverly designed, is very close to the real world usage.
+ 
 
-# APIs
+## JdeMultiBot
+My project, _JdeMultiBot_, will extend the single robot Amazon warehouse exercise to implement a scalable cooperative multi-agent task and path planning system.
+The exercise will also leverage the features of ROS2, giving students a chance to get acquainted with the new age of robotics.
 
-## Base APIs
-
-- `sensor.getRobotX()` - to obtain the position of the robot
-- `sensor.getRobotY()` - to obtain the position of the robot
-- `sensor.getRobotTheta()` - to obtain the orientation of the robot with respect to the map
-- `vel.setV()` - to set the linear speed
-- `vel.setW()` - to set the angular velocity
-
-## Grid APIs
-
-- `grid.getMap()` - returns the image of the map that is being displayed. The image returned will be a 3-channel image with values 0 or 255, where 0 represents the obstacles and 255 the road. Although the image has 3 channels, for this practice it will be useful to use only one.
-- `grid.getDestiny()` - returns the selected destination through the GUI as a tuple (x, y).
-- `grid.getPose()` - returns the position with respect to the map, not with respect to the world, also as a tuple (x, y).
-- `grid.showGrid()` - creates a window in which represents the values ​​of the field that have been assigned to the grid. The smaller values ​​will have a color closer to black, and will become clearer as larger values ​​are involved. For the representation, a copy of the grid is made and its values ​​are normalized so that they are between 0 and 1, and it is represented later with cv2.imshow().
-- `grid.getVal(x, y)` - returns the value in that grid position.
-- `grid.setVal(x, y, val)` - sets the value val to the indicated position.
-- `grid.setPathVal(x, y, val)` - sets the value val to the indicated position.
-- `grid.getPathVal(x, y)` - returns the value of the indicated position.
-- `grid.setPathFinded()` - establishes that the path has been found to start painting.
-- `gridToWorld(gridX, gridY)` - receives the x and y components of the coordinates of the map and returns a tuple with the equivalent coordinates in the world: (worldX, worldY)
-- `worldToGrid(worldX, worldY)` - receives the x and y components of the world coordinates and returns a tuple with the equivalent coordinates in the map: (gridX, gridY)
-
-**Responses**
-
-```python
-self.grid.getMap() = [[29 13 17 ... 17 12 32]
-											[14 0 0 ... 0 0 17]
-											[14 0 0 ... 0 0 17]
-											...
-											[14 0 0 ... 0 0 17]
-											[14 0 0 ... 0 0 16]
-											[28 12 17 ... 16 12 31]]
-self.grid.getDestiny() = (274, 27)
-self.grid.getPose() = (200, 200)
-```
-
-## Solving A*
-
-Reference:
-
-[Easy A* (star) Pathfinding](https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2)

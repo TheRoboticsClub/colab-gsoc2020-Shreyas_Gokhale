@@ -1,21 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-05-17T02:48:43+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Beginning of GSoC 2020!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey" rel="alternate" type="text/html" title="Beginning of GSoC 2020!" /><published>2020-05-11T10:30:00+02:00</published><updated>2020-05-11T10:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey">&lt;h1 id=&quot;global-navigation&quot;&gt;Global Navigation&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-05-17T22:41:46+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Community Bonding 1</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1" rel="alternate" type="text/html" title="Community Bonding 1" /><published>2020-05-17T20:00:00+02:00</published><updated>2020-05-17T20:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1">&lt;h1 id=&quot;global-navigation-path-planning&quot;&gt;Global Navigation Path Planning&lt;/h1&gt;
 
-&lt;p&gt;Created: May 08, 2020 6:50 PM
-Tags: Solving Exercise
-URL: https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/global_navigation/&lt;/p&gt;
+&lt;p&gt;To get accustomed to the academy exercises, I wanted to start with an exercise which is somewhat familiar, yet challenging.
+Path planning is a typical problem in CS and it is used at various (and sometimes, &lt;a href=&quot;https://www.researchgate.net/publication/267809499_A-based_Pathfinding_in_Modern_Computer_Games&quot;&gt;quite unusual&lt;/a&gt; ! ) places.
+Similarly, motion planning is important to actually follow path in a sequence.&lt;/p&gt;
+
+&lt;p&gt;The exercise I selected &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/global_navigation/&quot;&gt;Global Navigation&lt;/a&gt; 
+exercise which combines path planning with motion planning.&lt;/p&gt;
 
 &lt;h2 id=&quot;pre-processing&quot;&gt;Pre Processing&lt;/h2&gt;
 
+&lt;p&gt;As usual, I started by setting my my environment&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Started by adding everything on pycharm&lt;/li&gt;
-  &lt;li&gt;Created a pip venv for easy access&lt;/li&gt;
-  &lt;li&gt;in case pyqt5 of problem, use this -&amp;gt; 
-&lt;a href=&quot;https://stackoverflow.com/questions/18042919/how-to-install-pyqt5-on-a-new-virtualenv-and-work-on-an-idle&quot;&gt;https://stackoverflow.com/questions/18042919/how-to-install-pyqt5-on-a-new-virtualenv-and-work-on-an-idle&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Configured PyCharm for the repo&lt;/li&gt;
+  &lt;li&gt;Created and set up pip venv for easy access&lt;/li&gt;
+  &lt;li&gt;Created a &lt;code class=&quot;highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; file for future installs (in case pyqt5 of problem, use this -&amp;gt; 
+&lt;a href=&quot;https://stackoverflow.com/questions/18042919/how-to-install-pyqt5-on-a-new-virtualenv-and-work-on-an-idle&quot;&gt;https://stackoverflow.com/questions/18042919/how-to-install-pyqt5-on-a-new-virtualenv-and-work-on-an-idle&lt;/a&gt; )&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;apis&quot;&gt;APIs&lt;/h1&gt;
+&lt;h3 id=&quot;understanding-apis&quot;&gt;Understanding APIs&lt;/h3&gt;
+&lt;p&gt;Listing various APIs mentioned on the page:&lt;/p&gt;
 
-&lt;h2 id=&quot;base-apis&quot;&gt;Base APIs&lt;/h2&gt;
+&lt;h4 id=&quot;base-apis&quot;&gt;Base APIs&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sensor.getRobotX()&lt;/code&gt; - to obtain the position of the robot&lt;/li&gt;
@@ -25,7 +30,7 @@ URL: https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/global_
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vel.setW()&lt;/code&gt; - to set the angular velocity&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;grid-apis&quot;&gt;Grid APIs&lt;/h2&gt;
+&lt;h4 id=&quot;grid-apis&quot;&gt;Grid APIs&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.getMap()&lt;/code&gt; - returns the image of the map that is being displayed. The image returned will be a 3-channel image with values 0 or 255, where 0 represents the obstacles and 255 the road. Although the image has 3 channels, for this practice it will be useful to use only one.&lt;/li&gt;
@@ -41,21 +46,83 @@ URL: https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/global_
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;worldToGrid(worldX, worldY)&lt;/code&gt; - receives the x and y components of the world coordinates and returns a tuple with the equivalent coordinates in the map: (gridX, gridY)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Responses&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I executed a few to understand the structures&lt;/p&gt;
+
+&lt;h4 id=&quot;responses&quot;&gt;&lt;strong&gt;Responses&lt;/strong&gt;&lt;/h4&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-											&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-											&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-											&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-											&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-											&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-											&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;28&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;28&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+
 &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getDestiny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;274&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getPose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;solving-a&quot;&gt;Solving A*&lt;/h2&gt;
+&lt;p&gt;This confirmed a few things:&lt;/p&gt;
 
-&lt;p&gt;Reference:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Map will &lt;em&gt;probably&lt;/em&gt; need a conversion to binary representation.&lt;/li&gt;
+  &lt;li&gt;The co-ordinates of destination and source are flipped (or if you consider the other way, the map is flipped)&lt;/li&gt;
+  &lt;li&gt;The whole map is visible, hence the algorithm &lt;strong&gt;must&lt;/strong&gt; either return the path or the point is non-traverseable.&lt;/li&gt;
+  &lt;li&gt;As the maze is connected, ( and is not disjoint at some places) we can safely say that white point (255) is traversable.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2&quot;&gt;Easy A* (star) Pathfinding&lt;/a&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="path-planning" /><category term="global-navigation" /><category term="community-bonding" /><summary type="html">Global Navigation</summary></entry></feed>
+&lt;h2 id=&quot;path-planning-algorithm&quot;&gt;Path planning algorithm&lt;/h2&gt;
+
+&lt;p&gt;As described on the exercise page, we can either solve this using gradient path planning and sampling
+based path planning. Both have their positives and negatives and either are preferable in specific scenarios.
+As the exercise was already solved using Gradient Path planning, I decided to solve it using sampling based approaches.&lt;/p&gt;
+
+&lt;p&gt;The most basic and simplest of sampling based path planning algorithm (after Dijkstra) is A*. The concept is simple:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The map is divided in nodes&lt;/li&gt;
+  &lt;li&gt;Each node has 2 properties: It’s distance from start node (g) and the destination node (h)&lt;/li&gt;
+  &lt;li&gt;We have to select nodes in such a way that we have a minimum over these two properties. i.e
+ minimum of f = g + h&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I found a simple implementation of A* in python on &lt;a href=&quot;&quot;&gt;this&lt;/a&gt; blog. I made a class out of it and created a separate &lt;code class=&quot;highlighter-rouge&quot;&gt;AStar.py&lt;/code&gt;
+file, which can be imported in our code. The class declaration method &lt;code class=&quot;highlighter-rouge&quot;&gt;AStar.Astar(map, source, dest)&lt;/code&gt;
+accepts 3 arguments: A binary grid map, starting node (x1,y1) and destination node (x2,y2)&lt;/p&gt;
+
+&lt;p&gt;After spending a lot of time in finding out why the path is not getting displayed even after setting the variable,
+I realised that I didn’t call the &lt;code class=&quot;highlighter-rouge&quot;&gt;self.grid.setPathFinded()&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/AjYsTtVxEEBPO/giphy.gif&quot; alt=&quot;Baka!&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And voila, there was the green path! Comparing times, the algorithm takes more time, farther the destination. 
+But it is quite quick compared to gradient path planner!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./AStar1.gif&quot; alt=&quot;A Star&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the next post, we’ll go over the motion planning and squash bugs (if any!). Ciao!&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference:&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2&quot;&gt;Easy A* (star) Pathfinding&lt;/a&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="path-planning" /><category term="global-navigation" /><category term="community-bonding" /><summary type="html">Global Navigation Path Planning</summary></entry><entry><title type="html">Beginning of GSoC 2020!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey" rel="alternate" type="text/html" title="Beginning of GSoC 2020!" /><published>2020-05-11T10:30:00+02:00</published><updated>2020-05-11T10:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey">&lt;h1 id=&quot;hola-gsoc-2020&quot;&gt;Hola GSoC 2020!&lt;/h1&gt;
+
+&lt;p&gt;To be honest, I didn’t even knew what Google’s Summer of Code is until 1 May 2019, 
+when a friend told me about it during a trek. I loved the idea of contributing to the open source community
+during otherwise wasteful summer holidays! I wanted to apply, but it was too late to apply for 2019.&lt;/p&gt;
+
+&lt;p&gt;As a masters student, due graduate by year 2019, I decided that if by some means I am still not
+graduated by 2020, I’ll apply for GSoC. And (&lt;del&gt;un&lt;/del&gt;) fortunately, I was able to!&lt;/p&gt;
+
+&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;I stumbled upon Jderobot Academy and it immediately struck a cord with me. As someone who learned ROS 
+ROS with trial and error, Jderobot Academy provides a well directed path towards learning robotics.
+If only I knew the academy before!&lt;/p&gt;
+
+&lt;p&gt;As browsed the exercises, I liked the Amazon Robotics exercise in particular.
+Automated warehouses play an important role in modern Industry 4.0 based factories.
+In companies such as Amazon, multiple robot agents coordinate with each other to optimize delivery times.
+When a job such as “pickup from shelves” is scheduled, a task is assigned to one of these agents based on a number of factors, such as its proximity to the location or its path towards the goal. In many cases, the agents roam freely, communicate with each other, and have to avoid obstacles and humans in their path.
+The exercise, which is indeed cleverly designed, is very close to the real world usage.&lt;/p&gt;
+
+&lt;h2 id=&quot;jdemultibot&quot;&gt;JdeMultiBot&lt;/h2&gt;
+&lt;p&gt;My project, &lt;em&gt;JdeMultiBot&lt;/em&gt;, will extend the single robot Amazon warehouse exercise to implement a scalable cooperative multi-agent task and path planning system.
+The exercise will also leverage the features of ROS2, giving students a chance to get acquainted with the new age of robotics.&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="blog" /><category term="community-bonding" /><summary type="html">Hola GSoC 2020!</summary></entry></feed>
