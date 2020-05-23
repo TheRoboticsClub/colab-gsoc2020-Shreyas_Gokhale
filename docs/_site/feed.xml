@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-05-17T22:41:46+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Community Bonding 1</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1" rel="alternate" type="text/html" title="Community Bonding 1" /><published>2020-05-17T20:00:00+02:00</published><updated>2020-05-17T20:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1">&lt;h1 id=&quot;global-navigation-path-planning&quot;&gt;Global Navigation Path Planning&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-05-23T20:15:22+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Community Bonding 1</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1" rel="alternate" type="text/html" title="Community Bonding 1" /><published>2020-05-17T20:00:00+02:00</published><updated>2020-05-17T20:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1">&lt;h1 id=&quot;global-navigation-path-planning&quot;&gt;Global Navigation Path Planning&lt;/h1&gt;
 
 &lt;p&gt;To get accustomed to the academy exercises, I wanted to start with an exercise which is somewhat familiar, yet challenging.
 Path planning is a typical problem in CS and it is used at various (and sometimes, &lt;a href=&quot;https://www.researchgate.net/publication/267809499_A-based_Pathfinding_in_Modern_Computer_Games&quot;&gt;quite unusual&lt;/a&gt; ! ) places.
@@ -9,7 +9,7 @@ exercise which combines path planning with motion planning.&lt;/p&gt;
 
 &lt;h2 id=&quot;pre-processing&quot;&gt;Pre Processing&lt;/h2&gt;
 
-&lt;p&gt;As usual, I started by setting my my environment&lt;/p&gt;
+&lt;p&gt;As usual, I started by setting my environment&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Configured PyCharm for the repo&lt;/li&gt;
   &lt;li&gt;Created and set up pip venv for easy access&lt;/li&gt;
@@ -67,7 +67,7 @@ exercise which combines path planning with motion planning.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;The Map will &lt;em&gt;probably&lt;/em&gt; need a conversion to binary representation.&lt;/li&gt;
   &lt;li&gt;The co-ordinates of destination and source are flipped (or if you consider the other way, the map is flipped)&lt;/li&gt;
-  &lt;li&gt;The whole map is visible, hence the algorithm &lt;strong&gt;must&lt;/strong&gt; either return the path or the point is non-traverseable.&lt;/li&gt;
+  &lt;li&gt;The whole map is visible, hence the algorithm &lt;strong&gt;must&lt;/strong&gt; either return the path or the point is non-traversable.&lt;/li&gt;
   &lt;li&gt;As the maze is connected, ( and is not disjoint at some places) we can safely say that white point (255) is traversable.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -97,7 +97,10 @@ I realised that I didn’t call the &lt;code class=&quot;highlighter-rouge&quot;
 &lt;p&gt;And voila, there was the green path! Comparing times, the algorithm takes more time, farther the destination. 
 But it is quite quick compared to gradient path planner!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;./AStar1.gif&quot; alt=&quot;A Star&quot; /&gt;&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&quot;AStar1.gif&quot; alt=&quot;AStar Path Planner&quot; /&gt;
+&lt;figcaption&gt;A Star Path Planner!&lt;/figcaption&gt;
+&lt;/figure&gt;
 
 &lt;p&gt;In the next post, we’ll go over the motion planning and squash bugs (if any!). Ciao!&lt;/p&gt;
 

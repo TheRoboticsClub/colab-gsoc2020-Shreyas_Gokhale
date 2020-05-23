@@ -17,7 +17,7 @@ exercise which combines path planning with motion planning.
 
 ## Pre Processing
 
-As usual, I started by setting my my environment
+As usual, I started by setting my environment
 - Configured PyCharm for the repo
 - Created and set up pip venv for easy access 
 - Created a `requirements.txt` file for future installs (in case pyqt5 of problem, use this -> 
@@ -71,7 +71,7 @@ This confirmed a few things:
 
 - The Map will _probably_ need a conversion to binary representation.
 - The co-ordinates of destination and source are flipped (or if you consider the other way, the map is flipped)
-- The whole map is visible, hence the algorithm **must** either return the path or the point is non-traverseable.
+- The whole map is visible, hence the algorithm **must** either return the path or the point is non-traversable.
 - As the maze is connected, ( and is not disjoint at some places) we can safely say that white point (255) is traversable.
 
 ## Path planning algorithm
@@ -98,7 +98,11 @@ I realised that I didn't call the `self.grid.setPathFinded()` method.
 And voila, there was the green path! Comparing times, the algorithm takes more time, farther the destination. 
 But it is quite quick compared to gradient path planner! 
 
-![A Star](./AStar1.gif)
+<figure>
+<img src="AStar1.gif" alt="AStar Path Planner">
+<figcaption>A Star Path Planner!</figcaption>
+</figure>
+
 
 In the next post, we'll go over the motion planning and squash bugs (if any!). Ciao!
 
