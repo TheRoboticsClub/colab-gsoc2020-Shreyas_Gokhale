@@ -6,13 +6,21 @@ import threading
 import time
 import AStar
 from datetime import datetime
+import math
 
 time_cycle = 80
+
+
+def getDiff(current_pose, goal):
+    distance = math.hypot(goal[0] - current_pose[0], goal[1] - current_pose[1])
+    angle = math.atan2(goal[0] - current_pose[0], goal[1] - current_pose[1])
+    return distance, angle
 
 
 class MyAlgorithm(threading.Thread):
 
     def __init__(self, grid, sensor, vel):
+        self.path = None
         self.sensor = sensor
         self.grid = grid
         self.vel = vel
@@ -90,6 +98,7 @@ class MyAlgorithm(threading.Thread):
             self.grid.setPathFinded()
             for node in path:
                 self.grid.setPathVal(node[1], node[0], 1)
+            self.path = path
         pass
 
     """
@@ -101,8 +110,48 @@ class MyAlgorithm(threading.Thread):
     def execute(self):
         # Add your code here
         print("GOING TO DESTINATION")
+        print self.path
+        print("starting")
+        reached_destination = False
+        destination = self.grid.getDestiny()
+
+        path_copy = self.path[::-1]
+        goal = path_copy.pop()
+        goal = path_copy.pop()
+
+        print path_copy
+        print(goal)
+
+        while not reached_destination:
+            # Get current position
+            current_pose = self.grid.getPose()
+            distance_to_goal, angle_to_goal = getDiff(current_pose, goal)
+            print("Distance to goal : %f, Angle to goal: %f" % (distance_to_goal, angle_to_goal))
+            distance_to_destination, angle_to_destination = getDiff(current_pose, destination)
+            print("Distance to destination : %f, Angle to destination: %f" % (distance_to_destination, angle_to_destination))
+            mytheta = self.sensor.getRobotTheta()
+            print("Theta %f" % mytheta)
+            if distance_to_destination < 5:
+                reached_destination = 1
+            elif abs(mytheta - angle_to_goal) < 0.4: #(angle_to_goal > 2.8 or angle_to_goal < 0.4):  #distance_to_goal < 3 and
+
+                print("Current Pose and New Goal")
+                print(current_pose)
+                goal = path_copy.pop()
+                goal = path_copy.pop()
+                goal = path_copy.pop()
+                goal = path_copy.pop()
+                goal = path_copy.pop()
+                print(goal)
+                self.vel.setV(1)
+            else:
+                # myx = self.sensor.getRobotX()
+                # myy = self.sensor.getRobotY()
+                self.vel.setW((mytheta - angle_to_goal) * (-0.1))
+                self.vel.setV(0.1)
+
+            time.sleep(0.5)
+
+                # self.vel.setW(0)
+                # self.vel.setV(0)
         pass
-        # EXAMPLE OF HOW TO SEND INFORMATION TO THE ROBOT ACTUATORS
-        # self.vel.setV(10)
-        # self.vel.setW(5)
-        # self.vel.sendVelocities()
