@@ -10,6 +10,12 @@ import math
 
 time_cycle = 80
 
+# Motion Planning:
+# https://github.com/AtsushiSakai/PythonRobotics/blob/3607d72b60cd500806e0f026ac8beb82850a01f9/PathTracking/move_to_pose/move_to_pose.py#L127
+
+Kp_rho = 4
+Kp_alpha = 6
+Kp_beta = -3
 
 def getDiff(current_pose, goal):
     distance = math.hypot(goal[0] - current_pose[0], goal[1] - current_pose[1])
@@ -21,6 +27,7 @@ class MyAlgorithm(threading.Thread):
 
     def __init__(self, grid, sensor, vel):
         self.path = None
+        self.goal = None
         self.sensor = sensor
         self.grid = grid
         self.vel = vel
@@ -98,7 +105,8 @@ class MyAlgorithm(threading.Thread):
             self.grid.setPathFinded()
             for node in path:
                 self.grid.setPathVal(node[1], node[0], 1)
-            self.path = path
+            self.path = path[1::3]
+            self.goal = path[-1]
         pass
 
     """
@@ -114,44 +122,55 @@ class MyAlgorithm(threading.Thread):
         print("starting")
         reached_destination = False
         destination = self.grid.getDestiny()
+        goal = self.path[-1]
 
-        path_copy = self.path[::-1]
-        goal = path_copy.pop()
-        goal = path_copy.pop()
 
-        print path_copy
-        print(goal)
+        try:
+            old_goal = self.goal
+        except (ValueError, TypeError):
+            self.goal = goal
+            old_goal = goal
 
-        while not reached_destination:
-            # Get current position
-            current_pose = self.grid.getPose()
-            distance_to_goal, angle_to_goal = getDiff(current_pose, goal)
-            print("Distance to goal : %f, Angle to goal: %f" % (distance_to_goal, angle_to_goal))
-            distance_to_destination, angle_to_destination = getDiff(current_pose, destination)
-            print("Distance to destination : %f, Angle to destination: %f" % (distance_to_destination, angle_to_destination))
-            mytheta = self.sensor.getRobotTheta()
-            print("Theta %f" % mytheta)
-            if distance_to_destination < 5:
-                reached_destination = 1
-            elif abs(mytheta - angle_to_goal) < 0.4: #(angle_to_goal > 2.8 or angle_to_goal < 0.4):  #distance_to_goal < 3 and
 
-                print("Current Pose and New Goal")
-                print(current_pose)
-                goal = path_copy.pop()
-                goal = path_copy.pop()
-                goal = path_copy.pop()
-                goal = path_copy.pop()
-                goal = path_copy.pop()
-                print(goal)
-                self.vel.setV(1)
-            else:
-                # myx = self.sensor.getRobotX()
-                # myy = self.sensor.getRobotY()
-                self.vel.setW((mytheta - angle_to_goal) * (-0.1))
-                self.vel.setV(0.1)
+        current_pose = self.grid.getPose()
+        current_theta = self.sensor.getRobotTheta()
 
-            time.sleep(0.5)
+        if current_pose == old_goal: #abs(goal[0]**2 - old_goal[0]**2) < 10:
+            self.goal = self.path.pop()
 
-                # self.vel.setW(0)
-                # self.vel.setV(0)
+        print goal
+        print old_goal
+        print current_pose
+
+        x = current_pose[0]
+        y = current_pose[1]
+        theta = current_theta
+
+        x_diff = self.goal[0] - x
+        y_diff = self.goal[1] - y
+
+        goal_dist, goal_theta = getDiff(current_pose, goal)
+
+
+
+        # Restrict alpha and beta (angle differences) to the range
+        # [-pi, pi] to prevent unstable behavior e.g. difference going
+        # from 0 rad to 2*pi rad with slight turn
+
+        rho = np.hypot(x_diff, y_diff)
+        alpha = (np.arctan2(y_diff, x_diff)
+                 - theta + np.pi) % (2 * np.pi) - np.pi
+        beta = (goal_theta - theta - alpha + np.pi) % (2 * np.pi) - np.pi
+
+        v = Kp_rho * rho
+        w = Kp_alpha * alpha + Kp_beta * beta
+
+        if alpha > np.pi / 2 or alpha < -np.pi / 2:
+            v = -v
+
+        print("Resultant W: %f " % w)
+        self.vel.setW(w)
+        print("Resultant V: %f"%v)
+        self.vel.setV(v)
+
         pass
