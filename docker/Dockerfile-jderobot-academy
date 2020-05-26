@@ -1,0 +1,17 @@
+# TODO: Change source to official ROS Dockerhub images once updated
+
+FROM noetic:latest
+
+# Install JdeRobot
+
+# setup sources.list
+RUN . /etc/os-release \
+    && echo "deb http://wiki.jderobot.org/apt bionic main" > /etc/apt/sources.list.d/jderobot.list
+
+# add JdeRbot Key
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 24E521A4
+
+# install jderobot packages
+RUN apt-get update && apt-get install -q -y --no-install-recommends \
+    jderobot  jderobot-assets\
+    && rm -rf /var/lib/apt/lists/*
