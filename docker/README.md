@@ -1,7 +1,5 @@
 # Dockerfiles for the exercise
 
-Until OSRF adds official ROS Noetic images, we have to build them by ourself. 
-
 
 Run from main directory
 

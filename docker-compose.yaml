@@ -1,0 +1,34 @@
+version: '2.3'
+
+networks:
+  ros:
+    driver: bridge
+
+services:
+  ros-master:
+    image: ros:noetic-ros-core
+    command: stdbuf -o L roscore
+    networks:
+      - ros
+    restart: always
+  amazon-exercise:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-jderobot-academy
+    container_name: jderobot-exercise
+    depends_on:
+      - ros-master
+    networks:
+      - ros
+    devices:
+      - "/dev/dri:/dev/dri"
+    environment:
+      - "ROS_MASTER_URI=http://ros-master:11311"
+      - "QT_X11_NO_MITSHM=1"
+      - "ROS_HOSTNAME=jderobot-exercise"
+      - "DISPLAY=unix$DISPLAY"
+    #share your user to the container in order to access your x11
+    volumes:
+      #share your x11 socket and permissions to the container
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    command: /bin/bash -c  "cd exercises/amazon_warehouse/launch && roslaunch amazonrobot_1_warehouse.launch"

@@ -1,4 +1,4 @@
-# TODO: Change source to official ROS Dockerhub images once updated
+# Jderobot Assets
 
 FROM osrf/ros:noetic-desktop-full as jdeassets
 
@@ -7,9 +7,40 @@ RUN apt-get update && apt-get install -q -y \
     git \
     && rm -rf /var/lib/apt/lists/*
 
+# Pin the repo to master branch
+ADD https://api.github.com/repos/shreyasgokhale/assets/git/refs/heads/master master.json
+
 # Install JdeRobot Assets
-
 RUN git clone https://github.com/shreyasgokhale/assets /jderobot && cd /jderobot
-
 RUN mkdir /jderobot/build
 RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /jderobot/build && cmake ../jderobot_assets/ && make install"
+
+
+
+# Academy Image
+FROM osrf/ros:noetic-desktop-full
+COPY --from=jdeassets /opt/jderobot/ /opt/jderobot
+
+# TODO: Copy => mount
+COPY exercises /exercises
+
+# Sourcing
+RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash"
+RUN /bin/bash -c "echo "source /opt/jderobot/share/jderobot/gazebo/assets-setup.sh" >> ~/.bashrc"
+RUN /bin/bash -c "echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc"
+
+# MESA for NVIDIA GPU
+#RUN apt-get update && apt-get install -q -y \
+#    x11-apps mesa-utils libgl1-mesa-glx \
+#    && rm -rf /var/lib/apt/lists/*
+
+# MESA for Intel
+RUN apt-get update && apt-get install -q -y \
+    libgl1-mesa-glx libgl1-mesa-dri \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY docker/ros_entrypoint.sh /
+RUN chmod 755 /ros_entrypoint.sh
+
+ENTRYPOINT ["/ros_entrypoint.sh"]
+CMD ["bash"]
