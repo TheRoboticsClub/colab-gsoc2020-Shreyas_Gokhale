@@ -1,4 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-05-28T13:08:32+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Community Bonding 2</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2" rel="alternate" type="text/html" title="Community Bonding 2" /><published>2020-05-28T12:00:00+02:00</published><updated>2020-05-28T12:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-06-03T12:03:57+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">And we have a liftoff!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff" rel="alternate" type="text/html" title="And we have a liftoff!" /><published>2020-06-03T11:00:00+02:00</published><updated>2020-06-03T11:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff">&lt;blockquote&gt;
+  &lt;p&gt;Issues Fixed:&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/JdeRobot/assets/pull/53&quot;&gt;#53,54&lt;/a&gt; &lt;em&gt;“Adding Noetic support for repo”&lt;/em&gt; with PRs &lt;a href=&quot;https://github.com/JdeRobot/assets/pull/54&quot;&gt;#54&lt;/a&gt; for Jderobot_assets,
+and &lt;a href=&quot;https://github.com/ros/rosdistro/pull/25236&quot;&gt;#25236&lt;/a&gt; for ROS distro with &lt;a href=&quot;https://github.com/JdeRobot/assets-release/commits?author=shreyasgokhale&quot;&gt;commits&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;week-1-blog&quot;&gt;Week 1 Blog&lt;/h1&gt;
+
+&lt;p&gt;This week begins the official start of the 2020 GSoC and with that, we have the first package release from Jderobot Academy for ROS Noetic: Jderobot-Assets! Although porting a simple dependancies packages was not so challenging, the release process was indeed an interesting one!&lt;/p&gt;
+
+&lt;h2 id=&quot;releasing-ros-packages&quot;&gt;Releasing ROS Packages&lt;/h2&gt;
+
+&lt;p&gt;Software in ROS is organized in packages and that is what makes ROS so easy to use. Since the introduction of catkin, ros packages are super easy to use, make and also to distribute. But what does it exactly mean when you want to release the package. Let me explain it with a story.&lt;/p&gt;
+
+&lt;h3 id=&quot;why-to-release&quot;&gt;Why to release?&lt;/h3&gt;
+
+&lt;p&gt;Suppose you have created a package, have tested it and it works quite fine locally. You currently have it in your catkin_workspace/src folder and now you want to give to give it to your friends.&lt;/p&gt;
+
+&lt;p&gt;Easy, you just upload the repo on github and tell your friends to download it.&lt;/p&gt;
+
+&lt;p&gt;Your friends like your package and they recommend to their friends. Your package is instant hit and now everyone wants it. Meanwhile people are contributing to your github repo to improve the package.&lt;/p&gt;
+
+&lt;p&gt;One day you find out that when you pull the latest changes, your package is not getting compiled. But some other user has no such problem. Somewhere, there was a package, dependent on your package, which is now also not working. You have now no clue what broke the package, how to restore it to a working version. At the same time, there are many users which have different platforms and they need an easier way to get the package rather than doing a git pull.&lt;/p&gt;
+
+&lt;p&gt;Now you wished only if there existed some kind of common infrastructure which can make all these problems go away.&lt;/p&gt;
+
+&lt;p&gt;Then you remember there exists such a place: the official ros package repository. (AKA the place from where you can just do  &lt;code class=&quot;highlighter-rouge&quot;&gt;apt install ros-&amp;lt;distro&amp;gt;-&amp;lt;package&amp;gt;&lt;/code&gt; . In short, this is what it means by releasing the package.&lt;/p&gt;
+
+&lt;h3 id=&quot;prepare-for-release&quot;&gt;Prepare for release&lt;/h3&gt;
+
+&lt;p&gt;For release, we need a couple of things&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The package must be in &lt;a href=&quot;http://wiki.ros.org/ROS/Tutorials/CreatingPackage&quot;&gt;right format&lt;/a&gt;, with &lt;code class=&quot;highlighter-rouge&quot;&gt;package.xml&lt;/code&gt; filled in and ready for the release.&lt;/li&gt;
+  &lt;li&gt;The package must be indexed in the &lt;a href=&quot;https://github.com/ros/rosdistro&quot;&gt;rosdistro&lt;/a&gt; by creating a PR&lt;/li&gt;
+  &lt;li&gt;Package needs to be converted into a binary (&lt;code class=&quot;highlighter-rouge&quot;&gt;ros-rosdistro-example-package&lt;/code&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Our package will have 2 repositories, one where we put our package and another one with &lt;package-name&gt;-release. The second repository is only for recording releases **and you don't have to edit it manually.**&lt;/package-name&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, to make our lives easier, ROS has a release automation tool called &lt;a href=&quot;http://wiki.ros.org/bloom&quot;&gt;bloom&lt;/a&gt;. We can also do everything we mentioned using bloom. But before that, we need to check a few things:&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Check if xml is in correct format (the first line must be xml indication tag, don’t put comments there!) Do &lt;strong&gt;not&lt;/strong&gt; edit the version and other information manually. It will be updated during the bloom release.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Do you have push access to the main package repository and the release repository? (if they exist already) Otherwise, follow &lt;a href=&quot;http://wiki.ros.org/bloom/Tutorials/FirstTimeRelease&quot;&gt;this&lt;/a&gt; for the first time release&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Have you merged all of your changes in the branch you are aiming for the release?&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Is bloom installed? &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install python-bloom&lt;/code&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Is your package already indexed? If not, follow &lt;a href=&quot;http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation&quot;&gt;this&lt;/a&gt;.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Make sure you have authorised bloom for github PRs using &lt;a href=&quot;http://wiki.ros.org/bloom/Tutorials/GithubManualAuthorization&quot;&gt;this&lt;/a&gt; tutorial.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Have you read the documentation on &lt;a href=&quot;http://wiki.ros.org/bloom&quot;&gt;here&lt;/a&gt;?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now we can do the release:&lt;/p&gt;
+
+&lt;h3 id=&quot;the-release-process&quot;&gt;The release process&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Generate &lt;code class=&quot;highlighter-rouge&quot;&gt;changelog.rst&lt;/code&gt; using &lt;code class=&quot;highlighter-rouge&quot;&gt;catkin_generate_changelog&lt;/code&gt; for a new version update. The file will be automatically updated based on your previous commits and the contributers. Edit if necessary.&lt;/li&gt;
+  &lt;li&gt;Commit and push changes.&lt;/li&gt;
+  &lt;li&gt;Prepare package for release using &lt;code class=&quot;highlighter-rouge&quot;&gt;catkin_prepare_release&lt;/code&gt; . This will increment the version of your package ( 1.0.2 →1.0.3) and tag it on git for appropriate release.&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;bloom-release&lt;/code&gt; with appropriate command parameters.
+    &lt;ol&gt;
+      &lt;li&gt;If a completely new release: &lt;code class=&quot;highlighter-rouge&quot;&gt;bloom-release --rosdistro &amp;lt;ros_distro&amp;gt; --track &amp;lt;ros_distro&amp;gt; &amp;lt;your_repository_name&amp;gt; --edit&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;If updating distro, for example hydro &lt;code class=&quot;highlighter-rouge&quot;&gt;bloom-release foo --track hydro --rosdistro hydro --new-track&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;If updating version for melodic &lt;code class=&quot;highlighter-rouge&quot;&gt;bloom-release foo --rosdistro melodic&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Follow on screen instructions. Keep options mostly the same except probably the branch from which you are going to deploy.&lt;/li&gt;
+  &lt;li&gt;The Bloom will do everything. Sit back and watch for errors.&lt;/li&gt;
+  &lt;li&gt;If everything goes fine, bloom will update release repo and also create a PR for ROS distro on behalf of your release.&lt;/li&gt;
+  &lt;li&gt;Wait for your PR to be approved (Might take a day or two)&lt;/li&gt;
+  &lt;li&gt;Do your victory dance!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This week I did all these things and finally published &lt;a href=&quot;https://github.com/JdeRobot/assets&quot;&gt;jderobot_assets&lt;/a&gt; package for ROS Noetic. The above guide was the summary of the instructions that I followed. However, the guide might be incorrect/ incomplete and I’ll be updating it as I port more packages.&lt;/p&gt;
+
+&lt;h2 id=&quot;one-docker-command-to-run-it-all&quot;&gt;One (docker) command to run it all&lt;/h2&gt;
+
+&lt;p&gt;I added a docker compose file which sets up the docker containers in a proper way. Also updated our academy image with multi stage builds and mesa packages so it can run GUI applications.&lt;/p&gt;
+
+&lt;p&gt;Now it can start the academy exercise effortlessly, with one command.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xhost +&lt;span class=&quot;s2&quot;&gt;&quot;local:docker@&quot;&lt;/span&gt; 
+docker-compose up &lt;span class=&quot;nt&quot;&gt;--build&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Docker will pull required images and copy exercise folders to launch the exercise.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/blog-images/week-1/amazon-warehouse.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Give it a go and report me if there are any issues!&lt;/p&gt;
+
+&lt;p&gt;Au revoir!&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="release" /><category term="how-to" /><category term="week-1" /><summary type="html">Issues Fixed: #53,54 “Adding Noetic support for repo” with PRs #54 for Jderobot_assets, and #25236 for ROS distro with commits.</summary></entry><entry><title type="html">Community Bonding 2</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2" rel="alternate" type="text/html" title="Community Bonding 2" /><published>2020-05-28T12:00:00+02:00</published><updated>2020-05-28T12:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2">&lt;blockquote&gt;
   &lt;p&gt;Issues Fixed: &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/1&quot;&gt;#1&lt;/a&gt; with &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/2&quot;&gt;PR&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 

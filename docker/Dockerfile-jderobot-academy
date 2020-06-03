@@ -8,13 +8,25 @@ RUN apt-get update && apt-get install -q -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Pin the repo to master branch
-ADD https://api.github.com/repos/shreyasgokhale/assets/git/refs/heads/master master.json
+ADD https://api.github.com/repos/shreyasgokhale/assets/git/refs/heads/noetic-master noetic-master.json
 
 # Install JdeRobot Assets
 RUN git clone https://github.com/shreyasgokhale/assets /jderobot && cd /jderobot
 RUN mkdir /jderobot/build
 RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /jderobot/build && cmake ../jderobot_assets/ && make install"
 
+
+
+
+# Python Environment for exercises
+
+FROM python:3.6-slim AS python-env
+# For ICE
+RUN apt-get update && apt-get install -q -y libssl-dev
+
+COPY exercises/requirements-slim.txt .
+
+RUN pip install -r requirements-slim.txt
 
 
 # Academy Image

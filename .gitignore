@@ -3,3 +3,5 @@
 venv/**
 .jekyll-cache/
 .idea/
+
+*.bak

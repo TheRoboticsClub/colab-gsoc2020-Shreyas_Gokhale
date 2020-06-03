@@ -27,7 +27,7 @@ def clearscreen(numlines=10):
         os.system('CLS')
     else:
         # Fallback for other operating systems.
-        print '\n' * numlines
+        print('\n' * numlines)
 
 class MyAlgorithm(threading.Thread):
 
