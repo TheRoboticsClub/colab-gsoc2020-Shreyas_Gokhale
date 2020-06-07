@@ -1,6 +1,6 @@
 #pragma once
 
-#include </opt/jderobot/include/jderobot/types/cmdvel.h>
+#include "../../types/cmdvel.h"
 
 namespace Comm {
 

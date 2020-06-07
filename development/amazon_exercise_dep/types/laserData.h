@@ -17,30 +17,24 @@
  *       Aitor Martinez Fernandez <aitor.martinez.fernandez@gmail.com>
  */
 
-#ifndef JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
-#define JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
+#ifndef JDEROBOTTYPES_LASERDATA_H
+#define JDEROBOTTYPES_LASERDATA_H
 
-#include "../../types/image.h"
+#include <vector>
 
+namespace JdeRobotTypes {
 
-namespace Comm {
-
-	/**
-	 * @brief LaserClient class.
-	 * This class is a Interface to seprate communications from tools. 
-	 * With this, the tools don't need know which communicator (ROS or ICE) are using because both use the same interface.
-	 *
-	 */
-	class CameraClient {
+	class LaserData {
 	public:
-		virtual JdeRobotTypes::Image getImage() = 0;
-		virtual int getRefreshRate() = 0;
-		bool on = false;
-	protected:
-		JdeRobotTypes::Image image;
-		int refreshRate;
+		std::vector<float> values;
+	    float minAngle = 0; //Angle of first value (rads)
+	    float maxAngle = 0; // Angle of last value (rads)
+	    float minRange = 0; // Max Range posible (meters)
+	    float maxRange = 0; //Min Range posible (meters)
+	    double timeStamp = 0; //seconds
 	};
+
 
 } //NS
 
-#endif // JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
+#endif // JDEROBOTTYPES_LASERDATA_H

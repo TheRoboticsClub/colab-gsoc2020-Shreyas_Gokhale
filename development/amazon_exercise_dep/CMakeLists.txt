@@ -20,6 +20,7 @@ SET(SOURCE main.cpp
         config/loader.cpp config/properties.cpp
         comm/cameraClient.cpp comm/communicator.cpp comm/laserClient.cpp comm/motorsClient.cpp comm/pose3dClient.cpp
         comm/src/listenerCamera.cpp comm/src/listenerLaser.cpp comm/src/listenerPose.cpp comm/src/publisherMotors.cpp comm/src/translators.cpp
+
         ${HEADERS}
         ${RESOURCES}
     )
@@ -33,7 +34,6 @@ find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(Boost 1.65 REQUIRED COMPONENTS system)
 find_package(yaml-cpp REQUIRED)
-
 
 if(roscpp_FOUND) 
     message("ROS1 found")
@@ -61,7 +61,13 @@ add_definitions(${Qt5Widgets_DEFINITIONS}
     )
 
 
-SET(HEADERS robot/robot.h gui/gui.h gui/widget/cameraswidget.h gui/widget/controlvw.h)
+SET(HEADERS robot/robot.h gui/gui.h gui/widget/cameraswidget.h gui/widget/controlvw.h ${HEADERS})
+SET(HEADERS         types/bumperData.h  types/ir.h           types/pose3d.h
+        types/cmdvel.h      types/laserData.h    types/rgbd.h
+        types/image.h       types/navdataData.h  types/sonar.h
+        ${HEADERS}
+        )
+
 SET(RESOURCES resources.qrc)
 
 include_directories(${roscpp_INCLUDE_DIRS}   ${std_msgs_INCLUDE_DIRS}
@@ -96,7 +102,7 @@ link_directories(${JDE_LIBS}
     )
 
 add_executable(amazon_deps ${SOURCE} ${INTERFACES_CPP_DIR})
-			       
+
 target_link_libraries(amazon_deps Qt5::Widgets
     ${Qt5Widgets_LIBRARIES}
     ${YAML_CPP_LIBRARIES}

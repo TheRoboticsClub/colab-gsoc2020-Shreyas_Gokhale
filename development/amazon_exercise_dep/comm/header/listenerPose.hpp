@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <nav_msgs/Odometry.h>
 #include <boost/thread/thread.hpp>
-#include </opt/jderobot/include/jderobot/types/pose3d.h>
+#include "../../types/pose3d.h"
 #include "../interfaces/pose3dClient.hpp"
 #include "translators.hpp"
 

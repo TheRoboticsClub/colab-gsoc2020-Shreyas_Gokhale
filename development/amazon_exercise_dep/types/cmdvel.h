@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 1997-2016 JDE Developers Team
+ *  Copyright (C) 1997-2017 JDE Developers Team
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,30 +17,23 @@
  *       Aitor Martinez Fernandez <aitor.martinez.fernandez@gmail.com>
  */
 
-#ifndef JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
-#define JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
+#ifndef JDEROBOTTYPES_CMDVEL_H
+#define JDEROBOTTYPES_CMDVEL_H
 
-#include "../../types/image.h"
+namespace JdeRobotTypes {
 
-
-namespace Comm {
-
-	/**
-	 * @brief LaserClient class.
-	 * This class is a Interface to seprate communications from tools. 
-	 * With this, the tools don't need know which communicator (ROS or ICE) are using because both use the same interface.
-	 *
-	 */
-	class CameraClient {
+	class CMDVel {
 	public:
-		virtual JdeRobotTypes::Image getImage() = 0;
-		virtual int getRefreshRate() = 0;
-		bool on = false;
-	protected:
-		JdeRobotTypes::Image image;
-		int refreshRate;
+		float vx = 0; /**< % vel in x[m/s] (use this for V in wheeled robots)*/
+	    float vy = 0; /**< %vel in y[m/s] */
+	    float vz = 0; /**< %vel in z[m/s] */
+	    float ax = 0; /**< %angular vel in X axis [rad/s] */
+	    float ay = 0; /**< %angular vel in Y axis [rad/s] */
+	    float az = 0; /**< %angular vel in Z axis [rad/s] (use this for W in wheeled robots)*/
+	    double timeStamp = 0; /**< %Time stamp [s] */
 	};
+
 
 } //NS
 
-#endif // JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
+#endif // JDEROBOTTYPES_CMDVEL_H

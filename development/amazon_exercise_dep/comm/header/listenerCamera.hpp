@@ -2,7 +2,7 @@
 #include <image_transport/image_transport.h>
 #include <sensor_msgs/image_encodings.h>
 #include <boost/thread/thread.hpp>
-#include </opt/jderobot/include/jderobot/types/image.h>
+#include "../../types/image.h"
 #include "../interfaces/cameraClient.hpp"
 #include "translators.hpp"
 #include <time.h>

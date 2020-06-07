@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <boost/thread/thread.hpp>
-#include </opt/jderobot/include/jderobot/types/cmdvel.h>
+#include "../../types/cmdvel.h"
 #include "../interfaces/motorsClient.hpp"
 #include "translators.hpp"
 

@@ -15,32 +15,21 @@
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  *  Authors :
  *       Aitor Martinez Fernandez <aitor.martinez.fernandez@gmail.com>
+ * Modified by:
+ *       Francisco Perez Salgado <f.perez475@gmail.com>
  */
 
-#ifndef JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
-#define JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
+#ifndef JDEROBOTTYPES_IR_H
+#define JDEROBOTTYPES_IR_H
 
-#include "../../types/image.h"
+namespace JdeRobotTypes {
 
-
-namespace Comm {
-
-	/**
-	 * @brief LaserClient class.
-	 * This class is a Interface to seprate communications from tools. 
-	 * With this, the tools don't need know which communicator (ROS or ICE) are using because both use the same interface.
-	 *
-	 */
-	class CameraClient {
+	class IRData {
 	public:
-		virtual JdeRobotTypes::Image getImage() = 0;
-		virtual int getRefreshRate() = 0;
-		bool on = false;
-	protected:
-		JdeRobotTypes::Image image;
-		int refreshRate;
+	    int received = 0;
+	    double timeStamp = 0; //seconds
 	};
 
 } //NS
 
-#endif // JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
+#endif // JDEROBOTTYPES_SONAR_H

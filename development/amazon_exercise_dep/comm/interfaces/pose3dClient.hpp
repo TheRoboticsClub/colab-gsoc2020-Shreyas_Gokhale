@@ -1,6 +1,6 @@
 
 #pragma once
-#include </opt/jderobot/include/jderobot/types/pose3d.h>
+#include "../../types/pose3d.h"
 
 namespace Comm {
 

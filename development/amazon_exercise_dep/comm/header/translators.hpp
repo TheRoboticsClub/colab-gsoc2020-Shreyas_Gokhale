@@ -1,5 +1,5 @@
 #include <ros/ros.h>
-#include <cv.h>
+#include <opencv2/opencv.hpp>
 
 #include </opt/jderobot/include/jderobot/types/laserData.h>
 #include <sensor_msgs/LaserScan.h>
@@ -18,11 +18,11 @@
 //#include </opt/jderobot/include/jderobot/types/rgbd.h>
 
 
-#include </opt/jderobot/include/jderobot/types/cmdvel.h>
+#include "../../types/cmdvel.h"
 #include <geometry_msgs/Twist.h>
 
 #include <kobuki_msgs/BumperEvent.h>
-#include </opt/jderobot/include/jderobot/types/bumperData.h>
+#include "../../types/bumperData.h"
 
 
 namespace Comm {

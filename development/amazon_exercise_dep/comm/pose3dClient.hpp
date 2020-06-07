@@ -1,4 +1,4 @@
-#include </opt/jderobot/include/jderobot/types/laserData.h>
+#include "../types/laserData.h"
 #include "communicator.hpp"
 #include "interfaces/pose3dClient.hpp"
 #include "header/listenerPose.hpp"

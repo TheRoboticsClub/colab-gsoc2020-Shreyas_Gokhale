@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <sensor_msgs/LaserScan.h>
 #include <boost/thread/thread.hpp>
-#include </opt/jderobot/include/jderobot/types/laserData.h>
+#include "../../types/laserData.h"
 #include "../interfaces/laserClient.hpp"
 #include "translators.hpp"
 

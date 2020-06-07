@@ -1,5 +1,5 @@
 
-#include </opt/jderobot/include/jderobot/types/image.h>
+#include "../types/image.h"
 
 
 #include "communicator.hpp"

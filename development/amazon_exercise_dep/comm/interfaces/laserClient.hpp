@@ -1,6 +1,6 @@
 #pragma once
 
-#include </opt/jderobot/include/jderobot/types/laserData.h>
+#include "../../types/laserData.h"
 
 
 namespace Comm {

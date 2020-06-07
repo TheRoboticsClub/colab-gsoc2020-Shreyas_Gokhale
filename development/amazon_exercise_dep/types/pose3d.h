@@ -17,30 +17,27 @@
  *       Aitor Martinez Fernandez <aitor.martinez.fernandez@gmail.com>
  */
 
-#ifndef JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
-#define JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
+#ifndef JDEROBOTTYPES_POSE3D_H
+#define JDEROBOTTYPES_POSE3D_H
 
-#include "../../types/image.h"
+#include <vector>
 
+namespace JdeRobotTypes {
 
-namespace Comm {
-
-	/**
-	 * @brief LaserClient class.
-	 * This class is a Interface to seprate communications from tools. 
-	 * With this, the tools don't need know which communicator (ROS or ICE) are using because both use the same interface.
-	 *
-	 */
-	class CameraClient {
+	class Pose3d {
 	public:
-		virtual JdeRobotTypes::Image getImage() = 0;
-		virtual int getRefreshRate() = 0;
-		bool on = false;
-	protected:
-		JdeRobotTypes::Image image;
-		int refreshRate;
+		float x = 0; /**< %X coord [meters] */
+	    float y = 0; /**< %Y coord [meters] */
+	    float z = 0; /**< %Z coord [meters] */
+	    float h = 0; /**< %H param */
+	    float yaw = 0; /**< %Yaw angle[rads] */
+	    float pitch = 0; /**< %Pitch angle[rads] */
+	    float roll = 0; /**< %Roll angle[rads] */
+	    std::vector<float> q = {0,0,0,0}; /**< %Quaternion */
+	    double timeStamp = 0; /**< %Time stamp [s] */
 	};
+
 
 } //NS
 
-#endif // JDEROBOTCOMM_CAMERACLIENT_INTERFACE_H
+#endif // JDEROBOTTYPES_POSE3D_H
