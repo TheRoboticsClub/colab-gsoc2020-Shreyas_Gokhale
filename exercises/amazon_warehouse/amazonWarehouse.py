@@ -51,9 +51,9 @@ if __name__ == '__main__':
     cfg = config.load(sys.argv[2])
     
     jdrc= comm.init(cfg, 'Amazon')
-    motors = jdrc.getMotorsClient("Amazon.Motors")
-    pose3d = jdrc.getPose3dClient("Amazon.Pose3D")
-    laser = jdrc.getLaserClient("Amazon.Laser")
+    # motors = jdrc.getMotorsClient("Amazon.Motors")
+    # pose3d = jdrc.getPose3dClient("Amazon.Pose3D")
+    # laser = jdrc.getLaserClient("Amazon.Laser")
     pathListener = ListenerPath("/amazon_warehouse_robot/move_base/NavfnROS/plan")
     moveBaseClient = MoveBaseClient()
 
@@ -62,7 +62,7 @@ if __name__ == '__main__':
 
     grid = Grid(myGUI)
 
-    vel = Velocity(0, 0, motors.getMaxV(), motors.getMaxW())
+    # vel = Velocity(0, 0, motors.getMaxV(), motors.getMaxW())
     sensor = Sensor(grid, pose3d, True)
     sensor.setGetPathSignal(myGUI.getPathSig)
     

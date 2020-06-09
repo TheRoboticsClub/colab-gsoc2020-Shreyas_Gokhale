@@ -1,7 +1,10 @@
 *.pyc
+**__pycache__
 
 venv/**
 .jekyll-cache/
 .idea/
-
 *.bak
+
+development/amazon_exercise_dep/build
+development/amazon_exercise_dep/cmake-build-debug
