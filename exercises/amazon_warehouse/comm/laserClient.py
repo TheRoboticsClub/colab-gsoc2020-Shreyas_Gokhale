@@ -1,19 +1,37 @@
 import sys
 import os
-#import Ice
+from .tools import server2int
+
+# import Ice
 
 rosversion = os.environ["ROS_VERSION"]
 server = int(rosversion)
 
-if ( server == 2):
+if (server == 2):
     import rclpy
 
-if ( server == 1):
+if (server == 1):
     import rospy
     from .ros.listenerLaser import ListenerLaser
 
-#from .ice.laserIceClient import LaserIceClient
+# from .ice.laserIceClient import LaserIceClient
 from .tools import server2int
+
+
+def __getLaserClient(jdrc, prefix):
+    """
+    Returns a Camera ROS2 Subscriber
+
+    """
+    if (server == 2):
+        print("Receiving " + prefix + " Image from ROS2 messages")
+        topic = jdrc.getConfig().getProperty(prefix + ".Topic")
+        client = ListenerCameraros2(topic, jdrc.noderos2)
+        return client
+    else:
+        print(prefix + ": ROS2 msg are disabled for python " + sys.version_info[0])
+        return None
+
 
 def __getListenerLaser(jdrc, prefix):
     '''
@@ -30,12 +48,13 @@ def __getListenerLaser(jdrc, prefix):
     '''
     if (sys.version_info[0] == 2):
         print("Receiving " + prefix + "  LaserData from ROS messages")
-        topic  = jdrc.getConfig().getProperty(prefix+".Topic")
+        topic = jdrc.getConfig().getProperty(prefix + ".Topic")
         client = ListenerLaser(topic)
         return client
     else:
-        print(prefix + ": ROS msg are diabled for python "+ sys.version_info[0])
+        print(prefix + ": ROS msg are diabled for python " + sys.version_info[0])
         return None
+
 
 def __Laserdisabled(jdrc, prefix):
     '''
@@ -50,10 +69,11 @@ def __Laserdisabled(jdrc, prefix):
     @return None
 
     '''
-    print( prefix + " Disabled")
+    print(prefix + " Disabled")
     return None
 
-def getLaserClient (jdrc, prefix):
+
+def getLaserClient(jdrc, prefix):
     '''
     Returns a Laser Client.
 
@@ -66,9 +86,9 @@ def getLaserClient (jdrc, prefix):
     @return None if Laser is disabled
 
     '''
-    server = jdrc.getConfig().getProperty(prefix+".Server")
+    server = jdrc.getConfig().getProperty(prefix + ".Server")
     server = server2int(server)
 
-    cons = [__Laserdisabled, __getLaserIceClient, __getListenerLaser]
+    cons = [__Laserdisabled, __getLaserClient, __getListenerLaser]
 
     return cons[server](jdrc, prefix)

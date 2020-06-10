@@ -8,3 +8,4 @@ venv/**
 
 development/amazon_exercise_dep/build
 development/amazon_exercise_dep/cmake-build-debug
+venv3/

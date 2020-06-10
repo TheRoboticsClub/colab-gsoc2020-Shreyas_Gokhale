@@ -49,23 +49,23 @@ if __name__ == '__main__':
         sys.exit(-1)
 
     cfg = config.load(sys.argv[2])
-    
-    jdrc= comm.init(cfg, 'Amazon')
-    # motors = jdrc.getMotorsClient("Amazon.Motors")
-    # pose3d = jdrc.getPose3dClient("Amazon.Pose3D")
-    # laser = jdrc.getLaserClient("Amazon.Laser")
+
+    jdrc = comm.init(cfg, 'Amazon')
+    motors = jdrc.getMotorsClient("Amazon.Motors")
+    pose3d = jdrc.getPose3dClient("Amazon.Pose3D")
+    laser = jdrc.getLaserClient("Amazon.Laser")
     pathListener = ListenerPath("/amazon_warehouse_robot/move_base/NavfnROS/plan")
     moveBaseClient = MoveBaseClient()
 
-    app = QApplication(sys.argv) 
+    app = QApplication(sys.argv)
     myGUI = MainWindow()
 
     grid = Grid(myGUI)
 
-    # vel = Velocity(0, 0, motors.getMaxV(), motors.getMaxW())
+    vel = Velocity(0, 0, motors.getMaxV(), motors.getMaxW())
     sensor = Sensor(grid, pose3d, True)
     sensor.setGetPathSignal(myGUI.getPathSig)
-    
+
     myGUI.setVelocity(vel)
     myGUI.setGrid(grid)
     myGUI.setSensor(sensor)
@@ -78,8 +78,8 @@ if __name__ == '__main__':
     t1 = ThreadMotors(motors, vel)
     t1.daemon = True
     t1.start()
-    t2 = ThreadGUI(myGUI)  
+    t2 = ThreadGUI(myGUI)
     t2.daemon = True
     t2.start()
-    
+
     sys.exit(app.exec_()) 
