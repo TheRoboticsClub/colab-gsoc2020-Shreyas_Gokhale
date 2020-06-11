@@ -2,9 +2,9 @@
 //#include <Ice/Ice.h>
 //#include <IceUtil/IceUtil.h>
 
-#include </opt/jderobot/include/jderobot/types/laserData.h>
-#include </opt/jderobot/include/jderobot/types/image.h>
-#include </opt/jderobot/include/jderobot/types/pose3d.h>
+#include "../types/laserData.h"
+#include "../types/image.h"
+#include "../types/pose3d.h"
 
 //Opencv
 #include <opencv2/core/core.hpp>

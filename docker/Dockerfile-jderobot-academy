@@ -1,6 +1,6 @@
 # Jderobot Assets
 
-FROM osrf/ros:noetic-desktop-full as jdeassets
+FROM ros:noetic-ros-base as jdeassets
 
 # Install basic packages
 RUN apt-get update && apt-get install -q -y \
@@ -22,34 +22,61 @@ RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /jderobot/build &
 
 FROM python:3.6-slim AS python-env
 # For ICE
-RUN apt-get update && apt-get install -q -y libssl-dev
+RUN apt-get update && apt-get install -q -y gcc libssl-dev
 
-COPY exercises/requirements-slim.txt .
+COPY exercises/requirements-slim.txt requirements.txt
 
-RUN pip install -r requirements-slim.txt
+RUN pip install -r requirements.txt
+
+RUN pip install jderobot-jderobottypes
 
 
 # Academy Image
-FROM osrf/ros:noetic-desktop-full
+FROM ros:noetic
 COPY --from=jdeassets /opt/jderobot/ /opt/jderobot
-
-# TODO: Copy => mount
-COPY exercises /exercises
 
 # Sourcing
 RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash"
 RUN /bin/bash -c "echo "source /opt/jderobot/share/jderobot/gazebo/assets-setup.sh" >> ~/.bashrc"
 RUN /bin/bash -c "echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc"
 
-# MESA for NVIDIA GPU
-#RUN apt-get update && apt-get install -q -y \
-#    x11-apps mesa-utils libgl1-mesa-glx \
-#    && rm -rf /var/lib/apt/lists/*
-
-# MESA for Intel
+# MESA
 RUN apt-get update && apt-get install -q -y \
-    libgl1-mesa-glx libgl1-mesa-dri \
+    x11-apps mesa-utils libgl1-mesa-glx libgl1-mesa-glx libgl1-mesa-dri \
     && rm -rf /var/lib/apt/lists/*
+
+# ROS deps
+RUN apt-get update && apt-get install -q -y \
+    ros-noetic-mavros \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install basic packages
+RUN apt-get update && apt-get install -q -y \
+    git qt5-default \
+    && rm -rf /var/lib/apt/lists/*
+
+
+# Install Kobuki Messages
+RUN /bin/bash -c "git clone https://github.com/yujinrobot/kobuki_msgs /kobuki"
+
+RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /kobuki && mkdir build && cd build && cmake ../ && make install"
+
+COPY development/amazon_exercise_dep /deps
+
+RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && mkdir /deps/build && cd /deps/build && cmake ../ && make install"
+
+#ROS again changed the images, so we have to install gazebo from scrach
+RUN /bin/bash -c "curl -sSL http://get.gazebosim.org | sh"
+
+# Install gazebo ros packages
+RUN apt-get update && apt-get install -q -y \
+    git ros-noetic-gazebo-ros\
+    && rm -rf /var/lib/apt/lists/*
+
+# TODO: Copy => mount
+COPY exercises /exercises
+#COPY --from=python-env /root/.local /root/.local
+
 
 COPY docker/ros_entrypoint.sh /
 RUN chmod 755 /ros_entrypoint.sh

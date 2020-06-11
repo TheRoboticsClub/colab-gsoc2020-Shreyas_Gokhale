@@ -31,4 +31,4 @@ services:
     volumes:
       #share your x11 socket and permissions to the container
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-    command: /bin/bash -c  "cd exercises/amazon_warehouse/launch && roslaunch amazonrobot_1_warehouse.launch"
+    command: /bin/bash -c  "cd exercises/amazon_warehouse/ && python3 amazonWarehouse.py amazonMap.conf amazonConf.yml && cd exercises/amazon_warehouse/launch && roslaunch amazonrobot_1_warehouse.launch"

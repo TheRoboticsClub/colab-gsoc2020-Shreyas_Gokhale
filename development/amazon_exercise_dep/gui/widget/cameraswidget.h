@@ -2,7 +2,7 @@
 #define CAMERASWIDGET_H
 
 #include <QtWidgets>
-#include </opt/jderobot/include/jderobot/types/image.h>
+#include "../../types/image.h"
 
 #include "../../robot/robot.h"
 

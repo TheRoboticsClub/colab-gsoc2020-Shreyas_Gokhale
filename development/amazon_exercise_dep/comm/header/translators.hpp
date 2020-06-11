@@ -1,21 +1,21 @@
 #include <ros/ros.h>
 #include <opencv2/opencv.hpp>
 
-#include </opt/jderobot/include/jderobot/types/laserData.h>
+#include "../types/laserData.h"
 #include <sensor_msgs/LaserScan.h>
 
 
-#include </opt/jderobot/include/jderobot/types/pose3d.h>
+#include "../types/pose3d.h"
 #include <vector>
 #include <nav_msgs/Odometry.h>
 
 
-#include </opt/jderobot/include/jderobot/types/image.h>
+#include "../types/image.h"
 #include "image_transport/image_transport.h"
 #include "cv_bridge/cv_bridge.h"
 #include "sensor_msgs/image_encodings.h"
 
-//#include </opt/jderobot/include/jderobot/types/rgbd.h>
+//#include "../types/rgbd.h"
 
 
 #include "../../types/cmdvel.h"
