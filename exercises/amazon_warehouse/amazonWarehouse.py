@@ -37,15 +37,17 @@ from sensors.grid import Grid
 from interfaces.path import ListenerPath
 from interfaces.moveBaseClient import MoveBaseClient
 
+
 def removeMapFromArgs():
     for arg in sys.argv:
         if (arg.split(".")[1] == "conf"):
             sys.argv.remove(arg)
 
+
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
-        print('ERROR: python2 globalNavigation.py [MAP CONFIG file] [YAML CONFIG file]')
+        print('ERROR: python3 globalNavigation.py [MAP CONFIG file] [YAML CONFIG file]')
         sys.exit(-1)
 
     cfg = config.load(sys.argv[2])
@@ -55,7 +57,10 @@ if __name__ == '__main__':
     pose3d = jdrc.getPose3dClient("Amazon.Pose3D")
     laser = jdrc.getLaserClient("Amazon.Laser")
     pathListener = ListenerPath("/amazon_warehouse_robot/move_base/NavfnROS/plan")
-    moveBaseClient = MoveBaseClient()
+
+    # This is to be updated
+    # moveBaseClient = MoveBaseClient()
+    # print("Subscribed To Move Base Client, Starting Application")
 
     app = QApplication(sys.argv)
     myGUI = MainWindow()
@@ -69,8 +74,8 @@ if __name__ == '__main__':
     myGUI.setVelocity(vel)
     myGUI.setGrid(grid)
     myGUI.setSensor(sensor)
-    algorithm = MyAlgorithm(grid, sensor, vel, pathListener, moveBaseClient)
-    myGUI.setAlgorithm(algorithm)
+    # algorithm = MyAlgorithm(grid, sensor, vel, pathListener, moveBaseClient)
+    # myGUI.setAlgorithm(algorithm)
     myGUI.show()
 
     removeMapFromArgs()

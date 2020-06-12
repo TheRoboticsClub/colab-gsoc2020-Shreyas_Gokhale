@@ -4,6 +4,7 @@
 #
 #    pip-compile requirements-slim.in
 #
+jderobot-jderobottypes==1.0.0
 catkin-pkg==0.4.20        # via rospkg
 distro==1.5.0             # via rospkg
 docutils==0.16            # via catkin-pkg
@@ -11,7 +12,7 @@ numpy==1.18.4             # via opencv-python
 opencv-python==4.2.0.34   # via -r requirements-slim.in
 pyparsing==2.4.7          # via catkin-pkg
 pyqt5-sip==12.8.0         # via pyqt5
-pyqt5==5.15.0             # via -r requirements-slim.in
+pyqt5==5.14.0             # via -r requirements-slim.in
 python-dateutil==2.8.1    # via catkin-pkg
 pyyaml==5.3.1             # via -r requirements-slim.in, rospkg
 rospkg==1.2.6             # via -r requirements-slim.in

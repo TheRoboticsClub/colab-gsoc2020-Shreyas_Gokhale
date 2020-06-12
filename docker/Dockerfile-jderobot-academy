@@ -16,21 +16,6 @@ RUN mkdir /jderobot/build
 RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /jderobot/build && cmake ../jderobot_assets/ && make install"
 
 
-
-
-# Python Environment for exercises
-
-FROM python:3.6-slim AS python-env
-# For ICE
-RUN apt-get update && apt-get install -q -y gcc libssl-dev
-
-COPY exercises/requirements-slim.txt requirements.txt
-
-RUN pip install -r requirements.txt
-
-RUN pip install jderobot-jderobottypes
-
-
 # Academy Image
 FROM ros:noetic
 COPY --from=jdeassets /opt/jderobot/ /opt/jderobot
@@ -55,28 +40,32 @@ RUN apt-get update && apt-get install -q -y \
     git qt5-default \
     && rm -rf /var/lib/apt/lists/*
 
+#ROS again changed the images, so we have to install gazebo from scrach
+RUN /bin/bash -c "curl -sSL http://get.gazebosim.org | sh"
+
+
+# Install gazebo ros packages
+RUN apt-get update && apt-get install -q -y \
+    git ros-noetic-gazebo-ros \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Kobuki Messages
-RUN /bin/bash -c "git clone https://github.com/yujinrobot/kobuki_msgs /kobuki"
+RUN /bin/bash -c "git clone https://github.com/yujinrobot/kobuki_msgs /catkin_ws/src/kobuki"
 
-RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /kobuki && mkdir build && cd build && cmake ../ && make install"
+RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /catkin_ws && catkin_make install -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic install"
 
 COPY development/amazon_exercise_dep /deps
 
 RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && mkdir /deps/build && cd /deps/build && cmake ../ && make install"
 
-#ROS again changed the images, so we have to install gazebo from scrach
-RUN /bin/bash -c "curl -sSL http://get.gazebosim.org | sh"
-
-# Install gazebo ros packages
 RUN apt-get update && apt-get install -q -y \
-    git ros-noetic-gazebo-ros\
+    python3-pip ros-noetic-navigation\
     && rm -rf /var/lib/apt/lists/*
+
 
 # TODO: Copy => mount
 COPY exercises /exercises
-#COPY --from=python-env /root/.local /root/.local
-
+RUN pip3 install -r /exercises/requirements-slim.txt
 
 COPY docker/ros_entrypoint.sh /
 RUN chmod 755 /ros_entrypoint.sh

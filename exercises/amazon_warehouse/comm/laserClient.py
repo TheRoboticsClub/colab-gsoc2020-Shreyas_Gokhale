@@ -23,14 +23,14 @@ def __getLaserClient(jdrc, prefix):
     Returns a Camera ROS2 Subscriber
 
     """
-    if (server == 2):
-        print("Receiving " + prefix + " Image from ROS2 messages")
-        topic = jdrc.getConfig().getProperty(prefix + ".Topic")
-        client = ListenerCameraros2(topic, jdrc.noderos2)
-        return client
-    else:
-        print(prefix + ": ROS2 msg are disabled for python " + sys.version_info[0])
-        return None
+    # if (server == 2):
+    print("Receiving " + prefix + " Image from ROS2 messages")
+    topic = jdrc.getConfig().getProperty(prefix + ".Topic")
+    client = ListenerCameraros2(topic, jdrc.noderos2)
+    return client
+    # else:
+    #     print(prefix + ": ROS2 msg are disabled for python " + sys.version_info[0])
+    #     return None
 
 
 def __getListenerLaser(jdrc, prefix):
@@ -46,14 +46,10 @@ def __getListenerLaser(jdrc, prefix):
     @return Laser ROS Subscriber
 
     '''
-    if (sys.version_info[0] == 2):
-        print("Receiving " + prefix + "  LaserData from ROS messages")
-        topic = jdrc.getConfig().getProperty(prefix + ".Topic")
-        client = ListenerLaser(topic)
-        return client
-    else:
-        print(prefix + ": ROS msg are diabled for python " + sys.version_info[0])
-        return None
+    print("Receiving " + prefix + "  LaserData from ROS messages")
+    topic = jdrc.getConfig().getProperty(prefix + ".Topic")
+    client = ListenerLaser(topic)
+    return client
 
 
 def __Laserdisabled(jdrc, prefix):
