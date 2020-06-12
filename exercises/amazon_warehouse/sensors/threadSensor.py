@@ -26,8 +26,8 @@ class ThreadSensor(threading.Thread):
 
     def __init__(self, sensor, kill_event):
         self.sensor = sensor
-	self.kill_event = kill_event
-	threading.Thread.__init__(self, args=kill_event)
+        self.kill_event = kill_event
+        threading.Thread.__init__(self, args=kill_event)
 
     def run(self):
         while (True):

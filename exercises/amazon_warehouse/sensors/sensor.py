@@ -18,7 +18,7 @@
 #       Alberto Martin Florido <almartinflorido@gmail.com>
 #
 
-from threadSensor import ThreadSensor
+from sensors.threadSensor import ThreadSensor
 from sensors.grid import Grid
 import threading
 
@@ -31,11 +31,12 @@ class Sensor(threading.Thread):
         self.grid.initPose(self.pose3d.getPose3d().x,
                            self.pose3d.getPose3d().y,
                            self.pose3d.getPose3d().yaw)
-
+        
         self.kill_event = threading.Event()
+        
         self.thread = ThreadSensor(self, self.kill_event)
-        self.thread.daemon = True
 
+        self.thread.daemon = True
         if start:
             self.start()
 
