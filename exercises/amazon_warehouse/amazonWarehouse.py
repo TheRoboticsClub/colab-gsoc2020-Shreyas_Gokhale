@@ -22,7 +22,6 @@
 #       Shreyas Gokhale <shreyas6gokhale AT gmail DOT com>
 
 import sys, config
-import rospy
 from connector import connector
 
 from gui.GUI import MainWindow

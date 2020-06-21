@@ -1,16 +1,8 @@
 #!/usr/bin/python3
-import os
-import pprint
-import subprocess
 import rospy
-
 from .ros.publisherMotors import PublisherMotors
 from .ros.listenerLaser import ListenerLaser
 from .ros.listenerPose3d import ListenerPose3d
-# import ros.publisherCmdVel
-# import ros.publisherMotors
-# import ros.threadPublisher
-
 import threading
 
 
