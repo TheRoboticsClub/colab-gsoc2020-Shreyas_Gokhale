@@ -36,7 +36,7 @@ def clearCostmaps():
     except rospy.ServiceException as exc:
         print("Service did not process request: " + str(exc))
 
-class MoveBaseClient():
+class MoveBaseClient:
     def __init__(self):
         self.client = actionlib.SimpleActionClient('/amazon_warehouse_robot/move_base', MoveBaseAction)
         self.client.wait_for_server()

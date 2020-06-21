@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 #
-#  Copyright (C) 1997-2015 JDE Developers Team
+#  Copyright (C) 1997-2020 JDE Developers Team
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -19,10 +19,11 @@
 #  Authors :
 #       Arsalan Akhter <arsalanakhter.wpi AT gmail DOT com>
 #       Shyngyskhan Abilkassov <s.abilkassov AT gmail DOT com>
+#       Shreyas Gokhale <shreyas6gokhale AT gmail DOT com>
 
 import sys, config
 import rospy
-import comm
+from connector import connector
 
 from gui.GUI import MainWindow
 from gui.threadGUI import ThreadGUI
@@ -37,6 +38,7 @@ from sensors.grid import Grid
 from interfaces.path import ListenerPath
 from interfaces.moveBaseClient import MoveBaseClient
 
+import yaml
 
 def removeMapFromArgs():
     for arg in sys.argv:
@@ -50,41 +52,45 @@ if __name__ == '__main__':
         print('ERROR: python3 globalNavigation.py [MAP CONFIG file] [YAML CONFIG file]')
         sys.exit(-1)
 
-    cfg = config.load(sys.argv[2])
+    # cfg = config.load()
 
-    jdrc = comm.init(cfg, 'Amazon')
-    motors = jdrc.getMotorsClient("Amazon.Motors")
-    pose3d = jdrc.getPose3dClient("Amazon.Pose3D")
-    laser = jdrc.getLaserClient("Amazon.Laser")
-    pathListener = ListenerPath("/amazon_warehouse_robot/move_base/NavfnROS/plan")
+    with open(sys.argv[2]) as f:
+        # using safe_load instead load
+        cfg = yaml.safe_load(f)
+        jdrc = connector.Connector(cfg, 'Amazon')
+        motors = jdrc.getMotorPubObject()
+        pose3d = jdrc.getPoseListnerObject()
+        laser = jdrc.getLaserListnerObject()
+        pathListener = ListenerPath("/amazon_warehouse_robot/move_base/NavfnROS/plan")
 
-    # This is to be updated
-    # moveBaseClient = MoveBaseClient()
-    # print("Subscribed To Move Base Client, Starting Application")
+        # This is to be updated
+        # moveBaseClient = MoveBaseClient()
+        # print("Subscribed To Move Base Client, Starting Application")
 
-    app = QApplication(sys.argv)
-    myGUI = MainWindow()
+        app = QApplication(sys.argv)
+        myGUI = MainWindow()
 
-    grid = Grid(myGUI)
+        grid = Grid(myGUI)
 
-    vel = Velocity(0, 0, motors.getMaxV(), motors.getMaxW())
-    sensor = Sensor(grid, pose3d, True)
-    sensor.setGetPathSignal(myGUI.getPathSig)
+        vel = Velocity(0, 0, motors.getMaxV(), motors.getMaxW())
+        sensor = Sensor(grid, pose3d, True)
+        sensor.setGetPathSignal(myGUI.getPathSig)
+        
 
-    myGUI.setVelocity(vel)
-    myGUI.setGrid(grid)
-    myGUI.setSensor(sensor)
-    # algorithm = MyAlgorithm(grid, sensor, vel, pathListener, moveBaseClient)
-    # myGUI.setAlgorithm(algorithm)
-    myGUI.show()
+        myGUI.setVelocity(vel)
+        myGUI.setGrid(grid)
+        myGUI.setSensor(sensor)
+        # algorithm = MyAlgorithm(grid, sensor, vel, pathListener, moveBaseClient)
+        # myGUI.setAlgorithm(algorithm)
+        myGUI.show()
 
-    removeMapFromArgs()
+        removeMapFromArgs()
 
-    t1 = ThreadMotors(motors, vel)
-    t1.daemon = True
-    t1.start()
-    t2 = ThreadGUI(myGUI)
-    t2.daemon = True
-    t2.start()
+        t1 = ThreadMotors(motors, vel)
+        t1.daemon = True
+        t1.start()
+        t2 = ThreadGUI(myGUI)
+        t2.daemon = True
+        t2.start()
 
-    sys.exit(app.exec_()) 
+        sys.exit(app.exec_())

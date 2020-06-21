@@ -1,5 +1,4 @@
 
-
 def server2int(server):
     if isinstance(server, int):
         if server in range(3):
@@ -11,4 +10,5 @@ def server2int(server):
             return 1
         elif serverl == "ros" or serverl == "2":
             return 2
-    else : return 0
+    else:
+        return 0
