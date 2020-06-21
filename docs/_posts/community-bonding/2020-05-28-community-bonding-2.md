@@ -33,6 +33,7 @@ We decided that it would be the best to take the release out for a spin using Do
 
 My next target will be to run our exercise dependencies on noetic, mainly the Jderobot academy base, which currently only supports until melodic
 
-Until the next time! Bis Bald!
+
+***Bis Bald!***
 
 > Just in! OSRF pushed the images on the DockerHub. So those will be used in the next releases.
