@@ -39,12 +39,14 @@ from interfaces.path import ListenerPath
 from interfaces.moveBaseClient import MoveBaseClient
 
 import yaml
+import signal
 
 def removeMapFromArgs():
     for arg in sys.argv:
         if (arg.split(".")[1] == "conf"):
             sys.argv.remove(arg)
 
+signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 if __name__ == '__main__':
 
@@ -64,8 +66,8 @@ if __name__ == '__main__':
         pathListener = ListenerPath("/amazon_warehouse_robot/move_base/NavfnROS/plan")
 
         # This is to be updated
-        # moveBaseClient = MoveBaseClient()
-        # print("Subscribed To Move Base Client, Starting Application")
+        moveBaseClient = MoveBaseClient()
+        print("Subscribed To Move Base Client, Starting Application")
 
         app = QApplication(sys.argv)
         myGUI = MainWindow()
@@ -80,8 +82,8 @@ if __name__ == '__main__':
         myGUI.setVelocity(vel)
         myGUI.setGrid(grid)
         myGUI.setSensor(sensor)
-        # algorithm = MyAlgorithm(grid, sensor, vel, pathListener, moveBaseClient)
-        # myGUI.setAlgorithm(algorithm)
+        algorithm = MyAlgorithm(grid, sensor, vel, pathListener, moveBaseClient)
+        myGUI.setAlgorithm(algorithm)
         myGUI.show()
 
         removeMapFromArgs()

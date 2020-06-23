@@ -2,14 +2,13 @@ import threading
 
 import rospy
 from geometry_msgs.msg import Twist
-from jderobotTypes import CMDVel
 
 from .threadPublisher import ThreadPublisher
 
 
 def cmdvel2Twist(vel):
     '''
-    Translates from JderobotTypes CMDVel to ROS Twist. 
+    CMDVel to ROS Twist. 
 
     @param vel: JderobotTypes CMDVel to translate
 
@@ -27,6 +26,29 @@ def cmdvel2Twist(vel):
     tw.angular.z = vel.az
 
     return tw
+
+
+
+class CMDVel:
+
+    def __init__(self):
+
+        self.vx = 0 # vel in x[m/s] (use this for V in wheeled robots)
+        self.vy = 0 # vel in y[m/s]
+        self.vz = 0 # vel in z[m/s]
+        self.ax = 0 # angular vel in X axis [rad/s]
+        self.ay = 0 # angular vel in X axis [rad/s]
+        self.az = 0 # angular vel in Z axis [rad/s] (use this for W in wheeled robots)
+        self.timeStamp = 0 # Time stamp [s]
+
+
+    def __str__(self):
+        s = "CMDVel: {\n   vx: " + str(self.vx) + "\n   vy: " + str(self.vy)
+        s = s + "\n   vz: " + str(self.vz) + "\n   ax: " + str(self.ax) 
+        s = s + "\n   ay: " + str(self.ay) + "\n   az: " + str(self.az)
+        s = s + "\n   timeStamp: " + str(self.timeStamp)  + "\n}"
+        return s 
+
 
 
 class PublisherMotors:
@@ -48,7 +70,8 @@ class PublisherMotors:
 
         self.topic = topic
         self.data = CMDVel()
-        self.pub = self.pub = rospy.Publisher(self.topic, Twist, queue_size=1)
+        self.pub = rospy.Publisher(self.topic, Twist, queue_size=1)
+        # rospy.init_node("Amazon")
         self.lock = threading.Lock()
 
         self.kill_event = threading.Event()

@@ -72,7 +72,7 @@ class ThreadMotors(threading.Thread):
             start_time = datetime.now()
             self.motors.sendV(self.velocity.getV())
             self.motors.sendW(self.velocity.getW())
-            #self.motors.sendVelocities()
+            # self.motors.sendVelocities(self.velocity)
 
             finish_Time = datetime.now()
 
