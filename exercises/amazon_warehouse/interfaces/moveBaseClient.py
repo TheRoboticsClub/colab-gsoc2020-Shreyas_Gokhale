@@ -39,7 +39,7 @@ def clearCostmaps():
 class MoveBaseClient:
     def __init__(self):
         self.client = actionlib.SimpleActionClient('/amazon_warehouse_robot/move_base', MoveBaseAction)
-        # self.client.wait_for_server()
+        self.client.wait_for_server()
         self.data = [0, 0]
         self.goal = None
 
