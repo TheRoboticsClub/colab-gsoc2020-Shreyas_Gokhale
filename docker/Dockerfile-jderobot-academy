@@ -20,6 +20,11 @@ RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /jderobot/build &
 FROM ros:noetic
 COPY --from=jdeassets /opt/jderobot/ /opt/jderobot
 
+## MESA
+#RUN apt-get update && apt-get install -q -y \
+#    ros-noetic-jderobot-assets \
+#    && rm -rf /var/lib/apt/lists/*
+
 # Sourcing
 RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash"
 RUN /bin/bash -c "echo "source /opt/jderobot/share/jderobot/gazebo/assets-setup.sh" >> ~/.bashrc"
@@ -41,7 +46,21 @@ RUN apt-get update && apt-get install -q -y \
     && rm -rf /var/lib/apt/lists/*
 
 #ROS again changed the images, so we have to install gazebo from scrach
-RUN /bin/bash -c "curl -sSL http://get.gazebosim.org | sh"
+#RUN /bin/bash -c "curl -sSL http://get.gazebosim.org | sh"
+
+
+# NEW
+# setup keys
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2486D2DD83DB69272AFE98867170598AF249743
+
+# setup sources.list
+RUN . /etc/os-release \
+    && echo "deb http://packages.osrfoundation.org/gazebo/$ID-stable `lsb_release -sc` main" > /etc/apt/sources.list.d/gazebo-latest.list
+
+# install gazebo packages
+RUN apt-get update && apt-get install -q -y --no-install-recommends \
+    gazebo11=11.0.0-2* \
+    && rm -rf /var/lib/apt/lists/*
 
 
 # Install gazebo ros packages
@@ -59,13 +78,17 @@ COPY development/amazon_exercise_dep /deps
 RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && mkdir /deps/build && cd /deps/build && cmake ../ && make install"
 
 RUN apt-get update && apt-get install -q -y \
-    python3-pip ros-noetic-navigation\
+    python3-pip ros-noetic-navigation ros-noetic-gazebo-plugins\
     && rm -rf /var/lib/apt/lists/*
 
 
 # TODO: Copy => mount
 COPY exercises /exercises
 RUN pip3 install -r /exercises/requirements-slim.txt
+
+
+# Until jderobot/assets is updated
+COPY development/model.sdf /opt/jderobot/share/jderobot/gazebo/models/amazon_warehouse_robot/model.sdf
 
 COPY docker/ros_entrypoint.sh /
 RUN chmod 755 /ros_entrypoint.sh
