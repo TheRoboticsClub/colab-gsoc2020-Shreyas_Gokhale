@@ -106,5 +106,4 @@
         <remap from="/move_base/status" to="/amazon_warehouse_robot/move_base/status"/>
         <remap from="/move_base_simple/goal" to="/amazon_warehouse_robot/move_base_simple/goal"/>
     </node>
-
 </launch>

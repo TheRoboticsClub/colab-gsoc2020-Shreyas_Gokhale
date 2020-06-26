@@ -98,13 +98,13 @@ I realised that I didn't call the `self.grid.setPathFinded()` method.
 And voila, there was the green path! Comparing times, the algorithm takes more time, farther the destination. 
 But it is quite quick compared to gradient path planner! 
 
-<figure>
-<img src="AStar1.gif" alt="AStar Path Planner">
-<figcaption>A Star Path Planner!</figcaption>
-</figure>
+![](assets/blog-images/community-bonding/AStar1.gif)
 
 
-In the next post, we'll go over the motion planning and squash bugs (if any!). Ciao!
+In the next post, we'll go over the motion planning and squash bugs (if any!). 
+
+
+***Ciao!***
 
 ### Reference:
 

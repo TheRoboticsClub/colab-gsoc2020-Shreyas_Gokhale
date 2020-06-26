@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-06-12T15:40:19+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Let’s start (c)making!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking" rel="alternate" type="text/html" title="Let's start (c)making!" /><published>2020-06-12T14:30:00+02:00</published><updated>2020-06-12T14:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-06-21T13:06:59+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Connecting the dots!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots" rel="alternate" type="text/html" title="Connecting the dots!" /><published>2020-06-21T12:30:00+02:00</published><updated>2020-06-21T12:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots">&lt;blockquote&gt;
+  &lt;p&gt;Issues Fixed:&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/5&quot;&gt;#5&lt;/a&gt; with PR &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/6&quot;&gt;#6&lt;/a&gt;.&lt;/p&gt;
+
+  &lt;p&gt;Added new branch for Jderobot/base -&amp;gt; &lt;a href=&quot;https://github.com/shreyasgokhale/base/tree/noetic-devel&quot;&gt;noetic-devel&lt;/a&gt; with connector dependency added&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;week-3-blog&quot;&gt;Week 3 Blog&lt;/h1&gt;
+
+&lt;p&gt;In last blog I briefly talked about Cmake and porting from the old Jderobot/base code. For this week I wanted to clarify more on how that turned out.&lt;/p&gt;
+
+&lt;h2 id=&quot;jderobot-base-and-comm-library&quot;&gt;Jderobot base and comm library&lt;/h2&gt;
+
+&lt;p&gt;Jderobot Base package is the backbone for all the real and virtual robot development at the academy. It is essentially a collection of various drivers and libraries. It contains source code in C++ for real robots and in python for academy exercises. The code is arranged using CMakeLists and has lots of flags, options and tests depending on which operating system you are running the code. I found out an &lt;a href=&quot;https://gsyc.urjc.es/jmplaza/papers/robocity2013-jderobot.pdf&quot;&gt;excellent paper&lt;/a&gt; on the base package written by the founders and it is worth a read for anyone who is working on the academy.&lt;/p&gt;
+
+&lt;p&gt;Currently, the base project is going through a major change. We have completely switched from &lt;a href=&quot;https://zeroc.com/&quot;&gt;ICE&lt;/a&gt; based communication to native ROS middleware based Pub and Sub mechanism. Some of the libraries and packages are now outdated and some of them are now even available in native ros packages. Lastly, python2 is now obsolete and it makes very essential to use python3 in order to support the latest ROS1,ROS2 releases.&lt;/p&gt;
+
+&lt;p&gt;So the new release for academy is going to be a major one and as my project already had some ported dependencies I wanted to also contribute to it. The major one was the backbone communication library: &lt;code class=&quot;highlighter-rouge&quot;&gt;comm&lt;/code&gt; . It was used to get the objects for moules from ICE or ROS depending on the architecture, for example Laser Sensors, Motors or Camera.&lt;/p&gt;
+
+&lt;p&gt;For our use case, the existing version of Comm library acts as a glue between jderobot academy exercise and ros framework. So for example, If I want to perform SLAM in the python application in jderobot exercises, I have to get it somehow from gazebo. The &lt;strong&gt;OLD&lt;/strong&gt; flow of information is as follows&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&quot;color:magenta&quot;&gt;Gazebo → ROS topic → &lt;strong&gt;C++ Comm&lt;/strong&gt; &lt;/span&gt;  &lt;span style=&quot;font-size:2em&quot;&gt; &lt;em&gt;→&lt;/em&gt;   &lt;/span&gt; &lt;span style=&quot;color:green&quot;&gt; &lt;strong&gt;Python Comm&lt;/strong&gt; → Exercise Application  → My Solution &lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;The left side of the big arrow (or text with magenta colour) is C++ domain and the text on the right side (or the text with green colour) is python domain. Our module of interest here is the bold part.&lt;/p&gt;
+
+&lt;p&gt;But now in the new version, we will be using native ros middleware to handle the communication. As we only need the rosnode objects in order to publish / subscribe to these nodes, we don’t need this extra &lt;strong&gt;Comm&lt;/strong&gt; middleware. Just get the object of &lt;code class=&quot;highlighter-rouge&quot;&gt;rospy.Publisher&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;rospy.Subscriber&lt;/code&gt; and we are done! So the whole comm stuff becomes redundant. But we cannot simply delete this folder and forget about it like it never existed. We need to somehow connect the exercise to the publisher..&lt;/p&gt;
+
+&lt;h2 id=&quot;connector-package&quot;&gt;Connector Package&lt;/h2&gt;
+
+&lt;p&gt;A new &lt;code class=&quot;highlighter-rouge&quot;&gt;connector&lt;/code&gt; package is my solution of the problem. It simply returns the Publisher / Subscriber object of the requested module. We still use all the class definitions that existed for sensors and modules, but we don’t publish using ICE. Now we can remove all the packages like &lt;code class=&quot;highlighter-rouge&quot;&gt;easyiceconfig&lt;/code&gt; and refactor &lt;code class=&quot;highlighter-rouge&quot;&gt;parallelice&lt;/code&gt; directory. Sweet!&lt;/p&gt;
+
+&lt;p&gt;This change is however, as they call it, a breaking one! Comm module is referenced by so many other modules and we have to go through each of the CMake dependencies to make sure that it doesn’t make other stuff stop working. This work will be continue in the upcoming weeks and will be tested.&lt;/p&gt;
+
+&lt;p&gt;You can check out the connector package &lt;a href=&quot;https://github.com/shreyasgokhale/base/tree/noetic-devel&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the next week, the exercise will be launched, ready to be tested by the students!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Näkemiin!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="comm" /><category term="connector" /><category term="porting" /><category term="week-3" /><summary type="html">Issues Fixed: #5 with PR #6. Added new branch for Jderobot/base -&amp;gt; noetic-devel with connector dependency added</summary></entry><entry><title type="html">Let’s start (c)making!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking" rel="alternate" type="text/html" title="Let's start (c)making!" /><published>2020-06-12T14:30:00+02:00</published><updated>2020-06-12T14:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking">&lt;blockquote&gt;
   &lt;p&gt;Issues Fixed:&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/3&quot;&gt;#3&lt;/a&gt; with PR &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/4/commits&quot;&gt;#4&lt;/a&gt;.&lt;/p&gt;
@@ -120,7 +158,7 @@ docker-compose up &lt;span class=&quot;nt&quot;&gt;--build&lt;/span&gt;
 
 &lt;p&gt;Give it a go and report me if there are any issues!&lt;/p&gt;
 
-&lt;p&gt;Au revoir!&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="release" /><category term="how-to" /><category term="week-1" /><summary type="html">Issues Fixed: #53,54 “Adding Noetic support for repo” with PRs #54 for Jderobot_assets, and #25236 for ROS distro with commits.</summary></entry><entry><title type="html">Community Bonding 2</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2" rel="alternate" type="text/html" title="Community Bonding 2" /><published>2020-05-28T12:00:00+02:00</published><updated>2020-05-28T12:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Au revoir!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="release" /><category term="how-to" /><category term="week-1" /><summary type="html">Issues Fixed: #53,54 “Adding Noetic support for repo” with PRs #54 for Jderobot_assets, and #25236 for ROS distro with commits.</summary></entry><entry><title type="html">Community Bonding 2</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2" rel="alternate" type="text/html" title="Community Bonding 2" /><published>2020-05-28T12:00:00+02:00</published><updated>2020-05-28T12:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2">&lt;blockquote&gt;
   &lt;p&gt;Issues Fixed: &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/1&quot;&gt;#1&lt;/a&gt; with &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/2&quot;&gt;PR&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -151,7 +189,7 @@ docker-compose up &lt;span class=&quot;nt&quot;&gt;--build&lt;/span&gt;
 
 &lt;p&gt;My next target will be to run our exercise dependencies on noetic, mainly the Jderobot academy base, which currently only supports until melodic&lt;/p&gt;
 
-&lt;p&gt;Until the next time! Bis Bald!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Bis Bald!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Just in! OSRF pushed the images on the DockerHub. So those will be used in the next releases.&lt;/p&gt;
@@ -254,12 +292,11 @@ I realised that I didn’t call the &lt;code class=&quot;highlighter-rouge&quot;
 &lt;p&gt;And voila, there was the green path! Comparing times, the algorithm takes more time, farther the destination. 
 But it is quite quick compared to gradient path planner!&lt;/p&gt;
 
-&lt;figure&gt;
-&lt;img src=&quot;AStar1.gif&quot; alt=&quot;AStar Path Planner&quot; /&gt;
-&lt;figcaption&gt;A Star Path Planner!&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;assets/blog-images/community-bonding/AStar1.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;In the next post, we’ll go over the motion planning and squash bugs (if any!). Ciao!&lt;/p&gt;
+&lt;p&gt;In the next post, we’ll go over the motion planning and squash bugs (if any!).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Ciao!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;reference&quot;&gt;Reference:&lt;/h3&gt;
 
