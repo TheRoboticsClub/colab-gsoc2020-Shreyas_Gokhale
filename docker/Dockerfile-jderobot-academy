@@ -73,9 +73,9 @@ RUN /bin/bash -c "git clone https://github.com/yujinrobot/kobuki_msgs /catkin_ws
 
 RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && cd /catkin_ws && catkin_make install -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic install"
 
-COPY development/amazon_exercise_dep /deps
-
-RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && mkdir /deps/build && cd /deps/build && cmake ../ && make install"
+#COPY development/amazon_exercise_dep /deps
+#
+#RUN /bin/bash -c "source /opt/ros/$ROS_DISTRO/setup.bash && mkdir /deps/build && cd /deps/build && cmake ../ && make install"
 
 RUN apt-get update && apt-get install -q -y \
     python3-pip ros-noetic-navigation ros-noetic-gazebo-plugins\

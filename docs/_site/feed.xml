@@ -1,4 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-06-21T13:06:59+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Connecting the dots!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots" rel="alternate" type="text/html" title="Connecting the dots!" /><published>2020-06-21T12:30:00+02:00</published><updated>2020-06-21T12:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-06-27T10:29:14+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Launch Off!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off" rel="alternate" type="text/html" title="Launch Off!" /><published>2020-06-27T10:00:00+02:00</published><updated>2020-06-27T10:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off">&lt;blockquote&gt;
+  &lt;p&gt;Issues Fixed:&lt;/p&gt;
+
+  &lt;p&gt;PR &lt;a href=&quot;https://github.com/JdeRobot/assets/pull/58#event-3488709128&quot;&gt;#58&lt;/a&gt; on Jderobot/assets for gazebo model update.&lt;/p&gt;
+
+  &lt;p&gt;PR &lt;a href=&quot;https://github.com/JdeRobot/base/pull/1401&quot;&gt;#1401&lt;/a&gt; on Jderobot/base for connector package.&lt;/p&gt;
+
+  &lt;p&gt;PR &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/8&quot;&gt;#8&lt;/a&gt; on colab repo for launchable docker exercise.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;week-4&quot;&gt;Week 4&lt;/h1&gt;
+
+&lt;p&gt;After last week’s removal of comm, I was pretty confident about being able to run the exercise. But it seemed like the exercise wasn’t ready for that yet! I couldn’t seem to get cmd vel (joystick) working.&lt;/p&gt;
+
+&lt;p&gt;After digging up a bit, I traced the problem back to &lt;code class=&quot;highlighter-rouge&quot;&gt;model.sdf&lt;/code&gt; file. This is gazebo model which describes how our robot looks and behaves like. One major part of gazebo are &lt;a href=&quot;http://gazebosim.org/tutorials?tut=ros_gzplugins&quot;&gt;plugins&lt;/a&gt; and they are binaries which code the functionality, for example lasers and motors. I was getting following error:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;libgazebo_ros_diff_drive.so not found&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;After trying for hours, posting on ROS forum and getting frustrated, I finally found the culprit: &lt;code class=&quot;highlighter-rouge&quot;&gt;gazebo-plugins&lt;/code&gt;  . This package was necessary to run the default plugins and luckily it just got ported to noetic. After fixing some issues with the sdf, the whole exercise is now up and running!&lt;/p&gt;
+
+&lt;h2 id=&quot;amazon-warehouse-exercise&quot;&gt;Amazon Warehouse exercise&lt;/h2&gt;
+
+&lt;p&gt;The objective of this practice is to implement the autonomous robot navigation and pick-and-place logic in warehouse.&lt;/p&gt;
+
+&lt;p&gt;For trying out, you have 2 options:&lt;/p&gt;
+
+&lt;h3 id=&quot;docker-install&quot;&gt;Docker install&lt;/h3&gt;
+
+&lt;p&gt;This is the preferred installation method.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Follow &lt;a href=&quot;https://docs.docker.com/get-docker/&quot;&gt;these instructions&lt;/a&gt; to install docker and docker-compose.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clone my repo&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git]&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Run from the root directory&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; xhost +&lt;span class=&quot;s2&quot;&gt;&quot;local:docker@&quot;&lt;/span&gt;
+ docker-compose up &lt;span class=&quot;nt&quot;&gt;--force-recreate&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Sit back, sip a coffee or whatever while the dockerfile is being built. The exercise will be launched automatically once building is finished.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;manual-installation&quot;&gt;Manual Installation&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Follow the instructions on &lt;a href=&quot;http://wiki.ros.org/noetic/Installation/Ubuntu&quot;&gt;ROS Wiki&lt;/a&gt; to install the latest ROS and on &lt;a href=&quot;http://gazebosim.org/tutorials?tut=install_ubuntu&amp;amp;cat=install&quot;&gt;Gazebo Wiki&lt;/a&gt; to install Gazebo 11.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install all the dependencies&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update
+ &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential  
+ &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;rosdep init  
+ rosdep update
+ &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ros-noetic-mavros ros-noetic-gazebo-ros python3-pip ros-noetic-navigation ros-noetic-gazebo-plugins
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install Jderobot Assets&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ros-noetic-jderobot-assets
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;The model.sdf file needs slight modification (until aptitude packages are updated). So grab the updated file and copy it over to the original file&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; wget https://raw.githubusercontent.com/JdeRobot/assets/noetic-devel/jderobot_assets/models/amazon_warehouse_robot/model.sdf &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;model.sdf&quot;&lt;/span&gt;
+ &lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; model.sdf /opt/jderobot/share/jderobot/gazebo/models/amazon_warehouse_robot/model.sdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clone my repo&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git]&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Run the exercise&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;exercises/amazon_warehouse/launch 
+ roslaunch amazonrobot_1_warehouse.launch map_file:&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;maps/map.yaml 
+ python3 amazonWarehouse.py amazonMap.conf amazonConf.yml
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Try to code your solution in &lt;code class=&quot;highlighter-rouge&quot;&gt;mysolution.py&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let me know if you face any issues or bugs.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Viszlát!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse" /><category term="exercise" /><category term="porting" /><category term="week-4" /><summary type="html">Issues Fixed: PR #58 on Jderobot/assets for gazebo model update. PR #1401 on Jderobot/base for connector package. PR #8 on colab repo for launchable docker exercise.</summary></entry><entry><title type="html">Connecting the dots!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots" rel="alternate" type="text/html" title="Connecting the dots!" /><published>2020-06-21T12:30:00+02:00</published><updated>2020-06-21T12:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots">&lt;blockquote&gt;
   &lt;p&gt;Issues Fixed:&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/5&quot;&gt;#5&lt;/a&gt; with PR &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/6&quot;&gt;#6&lt;/a&gt;.&lt;/p&gt;
