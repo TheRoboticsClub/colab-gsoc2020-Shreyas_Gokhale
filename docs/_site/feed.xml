@@ -1,4 +1,83 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-06-27T10:29:14+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Launch Off!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off" rel="alternate" type="text/html" title="Launch Off!" /><published>2020-06-27T10:00:00+02:00</published><updated>2020-06-27T10:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-07-02T01:42:50+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Evaluation 1 Report!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-one-report" rel="alternate" type="text/html" title="Evaluation 1 Report!" /><published>2020-07-01T22:00:00+02:00</published><updated>2020-07-01T22:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-one-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-one-report">&lt;h1 id=&quot;gsoc-phase-1-report&quot;&gt;GSoC Phase 1 Report&lt;/h1&gt;
+
+&lt;p&gt;The first 4 weeks of Google summer of code were quite productive. I got acquainted with the development of Jderobot, created docker containers, migrated Amazon Warehouse exercise and published videos, everything within a month.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Week&lt;/th&gt;
+      &lt;th&gt;Dates&lt;/th&gt;
+      &lt;th&gt;Main Tasks&lt;/th&gt;
+      &lt;th&gt;Sub tasks completed&lt;/th&gt;
+      &lt;th&gt;Issues Resolved / PRs Merged&lt;/th&gt;
+      &lt;th&gt;Blog&lt;/th&gt;
+      &lt;th&gt;Type&lt;/th&gt;
+      &lt;th&gt;Published URL&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 0&lt;/td&gt;
+      &lt;td&gt;4th May - 1st June&lt;/td&gt;
+      &lt;td&gt;Getting to know Jderobot Academy, Setup&lt;/td&gt;
+      &lt;td&gt;Solving Global navigation exercise: Path planner, motion planning&lt;/td&gt;
+      &lt;td&gt;Issues Fixed: #1 with PR&lt;/td&gt;
+      &lt;td&gt;Beginning of GSoC Journey, Community Bonding 1,2&lt;/td&gt;
+      &lt;td&gt;Blog&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 1&lt;/td&gt;
+      &lt;td&gt;1st June - 7th June&lt;/td&gt;
+      &lt;td&gt;Releasing Jderobot Assets&lt;/td&gt;
+      &lt;td&gt;Adding Jderobot_assets for ROS Noetic Distro, Writing instructible guide, Creating complete docker image&lt;/td&gt;
+      &lt;td&gt;#53,54 “Adding Noetic support for repo” with PRs #54 for Jderobot_assets, and #25236 for ROS distro with commits.&lt;/td&gt;
+      &lt;td&gt;And we have a liftoff!&lt;/td&gt;
+      &lt;td&gt;How To, Release&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 2&lt;/td&gt;
+      &lt;td&gt;8th June - 14th June&lt;/td&gt;
+      &lt;td&gt;Porting Amazon Exercise to ROS Noetic&lt;/td&gt;
+      &lt;td&gt;Porting existing packes for Python and C++&lt;/td&gt;
+      &lt;td&gt;#3 with PR #4.&lt;/td&gt;
+      &lt;td&gt;Let’s start (c)making&lt;/td&gt;
+      &lt;td&gt;Research&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 3&lt;/td&gt;
+      &lt;td&gt;14th June -1st June&lt;/td&gt;
+      &lt;td&gt;Porting Amazon Exercise to ROS Noetic&lt;/td&gt;
+      &lt;td&gt;Removing comm dependency and adding connector library&lt;/td&gt;
+      &lt;td&gt;#5 with PR #6.&lt;/td&gt;
+      &lt;td&gt;Connecting the dots!&lt;/td&gt;
+      &lt;td&gt;Development&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 4&lt;/td&gt;
+      &lt;td&gt;22nd June -28th June&lt;/td&gt;
+      &lt;td&gt;Launching Exercise&lt;/td&gt;
+      &lt;td&gt;Writing instructions, Finalizing Docker, Model Updates&lt;/td&gt;
+      &lt;td&gt;PR #58 on Jderobot/assets for gazebo model update. PR #1401 on Jderobot/base for connector package. PR #8 on colab repo for launchable docker exercise.&lt;/td&gt;
+      &lt;td&gt;Launch off!&lt;/td&gt;
+      &lt;td&gt;Publishing Exercise&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/launch-off&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 5&lt;/td&gt;
+      &lt;td&gt;29th June - 5th July&lt;/td&gt;
+      &lt;td&gt;Launching Exercise, New idea discussion&lt;/td&gt;
+      &lt;td&gt;Releasing video, How - to guide, Official release for ROS Noetic&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="evaluation" /><summary type="html">GSoC Phase 1 Report</summary></entry><entry><title type="html">Launch Off!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off" rel="alternate" type="text/html" title="Launch Off!" /><published>2020-06-27T10:00:00+02:00</published><updated>2020-06-27T10:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off">&lt;blockquote&gt;
   &lt;p&gt;Issues Fixed:&lt;/p&gt;
 
   &lt;p&gt;PR &lt;a href=&quot;https://github.com/JdeRobot/assets/pull/58#event-3488709128&quot;&gt;#58&lt;/a&gt; on Jderobot/assets for gazebo model update.&lt;/p&gt;
@@ -33,7 +112,7 @@
   &lt;li&gt;
     &lt;p&gt;Clone my repo&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git]&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
@@ -75,7 +154,7 @@
   &lt;li&gt;
     &lt;p&gt;Clone my repo&lt;/p&gt;
 
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git]&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;
@@ -405,7 +484,7 @@ during otherwise wasteful summer holidays! I wanted to apply, but it was too lat
 graduated by 2020, I’ll apply for GSoC. And (&lt;del&gt;un&lt;/del&gt;) fortunately, I was able to!&lt;/p&gt;
 
 &lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
-&lt;p&gt;I stumbled upon Jderobot Academy and it immediately struck a cord with me. As someone who learned ROS 
+&lt;p&gt;I stumbled upon Jderobot Academy and it immediately struck a cord with me. As someone who learned 
 ROS with trial and error, Jderobot Academy provides a well directed path towards learning robotics.
 If only I knew the academy before!&lt;/p&gt;
 

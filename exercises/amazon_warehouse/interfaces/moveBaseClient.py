@@ -51,6 +51,8 @@ class MoveBaseClient:
         self.goal.target_pose.pose.position.x = posX
         self.goal.target_pose.pose.position.y = posY
 
+        print("Got Goal!")
+        print(self.goal)
         orientation_q = quaternion_from_euler(0, 0, yaw)
 
         self.goal.target_pose.pose.orientation.x = orientation_q[0]

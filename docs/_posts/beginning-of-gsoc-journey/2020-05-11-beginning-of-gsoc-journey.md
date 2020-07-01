@@ -15,7 +15,7 @@ As a masters student, due graduate by year 2019, I decided that if by some means
 graduated by 2020, I'll apply for GSoC. And (~~un~~) fortunately, I was able to! 
 
 ## Motivation
-I stumbled upon Jderobot Academy and it immediately struck a cord with me. As someone who learned ROS 
+I stumbled upon Jderobot Academy and it immediately struck a cord with me. As someone who learned 
 ROS with trial and error, Jderobot Academy provides a well directed path towards learning robotics.
 If only I knew the academy before! 
 

@@ -37,7 +37,7 @@ This is the preferred installation method.
 2. Clone my repo 
 
     ```bash
-    git clone [https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git](https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git)
+    git clone https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git
     ```
 
 3. Run from the root directory
@@ -78,7 +78,7 @@ This is the preferred installation method.
 4. Clone my repo 
 
     ```bash
-    git clone [https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git](https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git)
+    git clone https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git
     ```
 
 5. Run the exercise 
