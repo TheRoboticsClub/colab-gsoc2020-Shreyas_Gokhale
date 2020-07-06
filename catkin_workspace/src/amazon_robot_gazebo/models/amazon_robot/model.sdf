@@ -251,7 +251,7 @@
                             <mu2>Inf</mu2>
                             <slip1>0.0</slip1>
                             <slip2>0.0</slip2>
-                            <!--<implicit_spring_damper>1</implicit_spring_damper>
+                            <!--<implicit_sgng_damper>1</implicit_spring_damper>
                              <maxVel>0.0</maxVel>
                              <minDepth>0.001</minDepth>-->
                         </ode>
