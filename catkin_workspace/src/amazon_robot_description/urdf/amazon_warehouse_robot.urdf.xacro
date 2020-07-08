@@ -254,7 +254,7 @@
   <joint name="platform_joint" type="fixed">
     <parent link="base_link" />
     <child link="link_platform_mid" />
-    <origin xyz="-0.08 0 0.20" rpy="0. 0. 0."/>
+    <origin xyz="0.0 0 0.20" rpy="0. 0. 0."/>
   </joint>
 
 
@@ -263,13 +263,13 @@
 
     <visual>
       <geometry>
-        <box size="0.30 0.20 0.01" />
+        <box size="0.40 0.40 0.01" />
       </geometry>
       <material name="red"/>
     </visual>
     <collision>
       <geometry>
-        <box size="0.30 0.20 0.01" />
+        <box size="0.40 0.40 0.01" />
       </geometry>
     </collision>
     <inertial>
@@ -292,7 +292,7 @@
     <child link="lift_link" />
     <parent link="link_platform_mid" />
     <axis xyz="0 0 1" rpy="0 0 0"/>
-    <limit effort="10000.0" lower="-0.05" upper="0.20" velocity="0.5"/>
+    <limit effort="10000.0" lower="-0.05" upper="0.24" velocity="0.5"/>
 <!--    <inertia ixx="0" ixy="0.0" ixz="1" iyy="0" iyz="0" izz="0"/>-->
   </joint>
 

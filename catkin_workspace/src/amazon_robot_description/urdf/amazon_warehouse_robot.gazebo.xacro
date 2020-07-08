@@ -57,6 +57,13 @@
     <material>Gazebo/FlatBlack</material>
   </gazebo>
 
+  <gazebo reference="lift_joint">
+    <mu1>20000</mu1>
+    <mu2>20000</mu2>
+    <kp>1000000.0</kp>
+    <material>Gazebo/Red</material>
+  </gazebo>
+
   <gazebo reference="imu_link">
     <sensor type="imu" name="imu">
       <always_on>true</always_on>
@@ -67,6 +74,7 @@
 
   <gazebo>
     <plugin name="drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <alwaysOn>true</alwaysOn>
       <commandTopic>cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
@@ -89,6 +97,7 @@
       <wheelTorque>50</wheelTorque>
 <!--      <wheelTorque>10</wheelTorque>-->
       <rosDebugLevel>na</rosDebugLevel>
+      <allow_multiple_cmd_vel_publishers>true</allow_multiple_cmd_vel_publishers>
     </plugin>
   </gazebo>
 
