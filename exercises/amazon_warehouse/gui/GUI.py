@@ -28,7 +28,7 @@ from gui.communicator import Communicator
 from gui.mapWidget import Map
 from gui.logoWidget import LogoWidget
 import rospy
-from std_msgs.msg import Float32
+from std_msgs.msg import Float32, Float64
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     
@@ -60,7 +60,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.liftDropButton.clicked.connect(self.liftDropExecute)
         self.liftDropButton.setCheckable(True)
         self.jointForce = 0
-        self.pub = rospy.Publisher('amazon_warehouse_robot/joint_cmd', Float32, queue_size=10)
+        self.pub = rospy.Publisher('amazon_robot/joint1_position_controller/command', Float64, queue_size=10)
 
         self.gotoPointButton.clicked.connect(self.gotoPointExecute)
         self.gotoPointButton.setCheckable(True)
@@ -164,8 +164,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def liftDropExecute(self):
         #print ('Lift/Drop Button Clicked')
-        if self.jointForce != 25:
-            self.jointForce = 25
+        if self.jointForce != 1:
+            self.jointForce = 1
             self.pub.publish(self.jointForce)
             self.liftDropButton.setText("Drop")
             print ('Platform Lifted!')

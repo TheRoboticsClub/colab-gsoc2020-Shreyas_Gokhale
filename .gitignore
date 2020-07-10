@@ -9,3 +9,13 @@ venv/**
 development/amazon_exercise_dep/build
 development/amazon_exercise_dep/cmake-build-debug
 venv3/
+
+catkin_workspace/build/
+
+catkin_workspace/devel/
+
+catkin_workspace/src/amazon_robot_gazebo/cmake-build-debug/
+
+catkin_workspace/install/
+
+catkin_workspace/not_included/
