@@ -1,16 +1,24 @@
 ################################################################################
 # Set minimum required version of cmake, project name and compile options
+# Changes are made according to 
+# https://index.ros.org/doc/ros2/Contributing/Migration-Guide/
 ################################################################################
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(amazon_robot_description)
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 14)
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
 ################################################################################
-# Find catkin packages and libraries for catkin and system dependencies
+# Find packages and libraries for catkin and system dependencies
 ################################################################################
-find_package(catkin REQUIRED COMPONENTS
-        urdf
-  xacro
-)
+find_package(ament_cmake REQUIRED)
+find_package(urdf REQUIRED)
+find_package(xacro REQUIRED)
 
 ################################################################################
 # Setup for python modules and scripts
@@ -27,24 +35,20 @@ find_package(catkin REQUIRED COMPONENTS
 ################################################################################
 # Declare catkin specific configuration to be passed to dependent projects
 ################################################################################
-catkin_package(
-  CATKIN_DEPENDS urdf xacro
-)
 
 ################################################################################
 # Build
 ################################################################################
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-)
+include_directories(include)
 
 ################################################################################
 # Install
 ################################################################################
 install(DIRECTORY meshes rviz urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  DESTINATION share/${PROJECT_NAME}
 )
 
 ################################################################################
-# Test
+# Final
 ################################################################################
+ament_package()

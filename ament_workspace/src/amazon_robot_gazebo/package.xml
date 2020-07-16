@@ -1,30 +1,23 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>amazon_robot_gazebo</name>
-  <version>1.2.0</version>
+  <version>2.0.0</version>
   <description>
-    Gazebo simulation package for the TurtleBot3
+    Gazebo simulation package for the Amazon Robot
   </description>
   <license>Apache 2.0</license>
-  <author email="pyo@robotis.com">Pyo</author>
-  <author email="thlim@robotis.com">Darby Lim</author>
-  <author email="kkjong@robotis.com">Gilbert</author>
-  <maintainer email="pyo@robotis.com">Pyo</maintainer>
-  <maintainer email="thlim@robotis.com">Darby Lim</maintainer>
-  <url type="website">http://wiki.ros.org/turtlebot3_gazebo</url>
-  <url type="emanual">http://turtlebot3.robotis.com</url>
-  <url type="repository">https://github.com/ROBOTIS-GIT/turtlebot3_simulations</url>
-  <url type="bugtracker">https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues</url>
-  <buildtool_depend>catkin</buildtool_depend>
-  <depend>roscpp</depend>
+  <author email="shreyas6gokhale@gmail.com">Shreyas</author>
+  <maintainer email="shreyas6gokhale@gmail.com">Shreyas</maintainer>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>nav_msgs</depend>
   <depend>tf</depend>
   <depend>gazebo_ros</depend>
-  <exec_depend>gazebo</exec_depend>
   <export>
+    <build_type>ament_cmake</build_type>
     <gazebo_ros gazebo_media_path="${prefix}"/>
     <gazebo_ros gazebo_model_path="${prefix}/models"/>
   </export>

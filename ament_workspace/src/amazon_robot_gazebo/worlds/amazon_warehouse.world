@@ -31,11 +31,13 @@
       </ode>
     </physics>
 
-    <!-- Load world -->
+    <!-- Load world 
     <include>
-      <uri>model://turtlebot3_house.world</uri>
+      <uri>model://empty.world</uri>
     </include>
-
+    -->
+    
+    
     <scene>
       <ambient>0.4 0.4 0.4 1</ambient>
       <background>0.7 0.7 0.7 1</background>

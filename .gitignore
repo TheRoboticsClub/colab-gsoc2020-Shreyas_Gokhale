@@ -11,11 +11,13 @@ development/amazon_exercise_dep/cmake-build-debug
 venv3/
 
 catkin_workspace/build/
-
 catkin_workspace/devel/
-
 catkin_workspace/src/amazon_robot_gazebo/cmake-build-debug/
-
 catkin_workspace/install/
-
 catkin_workspace/not_included/
+
+ament_workspace/src/amazon_robot_gazebo
+ament_workspace/log
+ament_workspace/not_included
+ament_workspace/install
+ament_workspace/build
