@@ -21,3 +21,5 @@ ament_workspace/log
 ament_workspace/not_included
 ament_workspace/install
 ament_workspace/build
+
+.vscode/

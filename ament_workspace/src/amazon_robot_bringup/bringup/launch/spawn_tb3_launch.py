@@ -23,13 +23,12 @@ def generate_launch_description():
     return LaunchDescription([
         # TODO(orduno) might not be necessary to have it's own package
         launch_ros.actions.Node(
-            package='nav2_gazebo_spawner',
-            executable='nav2_gazebo_spawner',
+            package='amazon_robot_gazebo_spawner',
+            executable='amazon_robot_gazebo_spawner',
             output='screen',
             arguments=[
                 '--robot_name', launch.substitutions.LaunchConfiguration('robot_name'),
                 '--robot_namespace', launch.substitutions.LaunchConfiguration('robot_name'),
-                '--turtlebot_type', launch.substitutions.LaunchConfiguration('turtlebot_type'),
                 '-x', launch.substitutions.LaunchConfiguration('x_pose'),
                 '-y', launch.substitutions.LaunchConfiguration('y_pose'),
                 '-z', launch.substitutions.LaunchConfiguration('z_pose')]),
