@@ -16,7 +16,6 @@ catkin_workspace/src/amazon_robot_gazebo/cmake-build-debug/
 catkin_workspace/install/
 catkin_workspace/not_included/
 
-ament_workspace/src/amazon_robot_gazebo
 ament_workspace/log
 ament_workspace/not_included
 ament_workspace/install

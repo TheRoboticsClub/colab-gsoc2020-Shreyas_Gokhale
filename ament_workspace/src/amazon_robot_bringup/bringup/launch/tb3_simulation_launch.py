@@ -131,13 +131,13 @@ def generate_launch_description():
         #              https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/91
         # default_value=os.path.join(get_package_share_directory('turtlebot3_gazebo'),
         #                            'worlds/turtlebot3_worlds/waffle.model'),
-        default_value=os.path.join(bringup_dir, 'worlds', 'waffle.model'),
+        default_value=os.path.join(bringup_dir, 'worlds', 'world_only.model'),
         description='Full path to world model file to load')
 
     # Specify the actions
     start_gazebo_server_cmd = ExecuteProcess(
         condition=IfCondition(use_simulator),
-        cmd=['gzserver', '-s', 'libgazebo_ros_init.so', world],
+        cmd=['gzserver', '-s', ' libgazebo_ros_factory.so', world],
         cwd=[launch_dir], output='screen')
 
     start_gazebo_client_cmd = ExecuteProcess(
@@ -176,6 +176,12 @@ def generate_launch_description():
                           'default_bt_xml_filename': default_bt_xml_filename,
                           'autostart': autostart}.items())
 
+    """ spawn_robot_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(os.path.join(launch_dir, 'spawn_tb3_launch.py')),
+        launch_arguments={'namespace': namespace,
+                          'use_namespace': use_namespace
+                          'robot_name' : }.items()) """
+
     # Create the launch description and populate
     ld = LaunchDescription()
 
@@ -204,5 +210,6 @@ def generate_launch_description():
     ld.add_action(start_robot_state_publisher_cmd)
     ld.add_action(rviz_cmd)
     ld.add_action(bringup_cmd)
+    # ld.add_action(spawn_robot_cmd)
 
     return ld
