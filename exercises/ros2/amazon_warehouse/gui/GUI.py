@@ -27,7 +27,8 @@ from gui.teleopWidget import TeleopWidget
 from gui.communicator import Communicator
 from gui.mapWidget import Map
 from gui.logoWidget import LogoWidget
-import rospy
+import rclpy
+# import rospy
 from std_msgs.msg import Float32, Float64
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -60,7 +61,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.liftDropButton.clicked.connect(self.liftDropExecute)
         self.liftDropButton.setCheckable(True)
         self.jointForce = 0
-        self.pub = rospy.Publisher('amazon_robot/joint1_position_controller/command', Float64, queue_size=10)
+        self.node = rclpy.create_node('amazon_robot_joint_state')
+        self.pub = self.node.create_publisher(Float64, 'amazon_robot/joint1_position_controller/command',10)
 
         self.gotoPointButton.clicked.connect(self.gotoPointExecute)
         self.gotoPointButton.setCheckable(True)

@@ -1,6 +1,6 @@
 import threading
 
-import rospy
+import rclpy
 from geometry_msgs.msg import Twist
 
 from .threadPublisher import ThreadPublisher
@@ -33,12 +33,12 @@ class CMDVel:
 
     def __init__(self):
 
-        self.vx = 0 # vel in x[m/s] (use this for V in wheeled robots)
-        self.vy = 0 # vel in y[m/s]
-        self.vz = 0 # vel in z[m/s]
-        self.ax = 0 # angular vel in X axis [rad/s]
-        self.ay = 0 # angular vel in X axis [rad/s]
-        self.az = 0 # angular vel in Z axis [rad/s] (use this for W in wheeled robots)
+        self.vx = 0.0 # vel in x[m/s] (use this for V in wheeled robots)
+        self.vy = 0.0 # vel in y[m/s]
+        self.vz = 0.0 # vel in z[m/s]
+        self.ax = 0.0 # angular vel in X axis [rad/s]
+        self.ay = 0.0 # angular vel in X axis [rad/s]
+        self.az = 0.0 # angular vel in Z axis [rad/s] (use this for W in wheeled robots)
         self.timeStamp = 0 # Time stamp [s]
 
 
@@ -65,12 +65,13 @@ class PublisherMotors:
         @type topic: String
 
         '''
+        self.ros_node = rclpy.create_node('motor_publisher')
         self.maxW = maxW
         self.maxV = maxV
 
         self.topic = topic
         self.data = CMDVel()
-        self.pub = rospy.Publisher(self.topic, Twist, queue_size=1)
+        self.pub = self.ros_node.create_publisher( Twist, self.topic,1)
         # rospy.init_node("Amazon")
         self.lock = threading.Lock()
 
@@ -95,7 +96,7 @@ class PublisherMotors:
 
         '''
         self.kill_event.set()
-        self.pub.unregister()
+        self.ros_node.destroy_node()
 
     def start(self):
         '''

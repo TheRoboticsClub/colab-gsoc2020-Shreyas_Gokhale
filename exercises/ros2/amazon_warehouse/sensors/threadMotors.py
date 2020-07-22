@@ -19,7 +19,7 @@
 import threading, time
 from datetime import datetime
 
-time_cycle = 80;
+time_cycle = 80
 
 
 class Velocity():

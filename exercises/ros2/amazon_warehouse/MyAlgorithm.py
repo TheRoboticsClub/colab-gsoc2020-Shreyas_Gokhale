@@ -8,9 +8,9 @@ import threading
 import time
 from datetime import datetime
 import yaml
-import rospy
+# import rospy
 from std_msgs.msg import Float32
-from interfaces.moveBaseClient import clearCostmaps
+# from interfaces.moveBaseClient import clearCostmaps
 
 time_cycle = 80
 

@@ -1,7 +1,7 @@
 import threading
 from math import asin, atan2, pi
 
-import rospy
+import rclpy
 from jderobotTypes import Pose3d
 from nav_msgs.msg import Odometry
 
@@ -110,6 +110,7 @@ class ListenerPose3d:
         @type topic: String
 
         '''
+        self.ros_node = rclpy.create_node('pose_listener')
         self.topic = topic
         self.data = Pose3d()
         self.sub = None
@@ -143,7 +144,7 @@ class ListenerPose3d:
         Starts (Subscribes) the client.
 
         '''
-        self.sub = rospy.Subscriber(self.topic, Odometry, self.__callback)
+        self.sub = self.ros_node.create_subscription(Odometry, self.topic,  self.__callback, 10)
 
     def getPose3d(self):
         '''

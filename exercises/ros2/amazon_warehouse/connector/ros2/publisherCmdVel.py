@@ -1,6 +1,6 @@
 import threading
 
-import rospy
+import rclpy
 from geometry_msgs.msg import TwistStamped
 from jderobotTypes import CMDVel
 
@@ -45,11 +45,11 @@ class PublisherCMDVel:
         @type jdrc: jderobot Communicator
 
         '''
-        rospy.init_node("ss")
+        self.node = rclpy.create_node("CmdVel_pub")
         self.topic = topic
         self.jdrc = jdrc
         self.vel = CMDVel()
-        self.pub = self.pub = rospy.Publisher(topic, TwistStamped, queue_size=1)
+        self.pub = self.pub = self.node.create_publisher(TwistStamped,topic, 1)
         self.lock = threading.Lock()
 
         self.kill_event = threading.Event()
@@ -75,6 +75,7 @@ class PublisherCMDVel:
         '''
         self.kill_event.set()
         self.pub.unregister()
+        
 
     def start(self):
         '''

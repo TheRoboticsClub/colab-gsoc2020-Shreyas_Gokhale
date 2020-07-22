@@ -1,7 +1,7 @@
 import threading
 from math import pi as PI
 
-import rospy
+import rclpy
 from jderobotTypes import LaserData
 from sensor_msgs.msg import LaserScan
 
@@ -50,6 +50,7 @@ class ListenerLaser:
         @type topic: String
 
         """
+        self.ros_node = rclpy.create_node('laser_listener')
         self.topic = topic
         self.data = LaserData()
         self.sub = None
@@ -83,7 +84,8 @@ class ListenerLaser:
         Starts (Subscribes) the client.
 
         """
-        self.sub = rospy.Subscriber(self.topic, LaserScan, self.__callback)
+        # self.sub = self.ros_node.create_subscription(LaserScan, self.topic,  self.__callback)
+        self.sub = self.ros_node.create_subscription(LaserScan, self.topic,  self.__callback, 10)
 
     def getLaserData(self):
         """

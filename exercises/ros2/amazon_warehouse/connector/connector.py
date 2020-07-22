@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-import rospy
-from .ros.publisherMotors import PublisherMotors
-from .ros.listenerLaser import ListenerLaser
-from .ros.listenerPose3d import ListenerPose3d
+import rclpy
+from rclpy.node import Node
+import sys
+
+from .ros2.publisherMotors import PublisherMotors
+from .ros2.listenerLaser import ListenerLaser
+from .ros2.listenerPose3d import ListenerPose3d
 import threading
 
 
@@ -23,14 +26,15 @@ class Connector:
         self.__state = ""
         self.__lock = threading.Lock()
         self.node_name = self.config[prefix]['NodeName']
-        self.ros_node = rospy.init_node(self.node_name, anonymous=True)
+        rclpy.init()
+        self.ros_node = rclpy.create_node(self.node_name)
 
     def destroy(self):
         """
         Shuts down ROS node
 
         """
-        rospy.signal_shutdown("Node Closed")
+        rclpy.shutdown()
 
     def getNode(self):
         return self.ros_node

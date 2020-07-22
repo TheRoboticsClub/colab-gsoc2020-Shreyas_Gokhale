@@ -34,8 +34,8 @@ from sensors.threadMotors import Velocity
 from sensors.sensor import Sensor
 from sensors.grid import Grid
 
-from interfaces.path import ListenerPath
-from interfaces.moveBaseClient import MoveBaseClient
+# from interfaces.path import ListenerPath
+# from interfaces.moveBaseClient import MoveBaseClient
 
 import yaml
 import signal
@@ -62,10 +62,10 @@ if __name__ == '__main__':
         motors = jdrc.getMotorPubObject()
         pose3d = jdrc.getPoseListnerObject()
         laser = jdrc.getLaserListnerObject()
-        pathListener = ListenerPath("/amazon_warehouse_robot/move_base/NavfnROS/plan")
+        # pathListener = ListenerPath("/amazon_warehouse_robot/move_base/NavfnROS/plan")
 
         # This is to be updated
-        moveBaseClient = MoveBaseClient()
+        # moveBaseClient = MoveBaseClient()
         print("Subscribed To Move Base Client, Starting Application")
 
         app = QApplication(sys.argv)
@@ -73,7 +73,7 @@ if __name__ == '__main__':
 
         grid = Grid(myGUI)
 
-        vel = Velocity(0, 0, motors.getMaxV(), motors.getMaxW())
+        vel = Velocity(0.0, 0.0, motors.getMaxV(), motors.getMaxW())
         sensor = Sensor(grid, pose3d, True)
         sensor.setGetPathSignal(myGUI.getPathSig)
         
@@ -81,8 +81,8 @@ if __name__ == '__main__':
         myGUI.setVelocity(vel)
         myGUI.setGrid(grid)
         myGUI.setSensor(sensor)
-        algorithm = MyAlgorithm(grid, sensor, vel, pathListener, moveBaseClient)
-        myGUI.setAlgorithm(algorithm)
+        # algorithm = MyAlgorithm(grid, sensor, vel, pathListener, moveBaseClient)
+        # myGUI.setAlgorithm(algorithm)
         myGUI.show()
 
         removeMapFromArgs()

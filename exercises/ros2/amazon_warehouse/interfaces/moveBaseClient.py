@@ -17,12 +17,15 @@
 #       Shyngyskhan Abilkassov <s.abilkassov@gmail.com>
 #
 
-import rospy
+# import rospy
 import actionlib
 from tf.transformations import quaternion_from_euler
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
-import rospy
+import rclpy
+from rclpy.action import ActionClient
+
+# import rospy
 from std_srvs.srv import Empty
 
 ## Use this if after moving pallet, there are obstacles left on costmaps, which prevent proper movement after moving and dropping pallet
@@ -38,7 +41,7 @@ def clearCostmaps():
 
 class MoveBaseClient:
     def __init__(self):
-        self.client = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
+        self.client = action_client.SimpleActionClient('/move_base', MoveBaseAction)
         # self.client.wait_for_server()
         self.data = [0, 0]
         self.goal = None
