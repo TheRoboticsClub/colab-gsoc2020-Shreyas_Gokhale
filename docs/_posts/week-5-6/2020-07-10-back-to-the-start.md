@@ -83,4 +83,4 @@ The new exercise is now ready to use! Have fun!
 - [URDF Wiki](http://wiki.ros.org/urdf/XML/joint)
 
 
-***Viszlát!***
+***Até mais!***

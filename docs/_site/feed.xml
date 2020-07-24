@@ -1,4 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-07-11T01:45:45+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Back to the start</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/back-to-the-start" rel="alternate" type="text/html" title="Back to the start" /><published>2020-07-10T22:00:00+02:00</published><updated>2020-07-10T22:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/back-to-the-start</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/back-to-the-start">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-07-24T03:51:26+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Level 2!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2" rel="alternate" type="text/html" title="Level 2!" /><published>2020-07-23T22:30:00+02:00</published><updated>2020-07-23T22:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2">&lt;blockquote&gt;
+  &lt;p&gt;Issues Fixed:&lt;/p&gt;
+
+  &lt;p&gt;PR &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/pull/8&quot;&gt;#8&lt;/a&gt; on Jderobot/CustomRobots&lt;/p&gt;
+
+  &lt;p&gt;Issues Pending:&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/issues/7&quot;&gt;#7&lt;/a&gt; WIP for ROS2 Amazon Robot model&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;week-7--8-blog&quot;&gt;Week 7 + 8 blog&lt;/h1&gt;
+
+&lt;p&gt;We discussed in the last iteration of the blog about the origins of ROS. After more than a decade of operations, the open
+source community became well aware of what awesomeness ROS is, and also some of it’s weaknesses. For example.
+as ROS uses it’s own middleware, a ros master must always be running in the background to manage the messages, nodes, servers and actions. 
+This makes it much difficult to interface multiple robots with each other, independently. (If you are interested, check out my &lt;a href=&quot;https://github.com/shreyasgokhale/Multi-Robot-Decentralized-Architecture&quot;&gt;masters thesis&lt;/a&gt; repo).&lt;/p&gt;
+
+&lt;p&gt;ROS2 tries to overcome these problems by completely redesigning the underlying architecture while keeping the same concepts. For Jderobot, as we wanted to venture into multi-robots anyway, we decided to port the Amazon Robot exercise to be the first ever exercise in ROS2. This blog is an overview of some of the stuff I was working on for last two weeks and also a short writetup about ROS1 to ROS2 leap.&lt;/p&gt;
+
+&lt;p&gt;We begin by first discussing aa bit about the most important change/ feature of ROS2: &lt;em&gt;DDS&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;dds&quot;&gt;DDS&lt;/h3&gt;
+&lt;p&gt;Data Distribution Service (DDS) provides a publish-subscribe transport which is very similar to ROS’s publish-subscribe transport. 
+It is very flexible and extensively used in critical applications such as flight systems and battleships. If you are interested in learning more about the DDS and ROS2, if definitely recommend reading &lt;a href=&quot;https://design.ros2.org/articles/ros_on_dds.html&quot;&gt;this&lt;/a&gt; article. &lt;br /&gt;
+However the developers have designed the ROS2 system in a such a way that hides much of the complexity of DDS while exposing some of its benefits. Hence we can safely overlook over minor details of the new middleware, for now!&lt;/p&gt;
+
+&lt;h3 id=&quot;ament-workspace-and-colcon-build&quot;&gt;Ament workspace and Colcon Build&lt;/h3&gt;
+&lt;p&gt;The second important change is the new build tool. Again, best place is to start with an article about &lt;a href=&quot;https://design.ros2.org/articles/build_tool.html&quot;&gt;build tool&lt;/a&gt;. The new colcon build system is python native can also compile ROS1 and ROS2 packages. The launch files are now written in python3 and packages can be compiled individually.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/l0MYEqEzwMWFCg8rm/giphy.gif&quot; alt=&quot;I know, mind blown!&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;migration-from-ros1&quot;&gt;Migration from ROS1&lt;/h3&gt;
+&lt;p&gt;ROS2 has shiny new features such as multithreading and realtime support. But with every change, comes the dreadful migration from ROS1 to ROS2. 
+There are 2 excellent articles depicting &lt;a href=&quot;https://design.ros2.org/articles/changes.html&quot;&gt;changes from ROS1 to ROS2&lt;/a&gt; by &lt;em&gt;Dirk Thomas&lt;/em&gt; and &lt;a href=&quot;https://industrial-training-master.readthedocs.io/en/melodic/_source/session7/ROS1-to-ROS2-porting.html&quot;&gt;migration from ROS1 to ROS2&lt;/a&gt; by &lt;em&gt;ROS industrial&lt;/em&gt; and they are a must read before you even think about porting.&lt;/p&gt;
+
+&lt;p&gt;Once we have understood what we are dealing with, and after &lt;a href=&quot;https://index.ros.org/doc/ros2/Installation/#installationguide&quot;&gt;installing&lt;/a&gt; ROS2, it is best to follow the basic &lt;a href=&quot;https://index.ros.org/doc/ros2/Tutorials/#tutorials&quot;&gt;tutorials&lt;/a&gt; of ROS2.&lt;/p&gt;
+
+&lt;p&gt;Once that os done, it is the time to start porting. As mentioned &lt;a href=&quot;https://index.ros.org/doc/ros2/Tutorials/Launch-files-migration-guide/&quot;&gt;here&lt;/a&gt;, I stated by porting a simple launch file. One of the best (and sadly the only complete one) resource for ROS2 examples are from turtlebot3. I considered the &lt;a href=&quot;https://github.com/ROBOTIS-GIT/turtlebot3/tree/foxy-devel&quot;&gt;foxy-devel&lt;/a&gt; branch as a sort of standard for how my code must be structured.
+I ported my existing amazon_robot projects to include turtlebot3 model from ROS2&lt;/p&gt;
+
+&lt;h3 id=&quot;ros2-gazebo-and-sdf-16&quot;&gt;ROS2, gazebo and SDF 1.6&lt;/h3&gt;
+&lt;p&gt;Now we have reached the part of porting which made me feel embarrassed, miserable and frustrated at the same time: The gazebo models. ROS2 also triggered a lot of changes in the way gazebo_ros connection is handled and made my &lt;a href=&quot;&quot;&gt;newly created&lt;/a&gt; amazon robot &lt;code class=&quot;highlighter-rouge&quot;&gt;.xacro&lt;/code&gt; model useless. I tried &lt;a href=&quot;https://github.com/shreyasgokhale/CustomRobots/blob/foxy-devel/amazon_robot/amazon_robot_description/urdf/amazon_robot_xacro_generated.urdf&quot;&gt;copying over&lt;/a&gt; all include files in one single &lt;code class=&quot;highlighter-rouge&quot;&gt;urdf&lt;/code&gt; file, modifying it and then trying to make gazebo spawn my robot correctly, but it somehow didn’t work. So I resorted to converting my model from &lt;code class=&quot;highlighter-rouge&quot;&gt;.xacro&lt;/code&gt; description to SDF 1.6 model.&lt;/p&gt;
+
+&lt;p&gt;I quickly realized that SDF format is also &lt;a href=&quot;http://sdformat.org/tutorials?tut=pose_frame_semantics&amp;amp;cat=specification&amp;amp;&quot;&gt;significantly changed&lt;/a&gt; and I spent a few more hours trying to fix the link issues. Finally my model turned out somewhat okay, but the lift platform didn’t work as expected. I could create the warehouse world with pallets and our robot in it, but the prismatic joint just didn’t seem to function. I am yet to solve this problem and it might be even worth to completely switch over to a new, proper warehouse robot base like &lt;a href=&quot;https://github.com/IntelligentRoboticsLabs/marathon_ros2&quot;&gt;tiago&lt;/a&gt;.
+But sadly, I could not find many well defined robot models for ROS2, except tb3 and &lt;a href=&quot;https://github.com/chapulina/dolly&quot;&gt;dolly&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;navigation-2&quot;&gt;Navigation 2&lt;/h3&gt;
+&lt;p&gt;This turned out to be surprisingly well documented. As our exercise will heavily depend on navigation concepts, I went through the awesome &lt;a href=&quot;https://arxiv.org/abs/2003.00368&quot;&gt;navigation2 paper&lt;/a&gt; and &lt;a href=&quot;https://navigation.ros.org/&quot;&gt;documentation&lt;/a&gt; and I would recommend the reader to do the same. I cannot explain this any better than those two resources.&lt;/p&gt;
+
+&lt;p&gt;We will focus more on the navigation part in upcoming weeks. For now, just launching a tb3 simulation was sufficient.&lt;/p&gt;
+
+&lt;h3 id=&quot;porting-the-exercise&quot;&gt;Porting the exercise&lt;/h3&gt;
+&lt;p&gt;For ROS Noetic, I had to port the existing python2 code to python3. This turned out to be a nice segue into ROS2 as 1/4th porting work was already done. Still, I had to remove all the &lt;code class=&quot;highlighter-rouge&quot;&gt;rospy&lt;/code&gt; code and morph it into &lt;code class=&quot;highlighter-rouge&quot;&gt;rclpy&lt;/code&gt; one. With a minor hiccup of &lt;code class=&quot;highlighter-rouge&quot;&gt;move_base&lt;/code&gt;, everything works now! As navigation2 integration is still ongoing, this will be updated soon!&lt;/p&gt;
+
+&lt;p&gt;Warehouse
+&lt;img src=&quot;assets/blog-images/week-7-8/WarehouseROS2.png&quot; alt=&quot;The warehouse&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Amazon Robot In ROS2
+&lt;img src=&quot;assets/blog-images/week-7-8/AmazonRobotInROS2.png&quot; alt=&quot;Amazon Robot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Topics and Services
+&lt;img src=&quot;assets/blog-images/week-7-8/TopicsNodesServices.png&quot; alt=&quot;Topics and Services&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;creation-of-new-customrobots-repo&quot;&gt;Creation of new CustomRobots repo&lt;/h3&gt;
+&lt;p&gt;In the spirit of modernisation, Jderobot is also introducing new repo for all the Robots and related packages used in the academy in the form of &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots&quot;&gt;CustomRobots&lt;/a&gt; repo. So from now on, my model will be updated there.&lt;/p&gt;
+
+&lt;p&gt;I am eager to also launch the first ever ROS2 academy exercise and hopefully it will be done soon! Until then!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Vi sees senere!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse-robot" /><category term="exercise" /><category term="gazebo" /><category term="ros2" /><category term="nav2" /><category term="week-7" /><category term="week-8" /><summary type="html">Issues Fixed: PR #8 on Jderobot/CustomRobots Issues Pending: #7 WIP for ROS2 Amazon Robot model</summary></entry><entry><title type="html">Back to the start</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/back-to-the-start" rel="alternate" type="text/html" title="Back to the start" /><published>2020-07-10T22:00:00+02:00</published><updated>2020-07-10T22:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/back-to-the-start</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/back-to-the-start">&lt;blockquote&gt;
   &lt;p&gt;Issues Fixed:&lt;/p&gt;
 
   &lt;p&gt;PR &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/pull/1&quot;&gt;#1&lt;/a&gt; on Jderobot/CustomRobots for new gazebo model.&lt;/p&gt;
@@ -86,7 +155,7 @@
   &lt;li&gt;&lt;a href=&quot;http://wiki.ros.org/urdf/XML/joint&quot;&gt;URDF Wiki&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Viszlát!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse-robot" /><category term="exercise" /><category term="gazebo" /><category term="week-5" /><category term="week-6" /><summary type="html">Issues Fixed: PR #1 on Jderobot/CustomRobots for new gazebo model.</summary></entry><entry><title type="html">Evaluation 1 Report!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-one-report" rel="alternate" type="text/html" title="Evaluation 1 Report!" /><published>2020-07-01T22:00:00+02:00</published><updated>2020-07-01T22:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-one-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-one-report">&lt;h1 id=&quot;gsoc-phase-1-report&quot;&gt;GSoC Phase 1 Report&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Até mais!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse-robot" /><category term="exercise" /><category term="gazebo" /><category term="week-5" /><category term="week-6" /><summary type="html">Issues Fixed: PR #1 on Jderobot/CustomRobots for new gazebo model.</summary></entry><entry><title type="html">Evaluation 1 Report!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-one-report" rel="alternate" type="text/html" title="Evaluation 1 Report!" /><published>2020-07-01T22:00:00+02:00</published><updated>2020-07-01T22:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-one-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-one-report">&lt;h1 id=&quot;gsoc-phase-1-report&quot;&gt;GSoC Phase 1 Report&lt;/h1&gt;
 
 &lt;p&gt;The first 4 weeks of Google summer of code were quite productive. I got acquainted with the development of Jderobot, created docker containers, migrated Amazon Warehouse exercise and published videos, everything within a month.&lt;/p&gt;
 
