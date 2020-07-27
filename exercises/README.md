@@ -1,5 +1,5 @@
 # Academy Exercises
-This repo contains solutions of [JdeRobot Academy Exercises](https://jderobot.github.io/RoboticsAcademy/exercises/).
+This repo contains new exercises and solutions of [JdeRobot Academy Exercises](https://jderobot.github.io/RoboticsAcademy/exercises/).
 
 ## Python Environment
 To easily get all the dependencies and set up a virtual environment, execute following instructions.

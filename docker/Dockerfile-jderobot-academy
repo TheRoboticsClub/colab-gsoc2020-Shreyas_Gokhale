@@ -83,7 +83,7 @@ RUN apt-get update && apt-get install -q -y \
 
 
 # TODO: Copy => mount
-COPY exercises /exercises
+COPY ros1/exercises /exercises
 RUN pip3 install -r /exercises/requirements-slim.txt
 
 

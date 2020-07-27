@@ -40,7 +40,7 @@ class MyAlgorithm(threading.Thread):
         # Coordinates for all pallets in a map in world frame. Please use these to approximate center of pallet.
         self.palettesList = yaml.load(open('./pallets_coords.yaml'))["coords"]
         self.jointForce = 0
-        self.pub = rospy.Publisher('amazon_warehouse_robot/joint_cmd', Float32, queue_size=10)
+        # self.pub = rospy.Publisher('amazon_warehouse_robot/joint_cmd', Float32, queue_size=10)
         self.client = moveBaseClient
         self.pickNewPalletPressed = False
 
