@@ -142,6 +142,7 @@ def generate_launch_description():
         default_value='False',
         description='Whether to execute gzclient)')
 
+    print(amazon_gazebo_package_dir)
 
     # Our own gazebo world from CustomRobots
     declare_world_cmd = DeclareLaunchArgument(
@@ -150,8 +151,10 @@ def generate_launch_description():
         #              https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/91
         # default_value=os.path.join(get_package_share_directory('turtlebot3_gazebo'),
         #                            'worlds/turtlebot3_worlds/waffle.model'),
-        default_value=os.path.join(amazon_gazebo_package_dir, 'worlds', 'amazon_warehouse/amazon_robot.model'),
+        default_value=os.path.join(amazon_gazebo_package_dir, 'worlds', 'amazon_warehouse' , 'amazon_robot.model'),
         description='Full path to world model file to load')
+
+
 
     # Default Nav2 actions
     # Specify the actions

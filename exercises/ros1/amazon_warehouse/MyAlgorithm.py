@@ -106,12 +106,12 @@ class MyAlgorithm(threading.Thread):
     def sendGoal(self, list):
         print("EXECUTING GOAL")
         # Get destination after double click on map
-        # destiny = self.grid.getDestiny()
-
+        dest = self.grid.getDestiny()
+        print(dest)
         # HOW TO SEND GOAL TO A ROBOT
         # Before sending goal to the robot, don't forget to 
         # change it to the world frame
-        dest = self.grid.gridToWorld(24, 151)
+        # dest = self.grid.gridToWorld(24, 151)
         self.client.sendGoalToClient(dest[0], dest[1])
 
     """ Write in this method the code necessary for controlling the main 
