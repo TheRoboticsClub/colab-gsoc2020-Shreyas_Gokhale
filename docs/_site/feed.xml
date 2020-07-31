@@ -1,4 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-07-24T03:51:26+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Level 2!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2" rel="alternate" type="text/html" title="Level 2!" /><published>2020-07-23T22:30:00+02:00</published><updated>2020-07-23T22:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-07-31T15:34:42+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Evaluation 2 Report</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-two-report" rel="alternate" type="text/html" title="Evaluation 2 Report" /><published>2020-07-31T15:00:00+02:00</published><updated>2020-07-31T15:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-two-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-two-report">&lt;h1 id=&quot;gsoc-phase-2-report&quot;&gt;GSoC Phase 2 Report&lt;/h1&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Week&lt;/th&gt;
+      &lt;th&gt;Dates&lt;/th&gt;
+      &lt;th&gt;Main Tasks&lt;/th&gt;
+      &lt;th&gt;Sub tasks completed&lt;/th&gt;
+      &lt;th&gt;Issues Resolved / PRs Merged&lt;/th&gt;
+      &lt;th&gt;Blog&lt;/th&gt;
+      &lt;th&gt;Type&lt;/th&gt;
+      &lt;th&gt;Published URL&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 5-6&lt;/td&gt;
+      &lt;td&gt;29th June - 12th July&lt;/td&gt;
+      &lt;td&gt;Releasing the exercise for ROS Noetic&lt;/td&gt;
+      &lt;td&gt;Creating a new model for amazon warehouse robot in &lt;code class=&quot;highlighter-rouge&quot;&gt;.xacro&lt;/code&gt; format and making it fit with academy arch.&lt;/td&gt;
+      &lt;td&gt;PR #1 on Jderobot/CustomRobots for new gazebo model.&lt;/td&gt;
+      &lt;td&gt;Back to the start&lt;/td&gt;
+      &lt;td&gt;AMAZON-WAREHOUSE-ROBOT, EXERCISE, GAZEBO, WEEK-5, WEEK-6&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/back-to-the-start&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 7-8&lt;/td&gt;
+      &lt;td&gt;13th July - 26th July&lt;/td&gt;
+      &lt;td&gt;Porting Amazon Exercise to ROS2&lt;/td&gt;
+      &lt;td&gt;Learning and understanding ROS2 architecture, build systems. Porting model. Creating packages and launch scripts.&lt;/td&gt;
+      &lt;td&gt;Issues Fixed: PR #8 on Jderobot/CustomRobots Issues Pending: #7 WIP for ROS2 Amazon Robot model&lt;/td&gt;
+      &lt;td&gt;Level 2!&lt;/td&gt;
+      &lt;td&gt;AMAZON-WAREHOUSE-ROBOT, EXERCISE, GAZEBO, ROS2, NAV2,&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/level-2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 9&lt;/td&gt;
+      &lt;td&gt;27th July - 9th August&lt;/td&gt;
+      &lt;td&gt;Porting Amazon Exercise to ROS2&lt;/td&gt;
+      &lt;td&gt;Porting navigation stack, making it fit for academy structure and finalizing the exercise with How-to and tutorial&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Research&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="evaluation" /><summary type="html">GSoC Phase 2 Report</summary></entry><entry><title type="html">Level 2!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2" rel="alternate" type="text/html" title="Level 2!" /><published>2020-07-23T22:30:00+02:00</published><updated>2020-07-23T22:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2">&lt;blockquote&gt;
   &lt;p&gt;Issues Fixed:&lt;/p&gt;
 
   &lt;p&gt;PR &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/pull/8&quot;&gt;#8&lt;/a&gt; on Jderobot/CustomRobots&lt;/p&gt;
@@ -631,26 +678,4 @@ But it is quite quick compared to gradient path planner!&lt;/p&gt;
 
 &lt;h3 id=&quot;reference&quot;&gt;Reference:&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2&quot;&gt;Easy A* (star) Pathfinding&lt;/a&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="path-planning" /><category term="global-navigation" /><category term="community-bonding" /><summary type="html">Global Navigation Path Planning</summary></entry><entry><title type="html">Beginning of GSoC 2020!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey" rel="alternate" type="text/html" title="Beginning of GSoC 2020!" /><published>2020-05-11T10:30:00+02:00</published><updated>2020-05-11T10:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/beginning-of-gsoc-journey">&lt;h1 id=&quot;hola-gsoc-2020&quot;&gt;Hola GSoC 2020!&lt;/h1&gt;
-
-&lt;p&gt;To be honest, I didn’t even knew what Google’s Summer of Code is until 1 May 2019, 
-when a friend told me about it during a trek. I loved the idea of contributing to the open source community
-during otherwise wasteful summer holidays! I wanted to apply, but it was too late to apply for 2019.&lt;/p&gt;
-
-&lt;p&gt;As a masters student, due graduate by year 2019, I decided that if by some means I am still not
-graduated by 2020, I’ll apply for GSoC. And (&lt;del&gt;un&lt;/del&gt;) fortunately, I was able to!&lt;/p&gt;
-
-&lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
-&lt;p&gt;I stumbled upon Jderobot Academy and it immediately struck a cord with me. As someone who learned 
-ROS with trial and error, Jderobot Academy provides a well directed path towards learning robotics.
-If only I knew the academy before!&lt;/p&gt;
-
-&lt;p&gt;As browsed the exercises, I liked the Amazon Robotics exercise in particular.
-Automated warehouses play an important role in modern Industry 4.0 based factories.
-In companies such as Amazon, multiple robot agents coordinate with each other to optimize delivery times.
-When a job such as “pickup from shelves” is scheduled, a task is assigned to one of these agents based on a number of factors, such as its proximity to the location or its path towards the goal. In many cases, the agents roam freely, communicate with each other, and have to avoid obstacles and humans in their path.
-The exercise, which is indeed cleverly designed, is very close to the real world usage.&lt;/p&gt;
-
-&lt;h2 id=&quot;jdemultibot&quot;&gt;JdeMultiBot&lt;/h2&gt;
-&lt;p&gt;My project, &lt;em&gt;JdeMultiBot&lt;/em&gt;, will extend the single robot Amazon warehouse exercise to implement a scalable cooperative multi-agent task and path planning system.
-The exercise will also leverage the features of ROS2, giving students a chance to get acquainted with the new age of robotics.&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="blog" /><category term="community-bonding" /><summary type="html">Hola GSoC 2020!</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2&quot;&gt;Easy A* (star) Pathfinding&lt;/a&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="path-planning" /><category term="global-navigation" /><category term="community-bonding" /><summary type="html">Global Navigation Path Planning</summary></entry></feed>
