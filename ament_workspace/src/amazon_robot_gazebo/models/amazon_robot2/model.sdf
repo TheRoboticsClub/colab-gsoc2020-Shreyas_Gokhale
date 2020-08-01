@@ -2,11 +2,8 @@
 <sdf version="1.5">
   <model name="amazon_robot2"> 
     <pose>0.0 0.0 0.0 0.0 0.0 0.0</pose>
-
       <link name="base_footprint"/>
-
       <link name="base_link">
-
       <inertial>
         <pose>-0.064 0 0.048 0 0 0</pose>
          <inertia>

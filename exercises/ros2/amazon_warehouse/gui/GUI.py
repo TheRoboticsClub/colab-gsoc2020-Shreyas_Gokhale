@@ -1,5 +1,5 @@
 #
-#  Copyright (C) 1997-2016 JDE Developers Team
+#  Copyright (C) 1997-2020 JDE Developers Team
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -16,6 +16,8 @@
 #  Authors :
 #       Alberto Martin Florido <almartinflorido@gmail.com>
 #       Samuel Rey Escudero <samuel.rey.escudero@gmail.com>
+#       Shreyas Gokhale <shreyas6gokhale@gmail.com>
+
 
 
 

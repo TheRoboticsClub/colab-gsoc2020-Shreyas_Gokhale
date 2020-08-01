@@ -8,7 +8,7 @@ import threading
 import time
 from datetime import datetime
 import yaml
-# import rospy
+import rclpy
 from std_msgs.msg import Float32
 # from interfaces.moveBaseClient import clearCostmaps
 
@@ -31,17 +31,20 @@ def clearscreen(numlines=10):
 
 class MyAlgorithm(threading.Thread):
 
-    def __init__(self, grid, sensor, vel, pathListener, moveBaseClient):
+    def __init__(self, grid, sensor, vel, navigation_client):
         self.sensor = sensor
         self.grid = grid
         self.vel = vel
-        self.path = pathListener
+        # self.path = pathListener
         sensor.getPathSig.connect(self.sendGoal)
         # Coordinates for all pallets in a map in world frame. Please use these to approximate center of pallet.
         self.palettesList = yaml.load(open('./pallets_coords.yaml'))["coords"]
         self.jointForce = 0
-        self.pub = rospy.Publisher('amazon_warehouse_robot/joint_cmd', Float32, queue_size=10)
-        self.client = moveBaseClient
+        # self.pub = rclpy.('amazon_warehouse_robot/joint_cmd', Float32, queue_size=10)
+        # nav_ros_node = rclpy.create_node("amazon_robot_navigation")
+
+        self.navigation_client = navigation_client
+        
         self.pickNewPalletPressed = False
 
         self.stop_event = threading.Event()
@@ -106,13 +109,13 @@ class MyAlgorithm(threading.Thread):
     def sendGoal(self, list):
         print("EXECUTING GOAL")
         # Get destination after double click on map
-        # destiny = self.grid.getDestiny()
-
+        destiny = self.grid.getDestiny()
+        print(destiny)
         # HOW TO SEND GOAL TO A ROBOT
         # Before sending goal to the robot, don't forget to 
         # change it to the world frame
-        dest = self.grid.gridToWorld(24, 151)
-        self.client.sendGoalToClient(dest[0], dest[1])
+        dest = self.grid.gridToWorld(destiny[0], destiny[1])
+        self.navigation_client.sendGoalToClient(dest[0], dest[1])
 
     """ Write in this method the code necessary for controlling the main 
         functionality of the robot. This method will be periodically 

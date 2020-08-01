@@ -34,6 +34,7 @@ from sensors.threadMotors import Velocity
 from sensors.sensor import Sensor
 from sensors.grid import Grid
 
+from interfaces.navigation2ActionClient import NavigateToPoseActionClient
 # from interfaces.path import ListenerPath
 # from interfaces.moveBaseClient import MoveBaseClient
 
@@ -65,7 +66,7 @@ if __name__ == '__main__':
         # pathListener = ListenerPath("/amazon_warehouse_robot/move_base/NavfnROS/plan")
 
         # This is to be updated
-        # moveBaseClient = MoveBaseClient()
+        navigation_client = NavigateToPoseActionClient()
         print("Subscribed To Move Base Client, Starting Application")
 
         app = QApplication(sys.argv)
@@ -81,8 +82,8 @@ if __name__ == '__main__':
         myGUI.setVelocity(vel)
         myGUI.setGrid(grid)
         myGUI.setSensor(sensor)
-        # algorithm = MyAlgorithm(grid, sensor, vel, pathListener, moveBaseClient)
-        # myGUI.setAlgorithm(algorithm)
+        algorithm = MyAlgorithm(grid, sensor, vel, navigation_client)
+        myGUI.setAlgorithm(algorithm)
         myGUI.show()
 
         removeMapFromArgs()
