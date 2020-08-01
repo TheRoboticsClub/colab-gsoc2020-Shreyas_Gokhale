@@ -1,4 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-07-31T15:34:42+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Evaluation 2 Report</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-two-report" rel="alternate" type="text/html" title="Evaluation 2 Report" /><published>2020-07-31T15:00:00+02:00</published><updated>2020-07-31T15:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-two-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-two-report">&lt;h1 id=&quot;gsoc-phase-2-report&quot;&gt;GSoC Phase 2 Report&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-01T17:01:19+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Finding the way</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/finding-the-way" rel="alternate" type="text/html" title="Finding the way" /><published>2020-08-01T15:30:00+02:00</published><updated>2020-08-01T15:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/finding-the-way</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/finding-the-way">&lt;blockquote&gt;
+  &lt;p&gt;Issues Pending:&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/issues/7&quot;&gt;#7&lt;/a&gt; WIP for ROS2 Amazon Robot model&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;week-9-blog&quot;&gt;Week 9 blog&lt;/h1&gt;
+
+&lt;h2 id=&quot;navigation-2&quot;&gt;Navigation 2&lt;/h2&gt;
+
+&lt;p&gt;This week, we are now finally able to launch the exercise, complete with navigation2! It is the successor of the navigation stack in ROS1 for ROS2 and it is build completely from ground up. Navigation2 also uses Behavior trees instead of the FSMs in move_base and they are much more intuitive and modern way of handling navigation tasks.&lt;/p&gt;
+
+&lt;p&gt;Navigation2 already has an up to date and extensive documentation and a really nicely written paper. But if you are a video person, I’d advise watching the minutes of ROS working group meeting to get it started quickly.&lt;/p&gt;
+
+&lt;div class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/-MzsEykCXoU&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The objective of the exercise is to understand ROS2 actions, behaviour trees and navigation stack. In the end you will be able drive the robot around and interact with it using our Jderobot GUI.&lt;/p&gt;
+
+&lt;h3 id=&quot;ros-actions&quot;&gt;ROS Actions&lt;/h3&gt;
+
+&lt;p&gt;Consider this scenario: You want to buy something, say a toothbrush, online. You find one which you like and now you want to order it. But you find out that the system wants you to go on the warehouse’s site and tell the admins that you need this particular item, then tell the packing station to pack it, then order delivery services to pick this package and then drop it at your doorstep, all by yourself. You will think that this is crazy as all you want is the package delivered and you really don’t care about the steps in between. Sure, you would &lt;em&gt;like&lt;/em&gt; to have updates regarding the shipment, but the whole purpose of ordering online is not to deal with the stuff in-between. Well, this is exactly what ROS action does.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://index.ros.org/doc/ros2/_images/Action-SingleActionClient.gif&quot; alt=&quot;ROS2 actions&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Credits: &lt;a href=&quot;https://index.ros.org/doc/ros2/Tutorials/Understanding-ROS2-Actions/&quot;&gt;Actions Tutorial ROS2&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ROS actions provide an interface which abstracts long, complex task from the node. You can program an &lt;em&gt;“Action Server”&lt;/em&gt; to accept requests of a task and return the result of the request once it is completed to the &lt;em&gt;“Action Client”&lt;/em&gt;. Meanwhile, you can also get updates regarding your request. Action client can also cancel or update your goal for the task.&lt;/p&gt;
+
+&lt;p&gt;In Navigation 2, action servers are used to communicate with the highest level BT navigator through a &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigateToPose&lt;/code&gt; action message. They are also used for the BT navigator to communicate with the subsequent smaller action servers to compute plans, control efforts, and recoveries. Each will have their own unique &lt;code class=&quot;highlighter-rouge&quot;&gt;.action&lt;/code&gt; type in &lt;code class=&quot;highlighter-rouge&quot;&gt;nav2_msgs&lt;/code&gt; package for interacting with the servers.&lt;/p&gt;
+
+&lt;p&gt;For understanding it better, I’d definitely recommend the reader to have a look on the &lt;a href=&quot;http://design.ros2.org/articles/actions.html&quot;&gt;ROS2 action design&lt;/a&gt; and &lt;a href=&quot;https://index.ros.org/doc/ros2/Tutorials/Understanding-ROS2-Actions/&quot;&gt;ROS2 action tutorial&lt;/a&gt;. Our focus for this exercise will be to leverage ROS2 actions for Navigation2. For us to continue with the exercise, we need to understand one more concept: Behaviour Trees&lt;/p&gt;
+
+&lt;h3 id=&quot;behaviour-trees&quot;&gt;Behaviour Trees&lt;/h3&gt;
+
+&lt;p&gt;Navigation2 documentation explains behaviour trees the best, so I am just going to link it here. But in essence, it splits the whole operation of a robot into smaller behaviours in a specific structure governed by rules. For example, if we want to have a robot to play football, we can split it in different primitives such as run to the ball, dribble, shoot and these states are further divided into sub primitives. How we can change from one behaviour to another is also dependant on rules and what conditions are satisfied.&lt;/p&gt;
+
+&lt;p&gt;Navigation 2 uses &lt;a href=&quot;https://www.behaviortree.dev/&quot;&gt;BehaviorTree&lt;/a&gt; CPP V3 as the behaviour tree library and we can use the trees created for navigation2 as subtrees of other trees. We create node plugins which can be constructed into a tree, inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;BT Navigator&lt;/code&gt;. The node plugins are loaded into the BT and when the XML file of the tree is parsed, the registered names are associated.&lt;/p&gt;
+
+&lt;h3 id=&quot;planning-and-controlling&quot;&gt;Planning and Controlling&lt;/h3&gt;
+
+&lt;p&gt;Two components of navigation are planning a path and executing the motion. Traditionally, these were handled using respective planning and control servers in ROS1. They make information such as costmaps and parameters available to all the other ROS nodes. In ROS2, they are represented as plugins.&lt;/p&gt;
+
+&lt;p&gt;We will keep exploring the navigation2 stack in upcoming blogs so we can program our own plugins and nodes for our own logic. For multirobot exercise, this will be controlling the co-operation between the robots. But for now, let’s see how we can run the exercise.&lt;/p&gt;
+
+&lt;h2 id=&quot;launching-the-exercise&quot;&gt;Launching the exercise&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Install ROS2 foxy by following &lt;a href=&quot;https://index.ros.org/doc/ros2/Installation/Foxy/&quot;&gt;this&lt;/a&gt;  guide.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pull the latest &lt;a href=&quot;https://navigation.ros.org/build_instructions/index.html&quot;&gt;Navigation2&lt;/a&gt; and install it.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone https://github.com/ros-planning/navigation2.git
+
+ &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;navigation2 
+
+ &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /opt/ros/foxy/setup.sh
+
+ colcon build
+
+ &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; ./install/setup.sh
+
+ &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TURTLEBOT3_MODEL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;waffle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pull CustomRobots repo and build amazon_robot&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git pull https://github.com/shreyasgokhale/CustomRobots.git
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;CustomRobots/amazon_robot
+
+colcon build
+
+&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; ./install/setup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pull latest of my colab repo&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git pull https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Export the paths of models to let gazebo know from where to load them.&lt;/strong&gt; In my case, this was the path&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:~/CustomRobots/amazon_robot/amazon_robot_gazebo/models'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bashrc
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Launch the exercise&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/colab-gsoc2020-Shreyas_Gokhale/exercises/ros2/amazon_warehouse/launch
+
+ ros2 launch ros2 launch amazon_warehouse_world.py
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;In another terminal, launch the solution&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/colab-gsoc2020-Shreyas_Gokhale/exercises/ros2/amazon_warehouse/
+
+ python3 amazonWarehouse.py amazonMap.conf amazonConf.yml
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Success!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/QtHRuF0IS8E&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Feel free to explore the exercise. You can right do almost everything except loading the pallet. The prismatic joint is still not working. I have raised the issue on both gazebo and ros forums and also contacted the developers of gazebo. Hopefully, this will get solved soon. Our next stop will be to introduce multi robot dynamics into the picture!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Na razie!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse-robot" /><category term="exercise" /><category term="gazebo" /><category term="ros2" /><category term="nav2" /><category term="week-9" /><summary type="html">Issues Pending: #7 WIP for ROS2 Amazon Robot model</summary></entry><entry><title type="html">Evaluation 2 Report</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-two-report" rel="alternate" type="text/html" title="Evaluation 2 Report" /><published>2020-07-31T15:00:00+02:00</published><updated>2020-07-31T15:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-two-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-two-report">&lt;h1 id=&quot;gsoc-phase-2-report&quot;&gt;GSoC Phase 2 Report&lt;/h1&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -571,111 +691,4 @@ docker-compose up &lt;span class=&quot;nt&quot;&gt;--build&lt;/span&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Just in! OSRF pushed the images on the DockerHub. So those will be used in the next releases.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="setup" /><category term="global-navigation" /><category term="docker" /><category term="community-bonding" /><summary type="html">Issues Fixed: #1 with PR</summary></entry><entry><title type="html">Community Bonding 1</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1" rel="alternate" type="text/html" title="Community Bonding 1" /><published>2020-05-17T20:00:00+02:00</published><updated>2020-05-17T20:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-1">&lt;h1 id=&quot;global-navigation-path-planning&quot;&gt;Global Navigation Path Planning&lt;/h1&gt;
-
-&lt;p&gt;To get accustomed to the academy exercises, I wanted to start with an exercise which is somewhat familiar, yet challenging.
-Path planning is a typical problem in CS and it is used at various (and sometimes, &lt;a href=&quot;https://www.researchgate.net/publication/267809499_A-based_Pathfinding_in_Modern_Computer_Games&quot;&gt;quite unusual&lt;/a&gt; ! ) places.
-Similarly, motion planning is important to actually follow path in a sequence.&lt;/p&gt;
-
-&lt;p&gt;The exercise I selected &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/AutonomousCars/global_navigation/&quot;&gt;Global Navigation&lt;/a&gt; 
-exercise which combines path planning with motion planning.&lt;/p&gt;
-
-&lt;h2 id=&quot;pre-processing&quot;&gt;Pre Processing&lt;/h2&gt;
-
-&lt;p&gt;As usual, I started by setting my environment&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Configured PyCharm for the repo&lt;/li&gt;
-  &lt;li&gt;Created and set up pip venv for easy access&lt;/li&gt;
-  &lt;li&gt;Created a &lt;code class=&quot;highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; file for future installs (in case pyqt5 of problem, use this -&amp;gt; 
-&lt;a href=&quot;https://stackoverflow.com/questions/18042919/how-to-install-pyqt5-on-a-new-virtualenv-and-work-on-an-idle&quot;&gt;https://stackoverflow.com/questions/18042919/how-to-install-pyqt5-on-a-new-virtualenv-and-work-on-an-idle&lt;/a&gt; )&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;understanding-apis&quot;&gt;Understanding APIs&lt;/h3&gt;
-&lt;p&gt;Listing various APIs mentioned on the page:&lt;/p&gt;
-
-&lt;h4 id=&quot;base-apis&quot;&gt;Base APIs&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sensor.getRobotX()&lt;/code&gt; - to obtain the position of the robot&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sensor.getRobotY()&lt;/code&gt; - to obtain the position of the robot&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sensor.getRobotTheta()&lt;/code&gt; - to obtain the orientation of the robot with respect to the map&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vel.setV()&lt;/code&gt; - to set the linear speed&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;vel.setW()&lt;/code&gt; - to set the angular velocity&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;grid-apis&quot;&gt;Grid APIs&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.getMap()&lt;/code&gt; - returns the image of the map that is being displayed. The image returned will be a 3-channel image with values 0 or 255, where 0 represents the obstacles and 255 the road. Although the image has 3 channels, for this practice it will be useful to use only one.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.getDestiny()&lt;/code&gt; - returns the selected destination through the GUI as a tuple (x, y).&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.getPose()&lt;/code&gt; - returns the position with respect to the map, not with respect to the world, also as a tuple (x, y).&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.showGrid()&lt;/code&gt; - creates a window in which represents the values ​​of the field that have been assigned to the grid. The smaller values ​​will have a color closer to black, and will become clearer as larger values ​​are involved. For the representation, a copy of the grid is made and its values ​​are normalized so that they are between 0 and 1, and it is represented later with cv2.imshow().&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.getVal(x, y)&lt;/code&gt; - returns the value in that grid position.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.setVal(x, y, val)&lt;/code&gt; - sets the value val to the indicated position.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.setPathVal(x, y, val)&lt;/code&gt; - sets the value val to the indicated position.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.getPathVal(x, y)&lt;/code&gt; - returns the value of the indicated position.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;grid.setPathFinded()&lt;/code&gt; - establishes that the path has been found to start painting.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;gridToWorld(gridX, gridY)&lt;/code&gt; - receives the x and y components of the coordinates of the map and returns a tuple with the equivalent coordinates in the world: (worldX, worldY)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;worldToGrid(worldX, worldY)&lt;/code&gt; - receives the x and y components of the world coordinates and returns a tuple with the equivalent coordinates in the map: (gridX, gridY)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I executed a few to understand the structures&lt;/p&gt;
-
-&lt;h4 id=&quot;responses&quot;&gt;&lt;strong&gt;Responses&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getMap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                        &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-                        &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;28&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
-
-&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getDestiny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;274&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getPose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This confirmed a few things:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The Map will &lt;em&gt;probably&lt;/em&gt; need a conversion to binary representation.&lt;/li&gt;
-  &lt;li&gt;The co-ordinates of destination and source are flipped (or if you consider the other way, the map is flipped)&lt;/li&gt;
-  &lt;li&gt;The whole map is visible, hence the algorithm &lt;strong&gt;must&lt;/strong&gt; either return the path or the point is non-traversable.&lt;/li&gt;
-  &lt;li&gt;As the maze is connected, ( and is not disjoint at some places) we can safely say that white point (255) is traversable.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;path-planning-algorithm&quot;&gt;Path planning algorithm&lt;/h2&gt;
-
-&lt;p&gt;As described on the exercise page, we can either solve this using gradient path planning and sampling
-based path planning. Both have their positives and negatives and either are preferable in specific scenarios.
-As the exercise was already solved using Gradient Path planning, I decided to solve it using sampling based approaches.&lt;/p&gt;
-
-&lt;p&gt;The most basic and simplest of sampling based path planning algorithm (after Dijkstra) is A*. The concept is simple:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The map is divided in nodes&lt;/li&gt;
-  &lt;li&gt;Each node has 2 properties: It’s distance from start node (g) and the destination node (h)&lt;/li&gt;
-  &lt;li&gt;We have to select nodes in such a way that we have a minimum over these two properties. i.e
- minimum of f = g + h&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I found a simple implementation of A* in python on &lt;a href=&quot;&quot;&gt;this&lt;/a&gt; blog. I made a class out of it and created a separate &lt;code class=&quot;highlighter-rouge&quot;&gt;AStar.py&lt;/code&gt;
-file, which can be imported in our code. The class declaration method &lt;code class=&quot;highlighter-rouge&quot;&gt;AStar.Astar(map, source, dest)&lt;/code&gt;
-accepts 3 arguments: A binary grid map, starting node (x1,y1) and destination node (x2,y2)&lt;/p&gt;
-
-&lt;p&gt;After spending a lot of time in finding out why the path is not getting displayed even after setting the variable,
-I realised that I didn’t call the &lt;code class=&quot;highlighter-rouge&quot;&gt;self.grid.setPathFinded()&lt;/code&gt; method.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/AjYsTtVxEEBPO/giphy.gif&quot; alt=&quot;Baka!&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;And voila, there was the green path! Comparing times, the algorithm takes more time, farther the destination. 
-But it is quite quick compared to gradient path planner!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/blog-images/community-bonding/AStar1.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In the next post, we’ll go over the motion planning and squash bugs (if any!).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Ciao!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;reference&quot;&gt;Reference:&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2&quot;&gt;Easy A* (star) Pathfinding&lt;/a&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="path-planning" /><category term="global-navigation" /><category term="community-bonding" /><summary type="html">Global Navigation Path Planning</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="setup" /><category term="global-navigation" /><category term="docker" /><category term="community-bonding" /><summary type="html">Issues Fixed: #1 with PR</summary></entry></feed>
