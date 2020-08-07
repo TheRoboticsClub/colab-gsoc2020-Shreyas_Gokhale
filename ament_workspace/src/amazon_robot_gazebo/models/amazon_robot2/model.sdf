@@ -486,6 +486,12 @@
         <pose>0.0 0.0 0.010 0 0 0</pose>
       </joint>
 
+      <joint name="imu_joint" type="fixed">
+          <parent>base_link</parent>
+          <child>imu_link</child>
+          <pose>0.0 0.0 0.010 0 0 0</pose>
+      </joint>
+      
       <joint name="wheel_left_joint" type="revolute">
         <parent>base_link</parent>
         <child>wheel_left_link</child>
@@ -558,9 +564,9 @@
         <parent>link_platform_mid</parent>
         <child>lift_link</child>
         <axis>
-          <xyz>0 1 0</xyz>
+          <xyz>0 0 1</xyz>
         </axis>
-        <limit effort="10000.0" lower="-0.05" upper="0.24" velocity="0.5"/>
+        <limit effort="0.1" lower="-0.05" upper="0.24" velocity="0.5"/>
       </joint>  
 
 
