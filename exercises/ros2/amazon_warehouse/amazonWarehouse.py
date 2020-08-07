@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-#
 #  Copyright (C) 1997-2020 JDE Developers Team
 #
 #  This program is free software: you can redistribute it and/or modify
@@ -35,8 +32,6 @@ from sensors.sensor import Sensor
 from sensors.grid import Grid
 
 from interfaces.navigation2ActionClient import NavigateToPoseActionClient
-# from interfaces.path import ListenerPath
-# from interfaces.moveBaseClient import MoveBaseClient
 
 import yaml
 import signal

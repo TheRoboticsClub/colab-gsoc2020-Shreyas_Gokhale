@@ -34,11 +34,10 @@ def generate_launch_description():
 
     amazon_gazebo_package_dir = get_package_share_directory('amazon_robot_gazebo')
     amazon_gazebo_package_launch_dir= os.path.join(amazon_gazebo_package_dir, 'launch')
-
-
     amazon_description_dir = get_package_share_directory('amazon_robot_description')
-
     this_launch_dir = os.path.dirname(os.path.realpath(__file__))
+
+    amazon_bringup_package_dir = get_package_share_directory('amazon_robot_bringup')
 
 
     # Create the launch configuration variables
@@ -155,12 +154,11 @@ def generate_launch_description():
         description='Full path to world model file to load')
 
 
-
     # Default Nav2 actions
     # Specify the actions
     start_gazebo_server_cmd = ExecuteProcess(
         condition=IfCondition(use_simulator),
-        cmd=['gzserver', '-s', 'libgazebo_ros_init.so', world],
+        cmd=['gzserver', '--verbose', '-s', 'libgazebo_ros_factory.so' , world],
         cwd=[nav2_launch_dir], output='screen')
 
     start_gazebo_client_cmd = ExecuteProcess(
@@ -200,6 +198,19 @@ def generate_launch_description():
                           'default_bt_xml_filename': default_bt_xml_filename,
                           'autostart': autostart}.items())
 
+
+
+    spawn_robot_cmd = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(os.path.join(amazon_bringup_package_dir, 'launch',
+                                                           'spawn_tb3_launch.py')),
+                launch_arguments={
+                                  'x_pose': '5',
+                                  'y_pose': '0',
+                                  'z_pose': '0.1', 
+                                  'robot_name': namespace                           
+                                  }.items())
+
+
     # Create the launch description and populate
     ld = LaunchDescription()
 
@@ -223,6 +234,10 @@ def generate_launch_description():
     # Add any conditioned actions
     ld.add_action(start_gazebo_server_cmd)
     ld.add_action(start_gazebo_client_cmd)
+
+
+    ld.add_action(spawn_robot_cmd)
+
 
     # Add the actions to launch all of the navigation nodes
     ld.add_action(start_robot_state_publisher_cmd)

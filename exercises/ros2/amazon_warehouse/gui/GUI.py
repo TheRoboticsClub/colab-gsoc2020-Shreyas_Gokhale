@@ -30,7 +30,6 @@ from gui.communicator import Communicator
 from gui.mapWidget import Map
 from gui.logoWidget import LogoWidget
 import rclpy
-# import rospy
 from std_msgs.msg import Float32, Float64
 
 class MainWindow(QMainWindow, Ui_MainWindow):
