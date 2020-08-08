@@ -1,4 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-01T17:01:19+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Finding the way</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/finding-the-way" rel="alternate" type="text/html" title="Finding the way" /><published>2020-08-01T15:30:00+02:00</published><updated>2020-08-01T15:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/finding-the-way</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/finding-the-way">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-08T02:06:40+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">2x !</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/two-x" rel="alternate" type="text/html" title="2x !" /><published>2020-08-08T01:30:00+02:00</published><updated>2020-08-08T01:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/two-x</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/two-x">&lt;blockquote&gt;
+  &lt;p&gt;Issues Resloved:&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/10&quot;&gt;#10&lt;/a&gt; Gazebo Import
+&lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/issues/7&quot;&gt;#7&lt;/a&gt; ROS2 Amazon Robot model
+&lt;a href=&quot;https://github.com/IntelligentRoboticsLabs/ros2_planning_system_examples/issues/1&quot;&gt;#1&lt;/a&gt; ROS2 planning system example bugfix&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;week-10-blog&quot;&gt;Week 10 blog&lt;/h1&gt;
+
+&lt;p&gt;Last week we almost completed our brand new Amazon Robot exercise in Jderobot Academy, except for one very essential component: The lift. For our exercise to work as expected, we need to make sure that our lift can actuate and carry pallets to their places.  This is also quite important for the next exercise for multiple robots.&lt;/p&gt;
+
+&lt;h3 id=&quot;gazebo-model-fixes-and-writing-action-plugin&quot;&gt;Gazebo model fixes and writing action plugin&lt;/h3&gt;
+
+&lt;p&gt;One of the problem that we were facing was the &lt;code class=&quot;highlighter-rouge&quot;&gt;lift_joint&lt;/code&gt; kept dropping on the floor. If you set the type of joint anything other than a prismatic one, it stayed in the place. I found this rather strange and I spent literally days figuring out what is going wrong with this. There are no examples or snippets to help you and the documentation itself is incomplete. Moreover, no one replied to my questions on ROS and Gazebo sim. So I had no hopes about it working. But one day, suddenly, I remembered that maybe adding &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;physics&amp;gt;&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;dynamics&amp;gt;&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;ode&amp;gt;&lt;/code&gt; tags might do the trick, and it did! I am going to put my lift joint here in case anyone faces the similar problems.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;joint&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lift_joint&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;prismatic&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;parent&amp;gt;&lt;/span&gt;link_platform_mid&lt;span class=&quot;nt&quot;&gt;&amp;lt;/parent&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;child&amp;gt;&lt;/span&gt;lift_link&lt;span class=&quot;nt&quot;&gt;&amp;lt;/child&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;axis&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;xyz&amp;gt;&lt;/span&gt;0 0 1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/xyz&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;limit&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;lower&amp;gt;&lt;/span&gt;0.18&lt;span class=&quot;nt&quot;&gt;&amp;lt;/lower&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;upper&amp;gt;&lt;/span&gt;0.25&lt;span class=&quot;nt&quot;&gt;&amp;lt;/upper&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;effort&amp;gt;&lt;/span&gt;20&lt;span class=&quot;nt&quot;&gt;&amp;lt;/effort&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;velocity&amp;gt;&lt;/span&gt;5.89&lt;span class=&quot;nt&quot;&gt;&amp;lt;/velocity&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/limit&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;dynamics&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;damping&amp;gt;&lt;/span&gt;0.1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/damping&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;friction&amp;gt;&lt;/span&gt;0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/friction&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;spring_reference&amp;gt;&lt;/span&gt;0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/spring_reference&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;spring_stiffness&amp;gt;&lt;/span&gt;0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/spring_stiffness&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dynamics&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;use_parent_model_frame&amp;gt;&lt;/span&gt;1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/use_parent_model_frame&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/axis&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;physics&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;provide_feedback&amp;gt;&lt;/span&gt;1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/provide_feedback&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;ode&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;provide_feedback&amp;gt;&lt;/span&gt;1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/provide_feedback&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;implicit_spring_damper&amp;gt;&lt;/span&gt;1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/implicit_spring_damper&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;cfm_damping&amp;gt;&lt;/span&gt;1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cfm_damping&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;limit&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;cfm&amp;gt;&lt;/span&gt;0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/cfm&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;lt;erp&amp;gt;&lt;/span&gt;0.2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/erp&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/limit&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ode&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/physics&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/joint&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Once that problem was solved, the next challenge was how to actuate this joint. We want to lift up the platform when picking up the pallet and then drop it down when it reaches the goal area. Traditionally, in ROS1, &lt;code class=&quot;highlighter-rouge&quot;&gt;gazebo_plugins&lt;/code&gt; are used for this. We apply effort to this joint using a ros service and the plugin handles it. For this we need to make sure that there are &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;transmission&amp;gt;&lt;/code&gt; tags in the model. (If you want more information on how to do that in ROS1, have a look at &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/blob/master/amazon_robot/amazon_robot_description/urdf/amazon_warehouse_robot.transmission.xacro&quot;&gt;this&lt;/a&gt; file).&lt;/p&gt;
+
+&lt;p&gt;But in ROS2, this structure is changed a bit. &lt;a href=&quot;https://github.com/ros-simulation/gazebo_ros_pkgs/wiki/ROS-2-Migration:-gazebo_ros_api_plugin&quot;&gt;This&lt;/a&gt; sheds more light on how the migration was performed and the changes to respective package. We are interested in applying joint effort, which pushes the link using ros service. I was able to find it’s changelog &lt;a href=&quot;https://github.com/ros-simulation/gazebo_ros_pkgs/wiki/ROS-2-Migration:-Body-Wrench-and-Joint-Effort&quot;&gt;here&lt;/a&gt;. After some digging around, I found a snippet of code in the source file, which worked!&lt;/p&gt;
+
+&lt;p&gt;We can actuate the joint using following service. Positive effort to move up and negative effort to return to the position&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ros2 service call /apply_joint_effort gazebo_msgs/srv/ApplyJointEffort &lt;span class=&quot;s1&quot;&gt;'{joint_name: &quot;lift_joint&quot;, effort: -2.0, start_time: {sec: 0, nanosec: 0}, duration: {sec: 2000, nanosec: 0} }'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Apart from that, I had to make changes in how our model is getting deployed and the &lt;code class=&quot;highlighter-rouge&quot;&gt;urdf&lt;/code&gt; for robot state description. In the end now everything works. But the arrangement of the warehouse is slightly not so ideal for our setup. We are using amcl which just tries to localize on given map using probabilistic localisation. For real time moving objects (for example, our pallets) we need SLAM. But moving on for now.&lt;/p&gt;
+
+&lt;div class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/n9NwqWQGTmc&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;jdemultrobot&quot;&gt;JdeMultRobot&lt;/h2&gt;
+
+&lt;p&gt;With simple robot exercise is ready to be used, so I turned my focus to the final goal: ‘JdeMultiBot’. For multi robot, we had a lot of discussion over the architecture and it’s implementation &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/9&quot;&gt;over a github issue&lt;/a&gt;. The synopsis was follows:&lt;/p&gt;
+
+&lt;h2 id=&quot;proposal-for-multi-robot-exercise&quot;&gt;&lt;strong&gt;Proposal for Multi-Robot exercise&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;The purpose of the multi robot exercise is to give student a platform to implement different strategies for task and path planning and subsequently, learn about the new Navigation2 structure. Thus, on the backend, the infrastructure must be set up so that the student has to code only the relevant logic / algorithm in a python function. There are 2 main responsibilities to be performed by the exercise backend:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Issuing task goals. For example &lt;em&gt;“Transfer pallets no: 2,5,8 from their current location to the pallet storage area”&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Mechanism to monitor overall state of the exercise. i.e. timely record of tasks completed by each robot.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We will be using Navigation2, which uses behaviour trees. We can use it’s &lt;a href=&quot;https://navigation.ros.org/concepts/index.html#planners&quot;&gt;planner&lt;/a&gt; for path planning and &lt;a href=&quot;https://navigation.ros.org/concepts/index.html#controllers&quot;&gt;controller&lt;/a&gt; for path following. However, we must also define our own task server which issues task goals.&lt;/p&gt;
+
+&lt;p&gt;The above mentioned &lt;a href=&quot;https://github.com/atb033/multi_agent_path_planning&quot;&gt;repos&lt;/a&gt; can be used for the reference solution. In the beginning only 2 robots will be defined.&lt;/p&gt;
+
+&lt;p&gt;The task planning BT node will supersede the existing navigation behaviour tree. On the robot side, we will have a node plugin, for example &lt;code class=&quot;highlighter-rouge&quot;&gt;GetTask&lt;/code&gt; which correlates to a node in behavior tree ( for example, get next task, where task is represented as a pose). This will be something similar to the &lt;a href=&quot;https://navigation.ros.org/configuration/packages/bt-plugins/actions/ComputePathToPose.html?highlight=computepathtopose&quot;&gt;ComputePathToPose&lt;/a&gt; which will return the Nav Goal (x,y,z) and if it is a pickup or dropoff. Then then robot can continue with its regular behaviour tree, to plan a path to this goal and navigate, check if it reached and then lift/drop the platform.&lt;/p&gt;
+
+&lt;p&gt;But to give the task, a task planning server will be separate and the robot has to query for it. And this server must have already decided which robot has to do which task based on the algorithm. We can give a demo implementation but students can program the server in more elaborate way. The demo implementation can be as simple as picking a random pose out of pallet poses and drop locations.&lt;/p&gt;
+
+&lt;p&gt;Nav2 already has planner, controller, recovery servers. We will add a task server. If we launch multiple robots, it already launches multiple instances of Nav2 task. So each robot has his own nav stack. And our server will have the similar structure that of other nav2 servers, for example using Ros actions etc.&lt;/p&gt;
+
+&lt;p&gt;and we decided to work on following deliverables:&lt;/p&gt;
+
+&lt;h2 id=&quot;deliverables-of-the-project&quot;&gt;&lt;strong&gt;Deliverables of the project&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;The Amazon Warehouse exercise will transition to ROS2 Foxy, resulting in two exercises. These exercises are focused in &lt;strong&gt;programming navigation and planning algorithms using ROS2&lt;/strong&gt;, and they can be addressed in a sequential manner:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-implement-the-navigation-stack-on-an-amazon-warehouse-robot&quot;&gt;&lt;strong&gt;1. Implement the navigation stack on an Amazon Warehouse Robot&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;ROS2 brings a neat evolution of the Navigation Stack, namely &lt;a href=&quot;https://github.com/ros-planning/navigation2&quot;&gt;Navigation2&lt;/a&gt;. This navigation system works as a stack which is deployed on a robot. It is composed by several action servers (Planner, Controller and Recovery), tied together by means of a customizable Behavior Tree. Depending on the current pose, environment, goal and programmed behavior, the Navigation2 system will provide the suitable trajectory towards the desired destination.&lt;/p&gt;
+
+&lt;p&gt;The student will have to implement a Navigation2 BT in the simulated robot, as well as integrate it with the rest of the behavior (lift/drop a pallet).&lt;/p&gt;
+
+&lt;h3 id=&quot;2-multirobot-coordination&quot;&gt;&lt;strong&gt;2. Multirobot coordination&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Once the navigation system has been implemented in a robot, the previous exercise can be extended to a multi-robot scenario, where several robots with independent navigation configuration (they might even implement different algorithms and/or plugins in the Navigation2 stack), a &lt;strong&gt;central planner&lt;/strong&gt; will be responsible of assigning the tasks (i.e., move pallet X to zone Y) to different robots. This central planner can leverage on the enhanced asynchronous infrastructure in ROS2 by means of an action server, on a similar approach that for Navigation2 servers. This assignment can be determined by many parameters, implementing approaches such as distance-based assignments, FIFO queues, random assignments, etc.&lt;/p&gt;
+
+&lt;p&gt;The task of the student will be to program the assignment strategy in the central planner, determining the criteria for assigning the tasks among the available robots.&lt;/p&gt;
+
+&lt;h3 id=&quot;multi-robot-navigation-2&quot;&gt;Multi Robot Navigation 2&lt;/h3&gt;
+
+&lt;p&gt;When we launch multiple robots in Nav2, they are assigned their own independent stacks - Which means their own behaviour tree, servers, actions and everything is namespaced. This also means that the resource usage (CPU, RAM) also scales up and it can prove a bottleneck in future. We’ll have to see about that in upcoming weeks. Meanwhile, I’ve started working on the server architecture and I can’t wait to make it awesome! For now, I leave you guys with 2 robots deployed with their nav stacks in our exercise.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/blog-images/week-9/TwoRobots.jpeg&quot; alt=&quot;2 Amazon Robots&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Hej då!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse-robot" /><category term="exercise" /><category term="gazebo" /><category term="ros2" /><category term="nav2" /><category term="joint" /><category term="week-10" /><summary type="html">Issues Resloved: #10 Gazebo Import #7 ROS2 Amazon Robot model #1 ROS2 planning system example bugfix</summary></entry><entry><title type="html">Finding the way</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/finding-the-way" rel="alternate" type="text/html" title="Finding the way" /><published>2020-08-01T15:30:00+02:00</published><updated>2020-08-01T15:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/finding-the-way</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/finding-the-way">&lt;blockquote&gt;
   &lt;p&gt;Issues Pending:&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/issues/7&quot;&gt;#7&lt;/a&gt; WIP for ROS2 Amazon Robot model&lt;/p&gt;
@@ -656,39 +770,4 @@ docker-compose up &lt;span class=&quot;nt&quot;&gt;--build&lt;/span&gt;
 
 &lt;p&gt;Give it a go and report me if there are any issues!&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Au revoir!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="release" /><category term="how-to" /><category term="week-1" /><summary type="html">Issues Fixed: #53,54 “Adding Noetic support for repo” with PRs #54 for Jderobot_assets, and #25236 for ROS distro with commits.</summary></entry><entry><title type="html">Community Bonding 2</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2" rel="alternate" type="text/html" title="Community Bonding 2" /><published>2020-05-28T12:00:00+02:00</published><updated>2020-05-28T12:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/community-bonding-2">&lt;blockquote&gt;
-  &lt;p&gt;Issues Fixed: &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/1&quot;&gt;#1&lt;/a&gt; with &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/2&quot;&gt;PR&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;motion-planning&quot;&gt;Motion Planning&lt;/h2&gt;
-
-&lt;p&gt;After successfully running A* path planner, I wanted to implement the actual mechanism of following the path AKA motion planner or path follower. I thought this shouldn’t take much effort as we have the path and just have to follow it.&lt;/p&gt;
-
-&lt;p&gt;Boy I was wrong! It turned out that in absence of prepackaged solutions, following path is much much harder. Normally in ROS, you can use &lt;a href=&quot;http://wiki.ros.org/move_base&quot;&gt;Move base&lt;/a&gt; or just the &lt;a href=&quot;http://wiki.ros.org/dwa_local_planner&quot;&gt;DWA Planner&lt;/a&gt; to do fine path planning. This involves actually going to each and every node and controlling the PID for acceleration and turning. But in absence of these packages, you have to do everything by yourself.&lt;/p&gt;
-
-&lt;p&gt;The simplest method you can implement is following the pose. You have starting position (x1,y1,z1) and you want to go to (x2,y2,z2). My plan was to apply a hypotenuse vector acceleration proportional to the distance between two points. Then once it reaches the point, turn it according to the pose. However, this resulted in quick overshoots, turning my car into the &lt;a href=&quot;https://en.wikipedia.org/wiki/Elon_Musk%27s_Tesla_Roadster&quot;&gt;tesla roadster in space&lt;/a&gt;. No matter how I tweaked, this was not working.&lt;/p&gt;
-
-&lt;p&gt;After my failed attempt at doing it myself, I turned onto some existing python libraries, which I could mould according to my needs. I found &lt;a href=&quot;https://github.com/AtsushiSakai/PythonRobotics/blob/3607d72b60cd500806e0f026ac8beb82850a01f9/PathTracking/move_to_pose/move_to_pose.py#L127&quot;&gt;this&lt;/a&gt; amazing code set, which I tried to implement. But I still couldn’t achieve what I wanted. Then I realised my 2 main mistakes:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The A* path planner samples all of the points. Hence the path has much higher resolution than it can handle.&lt;/li&gt;
-  &lt;li&gt;I didn’t do the &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/Drones/position_control&quot;&gt;local planning exercise&lt;/a&gt;. Hence, I didn’t have any sophisticated PID controller. And as we have to control the car only based on angular and linear acceleration, this is extreamly essential.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So sadly I had to leave the exercise in a bit unsolved case. I surely want to revisit it once I get time!&lt;/p&gt;
-
-&lt;h2 id=&quot;ros-noetic-release&quot;&gt;ROS Noetic release&lt;/h2&gt;
-
-&lt;p&gt;As with all the turtle fans, I was excited for the new ROS Noetic Ninjemys release. Ubuntu 20 and Python3 by default are the 2 main highlights of this release. And sadly, this will be the last ROS 1 release ever! But hey, all things happen for a reason, and here it is for ROS2!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/ros-infrastructure/artwork/master/distributions/noetic.png&quot; alt=&quot;ROS-Noetic&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We decided that it would be the best to take the release out for a spin using Docker or VM. Sadly, OSRF has not published the finalised Docker images on the dockerhub. Hence, for now, I created my own dockerfile based on the official dockerfile. Check it out!&lt;/p&gt;
-
-&lt;p&gt;My next target will be to run our exercise dependencies on noetic, mainly the Jderobot academy base, which currently only supports until melodic&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Bis Bald!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Just in! OSRF pushed the images on the DockerHub. So those will be used in the next releases.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="setup" /><category term="global-navigation" /><category term="docker" /><category term="community-bonding" /><summary type="html">Issues Fixed: #1 with PR</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Au revoir!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="release" /><category term="how-to" /><category term="week-1" /><summary type="html">Issues Fixed: #53,54 “Adding Noetic support for repo” with PRs #54 for Jderobot_assets, and #25236 for ROS distro with commits.</summary></entry></feed>
