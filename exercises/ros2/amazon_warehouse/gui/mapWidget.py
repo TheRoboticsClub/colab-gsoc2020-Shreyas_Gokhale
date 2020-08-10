@@ -1,13 +1,13 @@
 #  Authors :
 #       Samuel Rey Escudero <samuel.rey.escudero@gmail.com>
 #
+import cv2
 
 import sys, math
 import threading
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import QWidget, QLabel
 from PyQt5.QtCore import QPointF
-import cv2
 
 class Map(QWidget):
     
