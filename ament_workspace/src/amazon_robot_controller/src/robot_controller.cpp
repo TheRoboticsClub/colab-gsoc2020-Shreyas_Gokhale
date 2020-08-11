@@ -30,9 +30,10 @@
 namespace amazon_robot_controller
 {
 
-RobotController::RobotController()
-: nav2_util::LifecycleNode("robot_controller", "", false),
-  start_time_(0)
+
+RobotController::RobotController(bool use_bond)
+: nav2_util::LifecycleNode("bt_waypoint_follower", "", false),
+  use_bond_(use_bond)
 {
   RCLCPP_INFO(get_logger(), "Creating");
 
@@ -219,8 +220,8 @@ void
 RobotController::followTargets()
 {
   auto goal = action_server_->get_current_goal();
-  if (goal->loadposepair.size() == 0) {
-    RCLCPP_ERROR(get_logger(), "Goal has no pose. Terminating current goal.");
+  if (goal->poses.size() == 0) {
+    RCLCPP_ERROR(get_logger(), "Goal type not supported. Terminating current goal.");
     action_server_->terminate_current();
     return;
   }
@@ -256,7 +257,7 @@ RobotController::followTargets()
         RCLCPP_INFO(get_logger(), "Received goal preemption request");
         action_server_->accept_pending_goal();
         auto goal = action_server_->get_current_goal();
-        if (goal->loadposepair.size() == 0) {
+        if (goal->poses.size() == 0) {
           RCLCPP_ERROR(get_logger(), "Goal has no pose. Terminating current goal.");
           action_server_->terminate_current();
         }
@@ -307,11 +308,13 @@ void
 RobotController::initializeBlackboard(std::shared_ptr<const Action::Goal> goal)
 {
   // Update the goals on the blackboard
-  blackboard_->set("goals", goal->loadposepair);
+  blackboard_->set("goals", goal->poses);
   blackboard_->set("current_waypoint_idx", 0);
-  blackboard_->set("num_waypoints", goal->loadposepair.size());
-  blackboard_->set("goal", goal->loadposepair[1].pose);
+  blackboard_->set("num_waypoints", goal->poses.size());
+  blackboard_->set("goal", goal->poses[0]);
   blackboard_->set("goal_achieved", false);
+  blackboard_->set("joint_state", 0);
+
 }
 
 }  // namespace amazon_robot_controller

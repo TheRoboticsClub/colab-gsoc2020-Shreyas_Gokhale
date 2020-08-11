@@ -22,7 +22,7 @@
 #include "behaviortree_cpp_v3/action_node.h"
 #include "geometry_msgs/msg/pose_stamped.hpp"
 
-namespace amazon_robot_controll
+namespace amazon_robot_controller
 {
 
 class GetNextGoalAction : public BT::SyncActionNode
@@ -46,6 +46,6 @@ public:
   }
 };
 
-}  // namespace amazon_robot_controll
+}  // namespace amazon_robot_controller
 
 #endif 

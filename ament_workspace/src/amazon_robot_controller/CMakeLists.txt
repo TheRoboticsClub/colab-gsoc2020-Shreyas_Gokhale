@@ -16,7 +16,7 @@ find_package(behaviortree_cpp_v3 REQUIRED)
 find_package(std_srvs REQUIRED)
 find_package(nav2_util REQUIRED)
 find_package(tf2_ros REQUIRED)
-# find_package(amazon_robot_msg REQUIRED)
+find_package(amazon_robot_msg REQUIRED)
 
 # nav2_package()
 
@@ -52,6 +52,7 @@ set(dependencies
   std_srvs
   nav2_util
   tf2_ros
+  amazon_robot_msg
 )
 
 add_library(amazon_robot_all_goals_achieved_condition_bt_node SHARED plugins/condition/all_goals_achieved_condition.cpp)

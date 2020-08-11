@@ -30,6 +30,8 @@
 #include "rclcpp_action/rclcpp_action.hpp"
 #include "tf2_ros/transform_listener.h"
 #include "tf2_ros/create_timer_ros.h"
+#include "amazon_robot_msg/action/follow_targets.hpp"
+
 
 namespace amazon_robot_controller
 {
@@ -85,12 +87,12 @@ protected:
    */
   nav2_util::CallbackReturn on_shutdown(const rclcpp_lifecycle::State & state) override;
 
-  using Action = amazon_robot_msgs::action::FolowTargets;
+  using Action = amazon_robot_msg::action::FollowTargets;
 
   using ActionServer = nav2_util::SimpleActionServer<Action>;
 
 
-  // Our action server implements the FollowWaypoints action
+  // Our action server implements the FollowTargets action
   std::unique_ptr<ActionServer> action_server_;
 
   /**
