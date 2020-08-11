@@ -18,7 +18,7 @@ find_package(nav2_util REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(amazon_robot_msg REQUIRED)
 
-# nav2_package()
+nav2_package()
 
 include_directories(
   include

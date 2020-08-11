@@ -107,8 +107,8 @@ protected:
 
   /**
    * @brief Replace current BT with another one
-   * @param bt_xml_filename The file containing the new BT
-   * @return true if the resulting BT correspond to the one in bt_xml_filename. false
+   * @param controller_bt_xml_filename The file containing the new BT
+   * @return true if the resulting BT correspond to the one in controller_bt_xml_filename. false
    * if something went wrong, and previous BT is mantained
    */
   bool loadBehaviorTree(const std::string & bt_id);

@@ -32,7 +32,7 @@ namespace amazon_robot_controller
 
 
 RobotController::RobotController(bool use_bond)
-: nav2_util::LifecycleNode("bt_waypoint_follower", "", false),
+: nav2_util::LifecycleNode("robot_controller", "", false),
   use_bond_(use_bond)
 {
   RCLCPP_INFO(get_logger(), "Creating");
@@ -63,7 +63,7 @@ RobotController::RobotController(bool use_bond)
   };
 
   // Declare this node's parameters
-  declare_parameter("default_bt_xml_filename");
+  declare_parameter("controller_bt_xml_filename");
   declare_parameter("plugin_lib_names", plugin_libs);
   declare_parameter("transform_tolerance", rclcpp::ParameterValue(0.1));
   declare_parameter("global_frame", std::string("map"));
@@ -114,11 +114,12 @@ RobotController::on_configure(const rclcpp_lifecycle::State & /*state*/)
   blackboard_->set<int>("joint_position", 0);  // NOLINT
 
   // Get the BT filename to use from the node parameter
-  std::string bt_xml_filename;
-  get_parameter("bt_xml_filename", bt_xml_filename);
+  std::string controller_bt_xml_filename;
+  get_parameter("controller_bt_xml_filename", controller_bt_xml_filename);
 
-  if (!loadBehaviorTree(bt_xml_filename)) {
-    RCLCPP_ERROR(get_logger(), "Error loading XML file: %s", bt_xml_filename.c_str());
+
+  if (!loadBehaviorTree(controller_bt_xml_filename)) {
+    RCLCPP_ERROR(get_logger(), "Error loading XML file: %s", controller_bt_xml_filename.c_str());
     return nav2_util::CallbackReturn::FAILURE;
   }
 
@@ -126,13 +127,16 @@ RobotController::on_configure(const rclcpp_lifecycle::State & /*state*/)
 }
 
 bool
-RobotController::loadBehaviorTree(const std::string & bt_xml_filename)
+RobotController::loadBehaviorTree(const std::string & controller_bt_xml_filename)
 {
   // Read the input BT XML from the specified file into a string
-  std::ifstream xml_file(bt_xml_filename);
+  std::ifstream xml_file(controller_bt_xml_filename);
+
+  RCLCPP_INFO(get_logger(), controller_bt_xml_filename);
+
 
   if (!xml_file.good()) {
-    RCLCPP_ERROR(get_logger(), "Couldn't open input XML file: %s", bt_xml_filename.c_str());
+    RCLCPP_ERROR(get_logger(), "Couldn't open input XML file: %s", controller_bt_xml_filename.c_str());
     return false;
   }
 
@@ -140,7 +144,7 @@ RobotController::loadBehaviorTree(const std::string & bt_xml_filename)
     std::istreambuf_iterator<char>(xml_file),
     std::istreambuf_iterator<char>());
 
-  RCLCPP_DEBUG(get_logger(), "Behavior Tree file: '%s'", bt_xml_filename.c_str());
+  RCLCPP_DEBUG(get_logger(), "Behavior Tree file: '%s'", controller_bt_xml_filename.c_str());
   RCLCPP_DEBUG(get_logger(), "Behavior Tree XML: %s", xml_string.c_str());
 
   // Create the Behavior Tree from the XML input
