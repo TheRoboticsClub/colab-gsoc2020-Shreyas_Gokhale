@@ -37,10 +37,11 @@ public:
   void start_server()
   {
     using namespace std::placeholders;
+    RCLCPP_INFO(get_logger(), "Starting Server");
 
     repeat_sentence_action_server_ = rclcpp_action::create_server<NavigateToPose>(
       shared_from_this(),
-      "navigate_to_pose",
+      "navigate_to_pose2",
       std::bind(&Nav2Sim::handle_goal, this, _1, _2),
       std::bind(&Nav2Sim::handle_cancel, this, _1),
       std::bind(&Nav2Sim::handle_accepted, this, _1));

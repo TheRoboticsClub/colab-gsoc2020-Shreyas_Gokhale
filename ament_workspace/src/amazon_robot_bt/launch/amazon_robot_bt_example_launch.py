@@ -37,6 +37,10 @@ def generate_launch_description():
     stdout_linebuf_envvar = SetEnvironmentVariable(
         'RCUTILS_CONSOLE_STDOUT_LINE_BUFFERED', '1')
 
+
+    lifecycle_nodes = ['move']
+
+
     # plansys2_cmd = IncludeLaunchDescription(
     #     PythonLaunchDescriptionSource(os.path.join(
     #         get_package_share_directory('amazon_robot_bringup'),
@@ -62,6 +66,16 @@ def generate_launch_description():
           }
         ])
 
+    nav2_cmd = Node(
+            package='amazon_robot_bt',
+            executable='nav2_sim_node',
+            name='nav2_node',
+            namespace=namespace,
+            output='screen'
+            )
+
+
+
     # transport_cmd = Node(
     #     package='plansys2_bt_actions',
     #     executable='bt_action_node',
@@ -76,6 +90,18 @@ def generate_launch_description():
     #       }
     #     ])
 
+
+    lifecycle_node_cmd  =  Node(
+          package='nav2_lifecycle_manager',
+          executable='lifecycle_manager',
+          name='lifecycle_manager_navigation',
+          output='screen',
+          parameters=[{'use_sim_time': True},
+                      {'autostart': True},
+                      {'node_names': lifecycle_nodes}])
+
+
+
     ld = LaunchDescription()
 
     # Set environment variables
@@ -86,6 +112,9 @@ def generate_launch_description():
     # ld.add_action(plansys2_cmd)
 
     ld.add_action(move_cmd)
+    ld.add_action(nav2_cmd)
+    ld.add_action(lifecycle_node_cmd)
+
     # ld.add_action(transport_cmd)
     # ld.add_action(assemble_cmd)
 

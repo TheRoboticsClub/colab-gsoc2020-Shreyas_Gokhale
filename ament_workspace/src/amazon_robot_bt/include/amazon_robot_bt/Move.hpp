@@ -17,12 +17,13 @@
 #include <string>
 #include <map>
 
-#include "geometry_msgs/msg/pose2_d.hpp"
-#include "nav2_msgs/action/navigate_to_pose.hpp"
+#include <string>
 
+#include "geometry_msgs/msg/point.hpp"
+#include "geometry_msgs/msg/quaternion.hpp"
+#include "nav2_msgs/action/navigate_to_pose.hpp"
 #include "nav2_behavior_tree/bt_action_node.hpp"
-#include "behaviortree_cpp_v3/behavior_tree.h"
-#include "behaviortree_cpp_v3/bt_factory.h"
+
 
 namespace nav2_behavior_tree
 {
@@ -30,24 +31,28 @@ namespace nav2_behavior_tree
 class Move : public BtActionNode<nav2_msgs::action::NavigateToPose>
 {
 public:
-  explicit Move(
+  Move(
     const std::string & xml_tag_name,
     const std::string & action_name,
     const BT::NodeConfiguration & conf);
 
   void on_tick() override;
-  BT::NodeStatus on_success() override;
+  // BT::NodeStatus on_success() override;
 
   static BT::PortsList providedPorts()
   {
-    return {
-      BT::InputPort<std::string>("goal")
-    };
+    return providedBasicPorts(
+      {
+        BT::InputPort<std::string>("goal", "Pallet ID"),
+
+        // BT::InputPort<geometry_msgs::msg::PoseStamped>("goal", "Destination to plan to"),
+      });
   }
+
 
 private:
   int goal_reached_;
-  std::map<std::string, geometry_msgs::msg::Pose2D> waypoints_;
+  std::map<std::string, geometry_msgs::msg::Pose> waypoints_;
 };
 
 } 
