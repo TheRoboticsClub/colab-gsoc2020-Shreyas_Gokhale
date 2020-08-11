@@ -21,12 +21,14 @@ find_package(builtin_interfaces REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(nav2_common REQUIRED)
 find_package(action_msgs REQUIRED)
-
 find_package(ament_cmake REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "action/MoveTo.action"
+  "action/FollowTargets.action"
+  "msg/LoadPosePair.msg"
   DEPENDENCIES builtin_interfaces geometry_msgs std_msgs action_msgs nav_msgs
 )
 

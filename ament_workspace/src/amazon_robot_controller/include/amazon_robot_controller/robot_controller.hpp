@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#ifndef AMAZON_ROBOT_CONTROLLER__ROBOT_CONTROLLER_HPP_
+#define AMAZON_ROBOT_CONTROLLER__ROBOT_CONTROLLER_HPP_
+
+
+
 #include <memory>
 #include <string>
 #include <vector>
@@ -80,9 +85,10 @@ protected:
    */
   nav2_util::CallbackReturn on_shutdown(const rclcpp_lifecycle::State & state) override;
 
-  using Action = amazon_robot_msg::action::MoveTo;
+  using Action = amazon_robot_msgs::action::FolowTargets;
 
   using ActionServer = nav2_util::SimpleActionServer<Action>;
+
 
   // Our action server implements the FollowWaypoints action
   std::unique_ptr<ActionServer> action_server_;
@@ -90,7 +96,7 @@ protected:
   /**
    * @brief Action server callbacks
    */
-  void moveTo();
+  void followTargets();
 
   /**
    * @brief Initialize blackboard
@@ -128,3 +134,4 @@ protected:
 };
 
 }
+#endif

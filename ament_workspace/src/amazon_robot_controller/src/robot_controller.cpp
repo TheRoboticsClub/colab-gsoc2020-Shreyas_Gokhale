@@ -93,7 +93,7 @@ RobotController::on_configure(const rclcpp_lifecycle::State & /*state*/)
     get_node_clock_interface(),
     get_node_logging_interface(),
     get_node_waitables_interface(),
-    "move_to", std::bind(&RobotController::moveTo, this));
+    "follow_targets", std::bind(&RobotController::followTargets, this));
 
   // Get the libraries to pull plugins from
   plugin_lib_names_ = get_parameter("plugin_lib_names").as_string_array();
@@ -110,6 +110,7 @@ RobotController::on_configure(const rclcpp_lifecycle::State & /*state*/)
   blackboard_->set<bool>("path_updated", false);  // NOLINT
   blackboard_->set<bool>("initial_pose_received", false);  // NOLINT
   blackboard_->set<int>("number_recoveries", 0);  // NOLINT
+  blackboard_->set<int>("joint_position", 0);  // NOLINT
 
   // Get the BT filename to use from the node parameter
   std::string bt_xml_filename;
@@ -215,14 +216,22 @@ RobotController::on_shutdown(const rclcpp_lifecycle::State & /*state*/)
 
 
 void
-RobotController::moveTo()
+RobotController::followTargets()
 {
   auto goal = action_server_->get_current_goal();
-  if (goal->poses.size() == 0) {
+  if (goal->loadposepair.size() == 0) {
     RCLCPP_ERROR(get_logger(), "Goal has no pose. Terminating current goal.");
     action_server_->terminate_current();
     return;
   }
+
+  // if (goal->load.size() == 0) {
+  //   RCLCPP_ERROR(get_logger(), "Goal has no load. Terminating current goal.");
+  //   action_server_->terminate_current();
+  //   return;
+  // }
+
+
   initializeBlackboard(goal);
 
   auto is_canceling = [this]() {
@@ -239,6 +248,7 @@ RobotController::moveTo()
       return action_server_->is_cancel_requested();
     };
 
+
   std::shared_ptr<Action::Feedback> feedback_msg = std::make_shared<Action::Feedback>();
 
   auto on_loop = [&]() {
@@ -246,10 +256,15 @@ RobotController::moveTo()
         RCLCPP_INFO(get_logger(), "Received goal preemption request");
         action_server_->accept_pending_goal();
         auto goal = action_server_->get_current_goal();
-        if (goal->poses.size() == 0) {
+        if (goal->loadposepair.size() == 0) {
           RCLCPP_ERROR(get_logger(), "Goal has no pose. Terminating current goal.");
           action_server_->terminate_current();
-        } else {
+        }
+        // else if (goal->load.size() == 0) {
+        //   RCLCPP_ERROR(get_logger(), "Goal has no load. Terminating current goal.");
+        //   action_server_->terminate_current();
+        // }
+        else {
           initializeBlackboard(goal);
         }
       }
@@ -259,6 +274,7 @@ RobotController::moveTo()
       feedback_msg->current_waypoint = current_waypoint_idx;
       action_server_->publish_feedback(feedback_msg);
     };
+
 
   // Execute the BT that was previously created in the configure step
   nav2_behavior_tree::BtStatus rc = bt_->run(&tree_, on_loop, is_canceling);
@@ -291,10 +307,10 @@ void
 RobotController::initializeBlackboard(std::shared_ptr<const Action::Goal> goal)
 {
   // Update the goals on the blackboard
-  blackboard_->set("goals", goal->poses);
+  blackboard_->set("goals", goal->loadposepair);
   blackboard_->set("current_waypoint_idx", 0);
-  blackboard_->set("num_waypoints", goal->poses.size());
-  blackboard_->set("goal", goal->poses[0]);
+  blackboard_->set("num_waypoints", goal->loadposepair.size());
+  blackboard_->set("goal", goal->loadposepair[1].pose);
   blackboard_->set("goal_achieved", false);
 }
 
