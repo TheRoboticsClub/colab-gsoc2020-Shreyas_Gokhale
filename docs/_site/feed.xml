@@ -1,4 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-08T02:06:40+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">2x !</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/two-x" rel="alternate" type="text/html" title="2x !" /><published>2020-08-08T01:30:00+02:00</published><updated>2020-08-08T01:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/two-x</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/two-x">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-17T15:16:38+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">New Stuff</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff" rel="alternate" type="text/html" title="New Stuff" /><published>2020-08-17T13:30:00+02:00</published><updated>2020-08-17T13:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff">&lt;blockquote&gt;
+  &lt;p&gt;Issues Pending:&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/ros-planning/navigation2/issues/1933&quot;&gt;#1933&lt;/a&gt; Nav2 local_costmap crash issues&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/11&quot;&gt;#11&lt;/a&gt; Separate Action server for issuing action commands for robot controller&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/9&quot;&gt;#9&lt;/a&gt; Multi Robot Discussion&lt;/p&gt;
+
+  &lt;p&gt;Issues Solved:&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/12&quot;&gt;#12&lt;/a&gt; Creating a framework to add new new functionality with Nav2&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;week-11-blog&quot;&gt;Week 11 Blog&lt;/h1&gt;
+
+&lt;p&gt;The last week was certainly one of the most happening ones (and in my opinion, the most challenging one) The joy you get when your code works after endless hours of debugging is amazing, but sadly that didn’t last long. Although we have everything ready which we need, the navigation2 integration has some creases which we need to iron out.&lt;/p&gt;
+
+&lt;p&gt;Before we go to the development part of our exercise, I want you to get a feel of how it is working. So lets do a quick dry run.&lt;/p&gt;
+
+&lt;h2 id=&quot;dry-run&quot;&gt;Dry run&lt;/h2&gt;
+
+&lt;p&gt;Start by cloning the repo. If you are debugging, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;foxy-devel&lt;/code&gt;  branch of &lt;a href=&quot;https://github.com/shreyasgokhale/CustomRobots.git&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;https://github.com/shreyasgokhale/CustomRobots.git&lt;/code&gt;&lt;/a&gt; . But if you just want to see how everything is working, clone &lt;a href=&quot;https://github.com/shreyasgokhale/Amazon-Robot.git&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;https://github.com/shreyasgokhale/Amazon-Robot.git&lt;/code&gt;&lt;/a&gt;  and run&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xhost +&lt;span class=&quot;s2&quot;&gt;&quot;local:docker@&quot;&lt;/span&gt; 
+docker-compose up &lt;span class=&quot;nt&quot;&gt;--build&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This fetches everything using docker and runs &lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_warehouse_world.py&lt;/code&gt; launch file.  To make it easier, everything is organised from our bringup directory. This file, launches other files and nodes and so on. In the end you will see the familiar RViz and Gazebo Windows. It will take a while to load, have some patience 😅. Finally, once everything is ready, localize our robot in approximate position of the map.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/blog-images/week-11/UninitalizedRViz.png&quot; alt=&quot;Uninitalized RVIZ&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Click on &lt;code class=&quot;highlighter-rouge&quot;&gt;2D Pose estimate&lt;/code&gt; button and estimate our pose on the map. Approximate is fine. This will initialize our nav stack. Then, click on &lt;code class=&quot;highlighter-rouge&quot;&gt;waypoint mode&lt;/code&gt; and estimate the pose again. This time, it will initialize our plugin. Then, set your pickup and dropoff points using &lt;code class=&quot;highlighter-rouge&quot;&gt;Navigation Goal&lt;/code&gt; button and click on &lt;code class=&quot;highlighter-rouge&quot;&gt;Start Navigation&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/blog-images/week-11/SetNav.gif&quot; alt=&quot;Gazebo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/blog-images/week-11/gazebo.png&quot; alt=&quot;Gazebo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The robot will start moving. When it reaches our first goal point, it will actuate the lift joint to &lt;code class=&quot;highlighter-rouge&quot;&gt;Load&lt;/code&gt; position- making the pallet loaded on the robot. It will go on to the next point and unload the pallet.&lt;/p&gt;
+
+&lt;div class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/F1WELXcg364&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Is your robot stuck and never reaches the goal? That is because we don’t have a costmap! Why you ask? There is a bug in the repo which crashes the controller when we have a working local costmap! We are trying to fix it soon.&lt;/p&gt;
+
+&lt;p&gt;Okay, what just happened? For that, we need to understand what are behaviour trees and how our code is structured.&lt;/p&gt;
+
+&lt;h2 id=&quot;understanding-the-core-structure&quot;&gt;Understanding the core structure&lt;/h2&gt;
+
+&lt;p&gt;Let’s start with design choices that we had for making our use case.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;The quick and easy (but not ideal) one:&lt;/strong&gt;  We can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigateToPose&lt;/code&gt; action supplied by Navigation2 to just send goals to the robots. Then we handle everything else (loading pallets, planning) in our central planner by issuing commands to each robot. This is not a bad choice, but we don’t leverage the capabilities of behaviour trees in this case.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The not-so-quick (and easy) one:&lt;/strong&gt; Creating our custom behaviour tree nodes paired with the plugins and node behaviours. We can leverage &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigateToPose&lt;/code&gt; behaviour tree node in order to create even a bigger behaviour tree. We can expand this with various conditional and decision nodes in additions to the action plugins, making it even more complex. This way, we can embed our robot behaviour in the tree itself. But this is &lt;em&gt;significantly&lt;/em&gt; more convoluted in terms of software.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As our repo will be used as a reference to create more ROS2 navigation Robots and behaviours, we decided to go with the second one. Now summing all of our previous developments (blogs &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/two-x&quot;&gt;2x&lt;/a&gt; and &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/finding-the-way&quot;&gt;Finding The Way&lt;/a&gt; ), we can define a final end goals for our system:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;A self contained amazon robot package which includes all the gazebo worlds, models, launch files, navigation controllers, plugins and other necessary components to be able to launch a complete amazon warehouse scenario.&lt;/li&gt;
+  &lt;li&gt;The warehouse scenario can demonstrate loading up of pallets from pick up zones and placing them in the drop off zones. Our custom robot uses it’s lift joint which actuates using gazebo services for loading.&lt;/li&gt;
+  &lt;li&gt;The behaviours of robot: loading, drop-off, navigating, recovering from situations are all explained using behaviour trees: which we can edit, modify, and change according to our scenario.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ros-planning/navigation2/tree/master/nav2_behavior_tree&quot;&gt;nav2_behaviour_tree&lt;/a&gt;  is the template package which offers a way of including externally created behaviour trees into navigation2. We will be leveraging the &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigateToPose&lt;/code&gt; node of behaviour tree to include it in our own behaviour tree and node packages.  This node will be called as &lt;code class=&quot;highlighter-rouge&quot;&gt;FollowTargets&lt;/code&gt; . If you also want to create you own custom behaviours depending on Navigation2, then following writeup might also help you. So let’s begin,&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-followtargets-and-corresponding-nodes&quot;&gt;Creating &lt;code class=&quot;highlighter-rouge&quot;&gt;FollowTargets&lt;/code&gt; and corresponding nodes&lt;/h2&gt;
+
+&lt;p&gt;In order to create our very own  node, we need 3 things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;ROS2 action corresponding to our node&lt;/li&gt;
+  &lt;li&gt;Behaviour tree which implements this node&lt;/li&gt;
+  &lt;li&gt;C++ source and header files showcasing its usage.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;But what controls the robot? In our case, this will be done by a common task planner. This centralised planner will issue tasks to the robot and will keep a track of things.&lt;/p&gt;
+
+&lt;p&gt;Don’t get confused! We have an action server representing our robot’s &lt;code class=&quot;highlighter-rouge&quot;&gt;FollowTarget&lt;/code&gt; action. This makes our planner an action client for the robot. But in big order of things, our robot is essentially a service to the centralized planner and it is the centralized planner who calls the shots. Hence, architecturally, the planner &lt;em&gt;acts&lt;/em&gt; as a server which issues goals for our robot.  For starting out, we will be using rviz plugins for our action client but the task of the reader is to implement one by their own.&lt;/p&gt;
+
+&lt;p&gt;This &lt;code class=&quot;highlighter-rouge&quot;&gt;FollowTarget&lt;/code&gt; node will accept list of poses and their corresponding load/unload action as an input.( see action message) The string will dictate what action we have to perform (= load or unload). As we evolve our application further, we will include more complex behaviours such as different actions and ability to add stops. For now, we already have a quite a lot to do.&lt;/p&gt;
+
+&lt;h3 id=&quot;amazon-robot-controller&quot;&gt;Amazon Robot Controller&lt;/h3&gt;
+
+&lt;p&gt;Controller is heart of our operations. It is, in essence, an action server which works with our behaviour trees. Also, it is a lifecycle node in ROS2 terms which is managed by &lt;code class=&quot;highlighter-rouge&quot;&gt;nav2_lifecycle_manager&lt;/code&gt;. These nodes start as unconfigured and they have different stages of operation. At times, for example &lt;code class=&quot;highlighter-rouge&quot;&gt;on_activate&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;on_destoy&lt;/code&gt; , appropriate functions are called to felicitate the cause. Our robot controller also registers our &lt;code class=&quot;highlighter-rouge&quot;&gt;FollowTarget&lt;/code&gt; action server.&lt;/p&gt;
+
+&lt;p&gt;For our custom behaviours, we will be implementing our own plugins. Consider the example of one such implemented plugin: &lt;code class=&quot;highlighter-rouge&quot;&gt;LoadPallet&lt;/code&gt; . In &lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot/amazon_robot_controller/plugins/action/load_pallet.cpp&lt;/code&gt; , you will find the code related the plugin. It is called in the way our behaviour tree is arranged in &lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot/amazon_robot_controller/behavior_trees/follow_waypoints_and_load.xml&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;To Be Continued…&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Eis to epanideín!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse-robot" /><category term="exercise" /><category term="gazebo" /><category term="ros2" /><category term="nav2" /><category term="joint" /><category term="week-11" /><summary type="html">Issues Pending: #1933 Nav2 local_costmap crash issues #11 Separate Action server for issuing action commands for robot controller #9 Multi Robot Discussion Issues Solved: #12 Creating a framework to add new new functionality with Nav2</summary></entry><entry><title type="html">2x !</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/two-x" rel="alternate" type="text/html" title="2x !" /><published>2020-08-08T01:30:00+02:00</published><updated>2020-08-08T01:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/two-x</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/two-x">&lt;blockquote&gt;
   &lt;p&gt;Issues Resloved:&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/10&quot;&gt;#10&lt;/a&gt; Gazebo Import
@@ -678,96 +770,4 @@ But sadly, I could not find many well defined robot models for ROS2, except tb3 
 
 &lt;p&gt;&lt;img src=&quot;assets/blog-images/week-2/AmazonExerciseDocker.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Doei!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="cmake" /><category term="docker" /><category term="porting" /><category term="week-2" /><summary type="html">Issues Fixed: #3 with PR #4.</summary></entry><entry><title type="html">And we have a liftoff!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff" rel="alternate" type="text/html" title="And we have a liftoff!" /><published>2020-06-03T11:00:00+02:00</published><updated>2020-06-03T11:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff">&lt;blockquote&gt;
-  &lt;p&gt;Issues Fixed:&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;https://github.com/JdeRobot/assets/pull/53&quot;&gt;#53,54&lt;/a&gt; &lt;em&gt;“Adding Noetic support for repo”&lt;/em&gt; with PRs &lt;a href=&quot;https://github.com/JdeRobot/assets/pull/54&quot;&gt;#54&lt;/a&gt; for Jderobot_assets,
-and &lt;a href=&quot;https://github.com/ros/rosdistro/pull/25236&quot;&gt;#25236&lt;/a&gt; for ROS distro with &lt;a href=&quot;https://github.com/JdeRobot/assets-release/commits?author=shreyasgokhale&quot;&gt;commits&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;week-1-blog&quot;&gt;Week 1 Blog&lt;/h1&gt;
-
-&lt;p&gt;This week begins the official start of the 2020 GSoC and with that, we have the first package release from Jderobot Academy for ROS Noetic: Jderobot-Assets! Although porting a simple dependancies packages was not so challenging, the release process was indeed an interesting one!&lt;/p&gt;
-
-&lt;h2 id=&quot;releasing-ros-packages&quot;&gt;Releasing ROS Packages&lt;/h2&gt;
-
-&lt;p&gt;Software in ROS is organized in packages and that is what makes ROS so easy to use. Since the introduction of catkin, ros packages are super easy to use, make and also to distribute. But what does it exactly mean when you want to release the package. Let me explain it with a story.&lt;/p&gt;
-
-&lt;h3 id=&quot;why-to-release&quot;&gt;Why to release?&lt;/h3&gt;
-
-&lt;p&gt;Suppose you have created a package, have tested it and it works quite fine locally. You currently have it in your catkin_workspace/src folder and now you want to give to give it to your friends.&lt;/p&gt;
-
-&lt;p&gt;Easy, you just upload the repo on github and tell your friends to download it.&lt;/p&gt;
-
-&lt;p&gt;Your friends like your package and they recommend to their friends. Your package is instant hit and now everyone wants it. Meanwhile people are contributing to your github repo to improve the package.&lt;/p&gt;
-
-&lt;p&gt;One day you find out that when you pull the latest changes, your package is not getting compiled. But some other user has no such problem. Somewhere, there was a package, dependent on your package, which is now also not working. You have now no clue what broke the package, how to restore it to a working version. At the same time, there are many users which have different platforms and they need an easier way to get the package rather than doing a git pull.&lt;/p&gt;
-
-&lt;p&gt;Now you wished only if there existed some kind of common infrastructure which can make all these problems go away.&lt;/p&gt;
-
-&lt;p&gt;Then you remember there exists such a place: the official ros package repository. (AKA the place from where you can just do  &lt;code class=&quot;highlighter-rouge&quot;&gt;apt install ros-&amp;lt;distro&amp;gt;-&amp;lt;package&amp;gt;&lt;/code&gt; . In short, this is what it means by releasing the package.&lt;/p&gt;
-
-&lt;h3 id=&quot;prepare-for-release&quot;&gt;Prepare for release&lt;/h3&gt;
-
-&lt;p&gt;For release, we need a couple of things&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;The package must be in &lt;a href=&quot;http://wiki.ros.org/ROS/Tutorials/CreatingPackage&quot;&gt;right format&lt;/a&gt;, with &lt;code class=&quot;highlighter-rouge&quot;&gt;package.xml&lt;/code&gt; filled in and ready for the release.&lt;/li&gt;
-  &lt;li&gt;The package must be indexed in the &lt;a href=&quot;https://github.com/ros/rosdistro&quot;&gt;rosdistro&lt;/a&gt; by creating a PR&lt;/li&gt;
-  &lt;li&gt;Package needs to be converted into a binary (&lt;code class=&quot;highlighter-rouge&quot;&gt;ros-rosdistro-example-package&lt;/code&gt;)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Our package will have 2 repositories, one where we put our package and another one with &lt;package-name&gt;-release. The second repository is only for recording releases **and you don't have to edit it manually.**&lt;/package-name&gt;&lt;/p&gt;
-
-&lt;p&gt;Now, to make our lives easier, ROS has a release automation tool called &lt;a href=&quot;http://wiki.ros.org/bloom&quot;&gt;bloom&lt;/a&gt;. We can also do everything we mentioned using bloom. But before that, we need to check a few things:&lt;/p&gt;
-
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Check if xml is in correct format (the first line must be xml indication tag, don’t put comments there!) Do &lt;strong&gt;not&lt;/strong&gt; edit the version and other information manually. It will be updated during the bloom release.&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Do you have push access to the main package repository and the release repository? (if they exist already) Otherwise, follow &lt;a href=&quot;http://wiki.ros.org/bloom/Tutorials/FirstTimeRelease&quot;&gt;this&lt;/a&gt; for the first time release&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Have you merged all of your changes in the branch you are aiming for the release?&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Is bloom installed? &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install python-bloom&lt;/code&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Is your package already indexed? If not, follow &lt;a href=&quot;http://wiki.ros.org/rosdistro/Tutorials/Indexing%20Your%20ROS%20Repository%20for%20Documentation%20Generation&quot;&gt;this&lt;/a&gt;.&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Make sure you have authorised bloom for github PRs using &lt;a href=&quot;http://wiki.ros.org/bloom/Tutorials/GithubManualAuthorization&quot;&gt;this&lt;/a&gt; tutorial.&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Have you read the documentation on &lt;a href=&quot;http://wiki.ros.org/bloom&quot;&gt;here&lt;/a&gt;?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Now we can do the release:&lt;/p&gt;
-
-&lt;h3 id=&quot;the-release-process&quot;&gt;The release process&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;Generate &lt;code class=&quot;highlighter-rouge&quot;&gt;changelog.rst&lt;/code&gt; using &lt;code class=&quot;highlighter-rouge&quot;&gt;catkin_generate_changelog&lt;/code&gt; for a new version update. The file will be automatically updated based on your previous commits and the contributers. Edit if necessary.&lt;/li&gt;
-  &lt;li&gt;Commit and push changes.&lt;/li&gt;
-  &lt;li&gt;Prepare package for release using &lt;code class=&quot;highlighter-rouge&quot;&gt;catkin_prepare_release&lt;/code&gt; . This will increment the version of your package ( 1.0.2 →1.0.3) and tag it on git for appropriate release.&lt;/li&gt;
-  &lt;li&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;bloom-release&lt;/code&gt; with appropriate command parameters.
-    &lt;ol&gt;
-      &lt;li&gt;If a completely new release: &lt;code class=&quot;highlighter-rouge&quot;&gt;bloom-release --rosdistro &amp;lt;ros_distro&amp;gt; --track &amp;lt;ros_distro&amp;gt; &amp;lt;your_repository_name&amp;gt; --edit&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;If updating distro, for example hydro &lt;code class=&quot;highlighter-rouge&quot;&gt;bloom-release foo --track hydro --rosdistro hydro --new-track&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;If updating version for melodic &lt;code class=&quot;highlighter-rouge&quot;&gt;bloom-release foo --rosdistro melodic&lt;/code&gt;&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Follow on screen instructions. Keep options mostly the same except probably the branch from which you are going to deploy.&lt;/li&gt;
-  &lt;li&gt;The Bloom will do everything. Sit back and watch for errors.&lt;/li&gt;
-  &lt;li&gt;If everything goes fine, bloom will update release repo and also create a PR for ROS distro on behalf of your release.&lt;/li&gt;
-  &lt;li&gt;Wait for your PR to be approved (Might take a day or two)&lt;/li&gt;
-  &lt;li&gt;Do your victory dance!&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;This week I did all these things and finally published &lt;a href=&quot;https://github.com/JdeRobot/assets&quot;&gt;jderobot_assets&lt;/a&gt; package for ROS Noetic. The above guide was the summary of the instructions that I followed. However, the guide might be incorrect/ incomplete and I’ll be updating it as I port more packages.&lt;/p&gt;
-
-&lt;h2 id=&quot;one-docker-command-to-run-it-all&quot;&gt;One (docker) command to run it all&lt;/h2&gt;
-
-&lt;p&gt;I added a docker compose file which sets up the docker containers in a proper way. Also updated our academy image with multi stage builds and mesa packages so it can run GUI applications.&lt;/p&gt;
-
-&lt;p&gt;Now it can start the academy exercise effortlessly, with one command.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xhost +&lt;span class=&quot;s2&quot;&gt;&quot;local:docker@&quot;&lt;/span&gt; 
-docker-compose up &lt;span class=&quot;nt&quot;&gt;--build&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Docker will pull required images and copy exercise folders to launch the exercise.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/blog-images/week-1/amazon-warehouse.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Give it a go and report me if there are any issues!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Au revoir!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="release" /><category term="how-to" /><category term="week-1" /><summary type="html">Issues Fixed: #53,54 “Adding Noetic support for repo” with PRs #54 for Jderobot_assets, and #25236 for ROS distro with commits.</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Doei!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="cmake" /><category term="docker" /><category term="porting" /><category term="week-2" /><summary type="html">Issues Fixed: #3 with PR #4.</summary></entry></feed>
