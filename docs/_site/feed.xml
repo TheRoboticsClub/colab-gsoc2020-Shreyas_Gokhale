@@ -1,4 +1,266 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-17T15:16:38+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">New Stuff</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff" rel="alternate" type="text/html" title="New Stuff" /><published>2020-08-17T13:30:00+02:00</published><updated>2020-08-17T13:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-27T01:23:05+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">JdeMultibot</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/jde-multibot" rel="alternate" type="text/html" title="JdeMultibot" /><published>2020-08-27T01:00:00+02:00</published><updated>2020-08-27T01:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/jde-multibot</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/jde-multibot">&lt;blockquote&gt;
+  &lt;p&gt;Issues Solved:&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/ros-planning/navigation2/issues/1933&quot;&gt;#1933&lt;/a&gt; Nav2 local_costmap crash issues&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/11&quot;&gt;#11&lt;/a&gt; Separate Action server for issuing action commands for robot controller&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/9&quot;&gt;#9&lt;/a&gt; Multi Robot Discussion&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;week-12-blog&quot;&gt;Week 12 Blog&lt;/h1&gt;
+
+&lt;p&gt;After ~12 weeks of non-stop code marathon, we have now arrived at the very last leg of the GSoC journey. The goal of this summer: &lt;em&gt;“To create a multirobot exercise in ROS2”&lt;/em&gt; is now almost achieved. This week, we will dive into the nitty gritty details of our code, how ROS2 and Navigation2 are configured and all the things that you need to know before you can start working on solving the exercises. This week’s post will a bit lengthy, so bear with me.&lt;/p&gt;
+
+&lt;h3 id=&quot;fixing-last-weeks-problems&quot;&gt;Fixing last week’s problems&lt;/h3&gt;
+
+&lt;p&gt;After investigating why my simulation was crashing when local costmap was set, I finally found the reason.&lt;/p&gt;
+
+&lt;p&gt;The usual suspect: Gazebo
+&lt;img src=&quot;assets/blog-images/week-12/always-has-been-meme.jpeg&quot; alt=&quot;No gazebo devs, I don't blame you. The fault was in my config&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Gazebo didn’t publish the clock, which made everything useless as &lt;code class=&quot;highlighter-rouge&quot;&gt;use_sim_time&lt;/code&gt; was set to true. A quick fix in my config launch file and this was okay. But it didn’t solve everything.&lt;/p&gt;
+
+&lt;p&gt;The second problem was the map itself. When robot travelled in our old warehouse world, it always used to travel more than that shown in RViz, which I don’t fully understand why. (My guess: The old map was huge and this might have added a lot of latency between Navigation2 output and response from Gazebo). This meant that it always used to miss the goals/ crash into objects, even with valid costmaps. After considering every option that I had at this time ( we will have a discussion about SLAM and map later in this blog), I went with selecting a completely new world where navigation works quite predictably. One added benefit: This world is actually from amazon! It is the &lt;a href=&quot;https://github.com/aws-robotics/aws-robomaker-small-warehouse-world&quot;&gt;warehouse world from aws&lt;/a&gt;, &lt;a href=&quot;https://github.com/shreyasgokhale/aws-robomaker-small-warehouse-world&quot;&gt;ported and modified&lt;/a&gt; by me a bit to suit our purpose. It has some real life warehouse elements to it: Stray piles of boxes, big trays to keep stock etc. It is not perfect, but usable for now.&lt;/p&gt;
+
+&lt;p&gt;After tweaking some navigation parameters, everything seemed to work okay-ish. Phew.. Now we have Single and Multi robot exercises in ROS2 almost ready! After finishing up the walkthroughs, they will be published shortly on the Jderobot Academy website. For now, here is a sneak preview of what the warehouse and robot looks like:&lt;/p&gt;
+
+&lt;div class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/RxAlkDKQ23Y&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Before we rush to try it out, let’s go back to the basics and try to understand how the exercise is structured around.&lt;/p&gt;
+
+&lt;h2 id=&quot;single-amazon-robot-package&quot;&gt;Single amazon robot package&lt;/h2&gt;
+
+&lt;p&gt;If we look at our directory structure, we will see following:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+├── amazon_robot_bringup
+├── amazon_robot_controller
+├── amazon_robot_description
+├── amazon_robot_gazebo
+├── amazon_robot_msg
+├── amazon_robot_rviz_plugins
+├── aws-robomaker-small-warehouse-world
+├── docker
+├── docker-compose.yaml
+├── README.md
+└── start_simulation.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As we discussed the last time, the &lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot_controller&lt;/code&gt; is the heart of our operations. But what about other packages?&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot_bringup&lt;/code&gt; holds the startup scripts. We will come back to this later&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot_description&lt;/code&gt; has &lt;code class=&quot;highlighter-rouge&quot;&gt;.urdf&lt;/code&gt; files which are used by &lt;code class=&quot;highlighter-rouge&quot;&gt;robot_state_publisher&lt;/code&gt; . Robot states are quite important as every link and joint in the robot is described in some relation with other links and joints, ultimately coming back to the &lt;code class=&quot;highlighter-rouge&quot;&gt;base_link&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot_gazebo&lt;/code&gt; has &lt;code class=&quot;highlighter-rouge&quot;&gt;.sdf&lt;/code&gt; models of our robot and also other objects. These files are used by gazebo to simulate a robot, it’s sensors, other objects etc. These files also simulate behaviours, for example actuation behaviour of prismatic joint in our amazon robot.  They are quite important if you are creating a robot by yourself but for now, we just have to keep in mind that we are using &lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot2&lt;/code&gt; as our model.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot_msg&lt;/code&gt; are custom ros messages. In our case, this describes the action message &lt;code class=&quot;highlighter-rouge&quot;&gt;FollowTargets&lt;/code&gt; that we use to send targets to our robot.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot_rviz_plugins&lt;/code&gt; are, as the name suggests, rviz plugins which describe our rviz window. We are going to use rviz for setting initial pose, sending goals, sending waypoints and this library handles it.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;aws-robomaker-small-warehouse-world&lt;/code&gt; is a new addition. When experimenting, we noticed that our old warehouse map model doesn’t give correct results with Navigation2. Hence, we tried to swap it with a brand new world from actual amazon itself. It was released just a month ago and it is quite a faithful representation. We have modified it with our pallets and it is suitable for both: single and multi robot exercise.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker&lt;/code&gt; is for all the docker related files.&lt;/p&gt;
+
+&lt;p&gt;Yes, both NVIDIA and Intel are supported. Nvidia guys, just run the following command&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xhost +&lt;span class=&quot;s2&quot;&gt;&quot;local:docker@&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DISPLAY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$DISPLAY&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$XSOCK&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$XSOCK&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/.Xauthority:/root/.Xauthority  &lt;span class=&quot;nt&quot;&gt;--privileged&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;--net&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;host &lt;span class=&quot;nt&quot;&gt;--gpus&lt;/span&gt; all amazon_robot_amazon-exercise:latest /bin/bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Now that we know the overall architecture, I want to explain to you what happens when you launch an exercise using one of the bringup files.&lt;/p&gt;
+
+&lt;p&gt;Let’s take an example of  &lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot_in_aws_world.py&lt;/code&gt; file (&lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot/amazon_robot_bringup/bringup/launch/amazon_robot_in_aws_world.py&lt;/code&gt; ) which we use to launch the single robot exercise:&lt;/p&gt;
+
+&lt;p&gt;First few lines are basic imports and declaration of parameters.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ament_index_python.packages&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_package_share_directory&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;generate_launch_description&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Use Simulation time from gazebo
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;use_sim_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LaunchConfiguration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'use_sim_time'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'true'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+		&lt;span class=&quot;c1&quot;&gt;# Our bringup location
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;amazon_gazebo_package_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_package_share_directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'amazon_robot_gazebo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;amazon_gazebo_package_launch_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amazon_gazebo_package_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'launch'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;amazon_description_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_package_share_directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'amazon_robot_description'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;this_launch_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;realpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__file__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;....&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Create the launch configuration variables
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;slam&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LaunchConfiguration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'slam'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LaunchConfiguration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'namespace'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;use_namespace&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LaunchConfiguration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'use_namespace'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;map_yaml_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LaunchConfiguration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'map'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;use_sim_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LaunchConfiguration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'use_sim_time'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Notice how we are mentioning our own custom packages. Now we come to some important lines&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Map
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;declare_map_yaml_cmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DeclareLaunchArgument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'map'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;default_value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amazon_bringup_package_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'maps'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'aws_warehouse'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'map.yaml'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Full path to map file to load'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This launches our pre made map. This &lt;code class=&quot;highlighter-rouge&quot;&gt;map.yaml&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;map.pgm&lt;/code&gt; file is 2D gridmap representation of our environment. In an unknown environment, we can use SLAm ang generate our own map.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;declare_params_file_cmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DeclareLaunchArgument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'params_file'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;default_value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;amazon_bringup_package_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'params'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'nav2_params_with_control.yaml'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Full path to the ROS2 parameters file to use for all launched nodes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is our parameter file for navigation2, located at &lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot/amazon_robot_bringup/bringup/params/nav2_params_with_control.yaml&lt;/code&gt; . It looks something like this&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;amcl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ros__parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;use_sim_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;alpha1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;alpha2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;alpha3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;alpha4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;alpha5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;base_frame_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;base_footprint&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;beam_skip_distance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;beam_skip_error_threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.9&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;beam_skip_threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;do_beamskip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;global_frame_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;map&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;lambda_short&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;controller_server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ros__parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;use_sim_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;controller_frequency&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;20.0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;min_x_velocity_threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;min_y_velocity_threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;min_theta_velocity_threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;progress_checker_plugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;progress_checker&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;goal_checker_plugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;goal_checker&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;controller_plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FollowPath&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;robot_controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ros__parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;use_sim_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;controller_bt_xml_filename&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;follow_waypoints_and_load.xml&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;plugin_lib_names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nav2_wait_action_bt_node&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nav2_recovery_node_bt_node&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nav2_navigate_to_pose_action_bt_node&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amazon_robot_get_next_goal_action_bt_node&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amazon_robot_all_goals_achieved_condition_bt_node&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amazon_robot_load_pallet_action_bt_node&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This file is basically a representation of all the buttons of various components of the navigation stack that you can tweak. You can set the publish frequency high to update maps faster on the cost of higher compute power or set if either Lidar or 2d Pointcloud is used for creating costmap. For more information, have a look at the navigation2 documentation where the parameters are described quite neatly.&lt;/p&gt;
+
+&lt;p&gt;Did you notice the last &lt;code class=&quot;highlighter-rouge&quot;&gt;robot_controller&lt;/code&gt; node? That is our own custom robot controller node with it’s own parameters. For example, in multirobot exercise, I send the robot name to the controller using &lt;code class=&quot;highlighter-rouge&quot;&gt;robot_name: &quot;robot2&quot;&lt;/code&gt; parameter. It also specifies what behaviour tree is going to be used by our controller. In our case it is &lt;code class=&quot;highlighter-rouge&quot;&gt;follow_waypoints_and_load.xml&lt;/code&gt;. So, how does it look like?&lt;/p&gt;
+
+&lt;p&gt;The file, located at &lt;code class=&quot;highlighter-rouge&quot;&gt;amazon_robot/amazon_robot_controller/behavior_trees/follow_waypoints_and_load.xml&lt;/code&gt; describes how our robot is going to function. We have already discussed how behaviour trees work with nav2, but let’s go through our demo.&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;root&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;main_tree_to_execute=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MainTree&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;BehaviorTree&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ID=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MainTree&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;ReactiveFallback&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FollowTargets&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;AllGoalsAchieved&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;goal_achieved=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{goal_achieved}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;KeepRunningUntilFailure&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ReactiveSequence&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;GetNextGoal&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;goals=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{goals}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;goal=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{goal}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;goal_achieved=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{goal_achieved}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;NavigateToPose&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;goal=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{goal}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;server_name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navigate_to_pose&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;server_timeout=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;10&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;LoadPallet&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;load_queue=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{load_queue}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;SetBlackboard&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;output_key=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;goal_achieved&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ReactiveSequence&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/KeepRunningUntilFailure&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ReactiveFallback&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/BehaviorTree&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/root&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Our main node is &lt;code class=&quot;highlighter-rouge&quot;&gt;FollowTargets&lt;/code&gt;, which is also the name of our ros action. &lt;code class=&quot;highlighter-rouge&quot;&gt;FollowTargets&lt;/code&gt; runs until our goals are complete. If we open our tree in &lt;a href=&quot;https://github.com/BehaviorTree/Groot&quot;&gt;Groot&lt;/a&gt;, it looks like following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/blog-images/week-12/behaviour-tree.png&quot; alt=&quot;Behaviour Tree&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The tree structure is quite explanatory by itself. It follows the execution from left to right. We start executing waypoints one by one. &lt;code class=&quot;highlighter-rouge&quot;&gt;NavigateToPose&lt;/code&gt; loads its own subtree to compute path to a pose and navigate to it. Once it reaches at the destination, &lt;code class=&quot;highlighter-rouge&quot;&gt;LoadPallet&lt;/code&gt; node is activated and it loads or unloads our lift.
+We can also edit the BT structure, the way we want. For example, if we need more waiting time, we can add &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Wait wait_duration=&quot;5&quot;/&amp;gt;&lt;/code&gt; to the tags, and so on. More on that in the next blog.&lt;/p&gt;
+
+&lt;p&gt;Coming back to our launch script, now we are actually going to launch some nodes&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;n&quot;&gt;start_gazebo_server_cmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ExecuteProcess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;condition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IfCondition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;use_simulator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cmd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'gzserver'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'--verbose'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'-s'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'libgazebo_ros_init.so'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'-s'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'libgazebo_ros_factory.so'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'-s'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'libgazebo_ros_force_system.so'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cwd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;this_launch_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'screen'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The plugins are &lt;code class=&quot;highlighter-rouge&quot;&gt;libgazebo_ros_init.so&lt;/code&gt; for initializing clock (Yes! that was the missing part from last week’s exercise), &lt;code class=&quot;highlighter-rouge&quot;&gt;libgazebo_ros_factor.so&lt;/code&gt; for spawning robot and &lt;code class=&quot;highlighter-rouge&quot;&gt;libgazebo_ros_force_system.so&lt;/code&gt; for applying joint force on our prismatic joint.&lt;/p&gt;
+
+&lt;p&gt;After this, make a choice, should we run SLAM or should we run the localization&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/1CNsm9ZkHF0m4/source.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Well, it is not so straightforward. For our exercise, we are moving things around. And not just some tiny stuff, big pallets which are almost 4 times the size of our robot. Hence, moving will affect our map in a big way. Usually, when we use static maps for localization, the objects in the map are fixed. Hence, if we move something, and it is still represented at it’s old position in the map, the &lt;code class=&quot;highlighter-rouge&quot;&gt;amcl&lt;/code&gt; localizer won’t be much happy with this. The particle swarm is much dispersed and we can lose lock on our current position and get thrown away in some random corner of the map. This is exactly what happens sometimes now.&lt;/p&gt;
+
+&lt;p&gt;But if we want to use SLAM in ROS2, there is no other reliable package available than SLAM Toolbox. However, currently there are some issues with the LIDAR driver that we are using (rplidar from tb3 😪), so we can’t use that either. So we are stuck using some static map with localization and hope for the best that it works. We go ahead and load up the localization script, which loads the aws world that we described previously.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bringup_cmd &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; IncludeLaunchDescription&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        PythonLaunchDescriptionSource&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;os.path.join&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;amazon_bringup_package_dir, &lt;span class=&quot;s1&quot;&gt;'launch'&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;'bringup_launch.py'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;,
+        &lt;span class=&quot;nv&quot;&gt;launch_arguments&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'namespace'&lt;/span&gt;: namespace,
+                          &lt;span class=&quot;s1&quot;&gt;'use_namespace'&lt;/span&gt;: use_namespace,
+                          &lt;span class=&quot;s1&quot;&gt;'slam'&lt;/span&gt;: slam,
+                          &lt;span class=&quot;s1&quot;&gt;'map'&lt;/span&gt;: map_yaml_file,
+                          &lt;span class=&quot;s1&quot;&gt;'use_sim_time'&lt;/span&gt;: use_sim_time,
+                          &lt;span class=&quot;s1&quot;&gt;'params_file'&lt;/span&gt;: params_file,
+                          &lt;span class=&quot;s1&quot;&gt;'default_bt_xml_filename'&lt;/span&gt;: default_bt_xml_filename,
+                          &lt;span class=&quot;s1&quot;&gt;'autostart'&lt;/span&gt;: autostart&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;.items&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now the only thing left for us to do is spawn our robot! Keep in mind that namespacing and renaming the topics is handled by this script and you have to make sure that we are not duplicating any topics/actions/services when launching two robots&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;spawn_robot_cmd &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; IncludeLaunchDescription&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+                PythonLaunchDescriptionSource&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;os.path.join&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;amazon_bringup_package_dir, &lt;span class=&quot;s1&quot;&gt;'launch'&lt;/span&gt;,
+                                                        &lt;span class=&quot;s1&quot;&gt;'spawn_tb3_launch.py'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;,
+                &lt;span class=&quot;nv&quot;&gt;condition&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;IfCondition&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;spawn_robot&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,
+                &lt;span class=&quot;nv&quot;&gt;launch_arguments&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;={&lt;/span&gt;
+                                &lt;span class=&quot;s1&quot;&gt;'x_pose'&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;'0'&lt;/span&gt;,
+                                &lt;span class=&quot;s1&quot;&gt;'y_pose'&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;'0'&lt;/span&gt;,
+                                &lt;span class=&quot;s1&quot;&gt;'z_pose'&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;'0'&lt;/span&gt;,
+                                &lt;span class=&quot;s1&quot;&gt;'robot_name'&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;'amazon_robot'&lt;/span&gt;
+                                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;.items&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Boom! Soon enough our robots will be yeeted in the warehouse world, ready to be initialized and tasked. In case of multi-robot, two navigation stacks will be launched. You can see more details about how this looks in the last blog! Feel free to explore related scripts and parameters in order to understand more about the system.&lt;/p&gt;
+
+&lt;p&gt;Now, because you stuck with me for the entirety of this blog, I have a little surprize for you. Here is the video two robots, in our warehouse, collaborating with each other in a plan (and failing miserably in the end!). But the system is working exactly as it is expected to do.&lt;/p&gt;
+
+&lt;div class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/PTdZGqW39xE&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In the next blog, the exercises will be introduced and will be demonstrated! Until then!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;いって来ます!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse-robot" /><category term="multirobot" /><category term="exercise" /><category term="gazebo" /><category term="ros2" /><category term="nav2" /><category term="joint" /><category term="week-12" /><summary type="html">Issues Solved: #1933 Nav2 local_costmap crash issues #11 Separate Action server for issuing action commands for robot controller #9 Multi Robot Discussion</summary></entry><entry><title type="html">New Stuff</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff" rel="alternate" type="text/html" title="New Stuff" /><published>2020-08-17T13:30:00+02:00</published><updated>2020-08-17T13:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff">&lt;blockquote&gt;
   &lt;p&gt;Issues Pending:&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://github.com/ros-planning/navigation2/issues/1933&quot;&gt;#1933&lt;/a&gt; Nav2 local_costmap crash issues&lt;/p&gt;
@@ -740,34 +1002,4 @@ But sadly, I could not find many well defined robot models for ROS2, except tb3 
 
 &lt;p&gt;In the next week, the exercise will be launched, ready to be tested by the students!&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Näkemiin!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="comm" /><category term="connector" /><category term="porting" /><category term="week-3" /><summary type="html">Issues Fixed: #5 with PR #6. Added new branch for Jderobot/base -&amp;gt; noetic-devel with connector dependency added</summary></entry><entry><title type="html">Let’s start (c)making!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking" rel="alternate" type="text/html" title="Let's start (c)making!" /><published>2020-06-12T14:30:00+02:00</published><updated>2020-06-12T14:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/lets-start-cmaking">&lt;blockquote&gt;
-  &lt;p&gt;Issues Fixed:&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/3&quot;&gt;#3&lt;/a&gt; with PR &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/4/commits&quot;&gt;#4&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;week-2-blog&quot;&gt;Week 2 Blog&lt;/h1&gt;
-
-&lt;p&gt;I explained in my last &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff&quot;&gt;blog&lt;/a&gt; why it is essential to have packages regularly updated. But what if you are on the other side of the problem. You want to upgrade your package but your dependecies are not yet upgraded. This is the same issue that I was facing with jderobot/base . Our exercise is dependant on some libraries from base, but this package is in process of getting completely upgraded. Until then, I’ll have to &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; it myself!&lt;/p&gt;
-
-&lt;h2 id=&quot;cmake-build-system&quot;&gt;CMake Build system&lt;/h2&gt;
-
-&lt;p&gt;CMake is an open-source, cross-platform family of tools designed to build, test and package software.  It is used widely in software development, and not just for C/ C++.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-to-port&quot;&gt;What to port?&lt;/h2&gt;
-
-&lt;p&gt;Currently we have libraries in jderobot/base repository which are used to run the exercises. These libraries represent some tools, communication tools etc. However, most of them are out of date. For example, the comm library, which is still used as a backbone for communication in Python2 based jderobot exercises. However, we have switched to ros based middleware for communication which can be run on python 3 ( and therefore in latest ROS 1 and ROS 2 releases)&lt;/p&gt;
-
-&lt;p&gt;The goal here is to find all the related libraries in Jderobot base which my exercise depends on and then just create a simple cmake project which &lt;code class=&quot;highlighter-rouge&quot;&gt;make install&lt;/code&gt;s them. Now one of the ways is to find what is getting imported in python.&lt;/p&gt;
-
-&lt;p&gt;Fortunately, my mentor Pankhuri has already done some heavy lifting. She has configured some of the dependencies for her CarViz package. I used this repo as a reference and started adding modules are required.&lt;/p&gt;
-
-&lt;p&gt;I wanted to have a complete isolation from the base repository. Also, I wanted to know exactly what is required. Lastly, whatever I am doing must be reproducible.&lt;/p&gt;
-
-&lt;p&gt;By end of week 2, I was able to launch the exercise in ROS Noetic and also from a Dockerfile. On the user side, you just have to run the usual &lt;code class=&quot;highlighter-rouge&quot;&gt;docker-compose up --build&lt;/code&gt; But on the background, there are a lot of things happening.&lt;/p&gt;
-
-&lt;p&gt;Normally, I would have loved to explain all the fine details about CMake, Packaging and catkin. But, as the process of porting is still ongoing, the blog is going to be a bit shorter.  For now, I leave you with this gif and feel free to create issues / PRs on my repo!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;assets/blog-images/week-2/AmazonExerciseDocker.gif&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Doei!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="cmake" /><category term="docker" /><category term="porting" /><category term="week-2" /><summary type="html">Issues Fixed: #3 with PR #4.</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Näkemiin!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="comm" /><category term="connector" /><category term="porting" /><category term="week-3" /><summary type="html">Issues Fixed: #5 with PR #6. Added new branch for Jderobot/base -&amp;gt; noetic-devel with connector dependency added</summary></entry></feed>
