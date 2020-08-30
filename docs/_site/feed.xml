@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-27T01:23:05+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">JdeMultibot</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/jde-multibot" rel="alternate" type="text/html" title="JdeMultibot" /><published>2020-08-27T01:00:00+02:00</published><updated>2020-08-27T01:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/jde-multibot</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/jde-multibot">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-30T20:31:21+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Evaluation 3 Report</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-three-report" rel="alternate" type="text/html" title="Evaluation 3 Report" /><published>2020-08-30T19:00:00+02:00</published><updated>2020-08-30T19:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-three-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-three-report">&lt;h1 id=&quot;gsoc-phase-3-report&quot;&gt;GSoC Phase 3 Report&lt;/h1&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Week&lt;/th&gt;
+      &lt;th&gt;Dates&lt;/th&gt;
+      &lt;th&gt;Main Tasks&lt;/th&gt;
+      &lt;th&gt;Sub tasks completed&lt;/th&gt;
+      &lt;th&gt;Issues Resolved / PRs Merged&lt;/th&gt;
+      &lt;th&gt;Blog&lt;/th&gt;
+      &lt;th&gt;Published URL&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 10&lt;/td&gt;
+      &lt;td&gt;10th August - 16th August&lt;/td&gt;
+      &lt;td&gt;Finishing single robot ROS2 environment&lt;/td&gt;
+      &lt;td&gt;Complete model with working lift, Writing action plugin,  Finalizing structure for multi robot  exercise&lt;/td&gt;
+      &lt;td&gt;#10 Gazebo Import #7 ROS2 Amazon Robot model #1 ROS2 planning system example bugfix&lt;/td&gt;
+      &lt;td&gt;2x!&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/two-x&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 11&lt;/td&gt;
+      &lt;td&gt;17th August - 23rd August&lt;/td&gt;
+      &lt;td&gt;Navigation2 with custom robot controller&lt;/td&gt;
+      &lt;td&gt;Created new custom robot controller structure, Behaviour tress to include load pallet, FollowTarget plugin&lt;/td&gt;
+      &lt;td&gt;#12 Creating a framework to add new new functionality with Nav2&lt;/td&gt;
+      &lt;td&gt;Behaviour Trees&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/behaviour-trees&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 12&lt;/td&gt;
+      &lt;td&gt;24th August - 30th August&lt;/td&gt;
+      &lt;td&gt;Multirobot Environment with working collaboration&lt;/td&gt;
+      &lt;td&gt;Setting parameters for nav2 plugins, Action client for multi robot collaboration , docker images&lt;/td&gt;
+      &lt;td&gt;#1933 Nav2 local_costmap crash issues #11 Separate Action server for issuing action commands for robot controller&lt;/td&gt;
+      &lt;td&gt;JdeMultiBot&lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/jde-multibot&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Week 13&lt;/td&gt;
+      &lt;td&gt;Final Submition&lt;/td&gt;
+      &lt;td&gt;Designing exercsises and publishing&lt;/td&gt;
+      &lt;td&gt;Creating videos of working exercises, Writing instructions, Final report and PRs&lt;/td&gt;
+      &lt;td&gt;#585 JdeRobot/RoboticsAcademy, #19, #23  JdeRobot/CustomRobots&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="evaluation" /><summary type="html">GSoC Phase 3 Report</summary></entry><entry><title type="html">JdeMultibot</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/jde-multibot" rel="alternate" type="text/html" title="JdeMultibot" /><published>2020-08-27T01:00:00+02:00</published><updated>2020-08-27T01:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/jde-multibot</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/jde-multibot">&lt;blockquote&gt;
   &lt;p&gt;Issues Solved:&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://github.com/ros-planning/navigation2/issues/1933&quot;&gt;#1933&lt;/a&gt; Nav2 local_costmap crash issues&lt;/p&gt;
@@ -260,7 +312,7 @@ We can also edit the BT structure, the way we want. For example, if we need more
 
 &lt;p&gt;In the next blog, the exercises will be introduced and will be demonstrated! Until then!&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;いって来ます!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse-robot" /><category term="multirobot" /><category term="exercise" /><category term="gazebo" /><category term="ros2" /><category term="nav2" /><category term="joint" /><category term="week-12" /><summary type="html">Issues Solved: #1933 Nav2 local_costmap crash issues #11 Separate Action server for issuing action commands for robot controller #9 Multi Robot Discussion</summary></entry><entry><title type="html">New Stuff</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff" rel="alternate" type="text/html" title="New Stuff" /><published>2020-08-17T13:30:00+02:00</published><updated>2020-08-17T13:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/new-stuff">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;いって来ます!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse-robot" /><category term="multirobot" /><category term="exercise" /><category term="gazebo" /><category term="ros2" /><category term="nav2" /><category term="joint" /><category term="week-12" /><summary type="html">Issues Solved: #1933 Nav2 local_costmap crash issues #11 Separate Action server for issuing action commands for robot controller #9 Multi Robot Discussion</summary></entry><entry><title type="html">Behaviour Trees</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/behaviour-trees" rel="alternate" type="text/html" title="Behaviour Trees" /><published>2020-08-17T13:30:00+02:00</published><updated>2020-08-17T13:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/behaviour-trees</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/behaviour-trees">&lt;blockquote&gt;
   &lt;p&gt;Issues Pending:&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;https://github.com/ros-planning/navigation2/issues/1933&quot;&gt;#1933&lt;/a&gt; Nav2 local_costmap crash issues&lt;/p&gt;
@@ -626,11 +678,11 @@ colcon build
       &lt;td&gt;Week 9&lt;/td&gt;
       &lt;td&gt;27th July - 9th August&lt;/td&gt;
       &lt;td&gt;Porting Amazon Exercise to ROS2&lt;/td&gt;
-      &lt;td&gt;Porting navigation stack, making it fit for academy structure and finalizing the exercise with How-to and tutorial&lt;/td&gt;
+      &lt;td&gt;Porting navigation stack, bare minimum launchable exercise in ROS2 with working single robot&lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Finding the way&lt;/td&gt;
       &lt;td&gt;Research&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/finding-the-way&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="evaluation" /><summary type="html">GSoC Phase 2 Report</summary></entry><entry><title type="html">Level 2!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2" rel="alternate" type="text/html" title="Level 2!" /><published>2020-07-23T22:30:00+02:00</published><updated>2020-07-23T22:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/level-2">&lt;blockquote&gt;
@@ -964,42 +1016,4 @@ But sadly, I could not find many well defined robot models for ROS2, except tb3 
 
 &lt;p&gt;Let me know if you face any issues or bugs.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Viszlát!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse" /><category term="exercise" /><category term="porting" /><category term="week-4" /><summary type="html">Issues Fixed: PR #58 on Jderobot/assets for gazebo model update. PR #1401 on Jderobot/base for connector package. PR #8 on colab repo for launchable docker exercise.</summary></entry><entry><title type="html">Connecting the dots!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots" rel="alternate" type="text/html" title="Connecting the dots!" /><published>2020-06-21T12:30:00+02:00</published><updated>2020-06-21T12:30:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots">&lt;blockquote&gt;
-  &lt;p&gt;Issues Fixed:&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/5&quot;&gt;#5&lt;/a&gt; with PR &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/6&quot;&gt;#6&lt;/a&gt;.&lt;/p&gt;
-
-  &lt;p&gt;Added new branch for Jderobot/base -&amp;gt; &lt;a href=&quot;https://github.com/shreyasgokhale/base/tree/noetic-devel&quot;&gt;noetic-devel&lt;/a&gt; with connector dependency added&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;week-3-blog&quot;&gt;Week 3 Blog&lt;/h1&gt;
-
-&lt;p&gt;In last blog I briefly talked about Cmake and porting from the old Jderobot/base code. For this week I wanted to clarify more on how that turned out.&lt;/p&gt;
-
-&lt;h2 id=&quot;jderobot-base-and-comm-library&quot;&gt;Jderobot base and comm library&lt;/h2&gt;
-
-&lt;p&gt;Jderobot Base package is the backbone for all the real and virtual robot development at the academy. It is essentially a collection of various drivers and libraries. It contains source code in C++ for real robots and in python for academy exercises. The code is arranged using CMakeLists and has lots of flags, options and tests depending on which operating system you are running the code. I found out an &lt;a href=&quot;https://gsyc.urjc.es/jmplaza/papers/robocity2013-jderobot.pdf&quot;&gt;excellent paper&lt;/a&gt; on the base package written by the founders and it is worth a read for anyone who is working on the academy.&lt;/p&gt;
-
-&lt;p&gt;Currently, the base project is going through a major change. We have completely switched from &lt;a href=&quot;https://zeroc.com/&quot;&gt;ICE&lt;/a&gt; based communication to native ROS middleware based Pub and Sub mechanism. Some of the libraries and packages are now outdated and some of them are now even available in native ros packages. Lastly, python2 is now obsolete and it makes very essential to use python3 in order to support the latest ROS1,ROS2 releases.&lt;/p&gt;
-
-&lt;p&gt;So the new release for academy is going to be a major one and as my project already had some ported dependencies I wanted to also contribute to it. The major one was the backbone communication library: &lt;code class=&quot;highlighter-rouge&quot;&gt;comm&lt;/code&gt; . It was used to get the objects for moules from ICE or ROS depending on the architecture, for example Laser Sensors, Motors or Camera.&lt;/p&gt;
-
-&lt;p&gt;For our use case, the existing version of Comm library acts as a glue between jderobot academy exercise and ros framework. So for example, If I want to perform SLAM in the python application in jderobot exercises, I have to get it somehow from gazebo. The &lt;strong&gt;OLD&lt;/strong&gt; flow of information is as follows&lt;/p&gt;
-
-&lt;p&gt;&lt;span style=&quot;color:magenta&quot;&gt;Gazebo → ROS topic → &lt;strong&gt;C++ Comm&lt;/strong&gt; &lt;/span&gt;  &lt;span style=&quot;font-size:2em&quot;&gt; &lt;em&gt;→&lt;/em&gt;   &lt;/span&gt; &lt;span style=&quot;color:green&quot;&gt; &lt;strong&gt;Python Comm&lt;/strong&gt; → Exercise Application  → My Solution &lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;The left side of the big arrow (or text with magenta colour) is C++ domain and the text on the right side (or the text with green colour) is python domain. Our module of interest here is the bold part.&lt;/p&gt;
-
-&lt;p&gt;But now in the new version, we will be using native ros middleware to handle the communication. As we only need the rosnode objects in order to publish / subscribe to these nodes, we don’t need this extra &lt;strong&gt;Comm&lt;/strong&gt; middleware. Just get the object of &lt;code class=&quot;highlighter-rouge&quot;&gt;rospy.Publisher&lt;/code&gt; / &lt;code class=&quot;highlighter-rouge&quot;&gt;rospy.Subscriber&lt;/code&gt; and we are done! So the whole comm stuff becomes redundant. But we cannot simply delete this folder and forget about it like it never existed. We need to somehow connect the exercise to the publisher..&lt;/p&gt;
-
-&lt;h2 id=&quot;connector-package&quot;&gt;Connector Package&lt;/h2&gt;
-
-&lt;p&gt;A new &lt;code class=&quot;highlighter-rouge&quot;&gt;connector&lt;/code&gt; package is my solution of the problem. It simply returns the Publisher / Subscriber object of the requested module. We still use all the class definitions that existed for sensors and modules, but we don’t publish using ICE. Now we can remove all the packages like &lt;code class=&quot;highlighter-rouge&quot;&gt;easyiceconfig&lt;/code&gt; and refactor &lt;code class=&quot;highlighter-rouge&quot;&gt;parallelice&lt;/code&gt; directory. Sweet!&lt;/p&gt;
-
-&lt;p&gt;This change is however, as they call it, a breaking one! Comm module is referenced by so many other modules and we have to go through each of the CMake dependencies to make sure that it doesn’t make other stuff stop working. This work will be continue in the upcoming weeks and will be tested.&lt;/p&gt;
-
-&lt;p&gt;You can check out the connector package &lt;a href=&quot;https://github.com/shreyasgokhale/base/tree/noetic-devel&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In the next week, the exercise will be launched, ready to be tested by the students!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Näkemiin!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="comm" /><category term="connector" /><category term="porting" /><category term="week-3" /><summary type="html">Issues Fixed: #5 with PR #6. Added new branch for Jderobot/base -&amp;gt; noetic-devel with connector dependency added</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Viszlát!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse" /><category term="exercise" /><category term="porting" /><category term="week-4" /><summary type="html">Issues Fixed: PR #58 on Jderobot/assets for gazebo model update. PR #1401 on Jderobot/base for connector package. PR #8 on colab repo for launchable docker exercise.</summary></entry></feed>

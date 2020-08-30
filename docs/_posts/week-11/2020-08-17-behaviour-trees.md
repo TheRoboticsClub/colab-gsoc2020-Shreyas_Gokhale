@@ -1,5 +1,5 @@
 ---
-title: New Stuff
+title: Behaviour Trees
 date: 2020-08-17 13:30:00 +02:00
 tags: [amazon-warehouse-robot, exercise, gazebo, ros2, nav2, joint, week-11]
 permalink: /:title
