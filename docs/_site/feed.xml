@@ -1,4 +1,212 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-30T20:31:21+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">Evaluation 3 Report</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-three-report" rel="alternate" type="text/html" title="Evaluation 3 Report" /><published>2020-08-30T19:00:00+02:00</published><updated>2020-08-30T19:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-three-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-three-report">&lt;h1 id=&quot;gsoc-phase-3-report&quot;&gt;GSoC Phase 3 Report&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US"><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/" rel="alternate" type="text/html" hreflang="en-US" /><updated>2020-08-30T23:42:58+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/feed.xml</id><title type="html">GSoC 2020 | Shreyas Gokhale</title><subtitle>Creating new multirobot &lt;br&gt; exercises for Jderobot Academy &lt;br&gt; &lt;b&gt;&lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JdeMultiBot&lt;/a&gt;&lt;/b&gt; &lt;br&gt;</subtitle><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><entry><title type="html">The Finish Line</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/final-report" rel="alternate" type="text/html" title="The Finish Line" /><published>2020-08-30T23:00:00+02:00</published><updated>2020-08-30T23:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/final-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/final-report">&lt;p&gt;&lt;img src=&quot;assets/blog-images/final-report/multi_robot_amazon_warehouse.png&quot; alt=&quot;Multi Robot Exercise&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;gsoc-final-submission&quot;&gt;GSoC Final Submission&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#gsoc-final-submission&quot;&gt;Table of Contents&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#project-overview&quot;&gt;Project Overview&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#goals&quot;&gt;Goals&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#contributing&quot;&gt;Contributing&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#period-1--ros1-kinetic---ros1-noetic&quot;&gt;Period 1: ROS1 Kinetic → ROS1 Noetic&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#period-2--new-ros2-amazon-robot-framework&quot;&gt;Period 2: New ROS2 Amazon Robot framework&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#period-3--navigation-2-and-multi-robot&quot;&gt;Period 3: Navigation 2 and Multi Robot&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#final-deliverables&quot;&gt;Final deliverables&lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#videos&quot;&gt;Videos&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#timeline&quot;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#future-work&quot;&gt;Future Work&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#experience&quot;&gt;Experience&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;project-overview&quot;&gt;Project Overview&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/&quot;&gt;JdeRobot Academy&lt;/a&gt; hosts a number of exercises to teach students about robotics and AI. One such exercise was (single robot) &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/MobileRobots/amazon_warehouse/&quot;&gt;amazon warehouse&lt;/a&gt; exercise using ROS Kinetic. Students, however, are abstracted from the complexities of the framework and they only need to code the algorithms.&lt;/p&gt;
+
+&lt;p&gt;My project &lt;a href=&quot;https://summerofcode.withgoogle.com/projects/#5877403320057856&quot;&gt;JdeMultiBot&lt;/a&gt; was designed to extend the single robot Amazon warehouse exercise to implement a scalable, cooperative, multi-agent task and path planning system. Additionally, JdeMultiBot was intended to leverage the latest release of ROS2 (Foxy), using its features and giving students a chance to get acquainted with the new age of robotics. You are welcome to read the &lt;a href=&quot;assets/pdf/gsoc_proposal.pdf&quot;&gt;initial proposal&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;goals&quot;&gt;Goals&lt;/h2&gt;
+
+&lt;p&gt;The end goal of the project was to have a system of collaborating multi robots, in an indoor warehouse setting, in ROS2. But a direct jump from a single robot exercise in an EOL ROS version to using cutting edge navigation 2 features could have been huge. Hence, we decided to split our goals into 3 subgoals&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Porting Amazon Robot exercise from ROS Kinetic (16.04) to ROS Noetic (20.04)&lt;/li&gt;
+  &lt;li&gt;Making a new ROS2 Foxy amazon robot exercise with single robot&lt;/li&gt;
+  &lt;li&gt;Extending single robot exercise to a multirobot environment.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;However, like there are side quests RPGs, these are some of the side goals that I had to finish in order to achieve our end goal.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Creating a custom robot and warehouse environment in Gazebo&lt;/li&gt;
+  &lt;li&gt;Making our robot move around using Navigation 2 stack&lt;/li&gt;
+  &lt;li&gt;Adding additional functionality to make our robot load and unload pallets&lt;/li&gt;
+  &lt;li&gt;Extending the environment to be used for multiple robots&lt;/li&gt;
+  &lt;li&gt;Making reproducible and portable code by using docker&lt;/li&gt;
+  &lt;li&gt;Designing exercises which are intuitive yet challenging for students.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;/h2&gt;
+
+&lt;p&gt;After getting the acceptance email, my first priority was to understand how Jderobot Academy is structured. To get a student’s perspective, I solved the Global Navigation exercise during the community bonding period. ROS1 released their newest version &lt;em&gt;“&lt;a href=&quot;http://wiki.ros.org/noetic&quot;&gt;Noetic&lt;/a&gt;”&lt;/em&gt; around this time and my next week went into investigating how to proceed with the porting. We also set up our meeting structure, &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/&quot;&gt;a blog site&lt;/a&gt; for weekly progress and &lt;a href=&quot;https://www.notion.so/GSoC-JdeRobot-ff2c6cf65b3f4a488ca0af77e1daeff1&quot;&gt;a dashboard&lt;/a&gt; for notes and scratchpad.&lt;/p&gt;
+
+&lt;h3 id=&quot;period-1-ros1-kinetic--ros1-noetic&quot;&gt;Period 1: ROS1 Kinetic → ROS1 Noetic&lt;/h3&gt;
+
+&lt;p&gt;The exercise depended a lot of legacy code such as ICE and Comm, which are now completely replaced by ROS middleware. Moreover there is a major change from python2 to python3, which brakes many dependencies. In order to get around this, I wrote a python &lt;em&gt;“&lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/connecting-the-dots#connector-package&quot;&gt;Connector&lt;/a&gt;”&lt;/em&gt;  package which acts as a glue between the old code and new code. In addition, some dependencies were &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff#releasing-ros-packages&quot;&gt;ported and published&lt;/a&gt; on ROS distro deps.&lt;/p&gt;
+
+&lt;p&gt;After fixing some dependances and also creating a docker image, the exercise was successfully &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/launch-off&quot;&gt;released&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;period-2-new-ros2-amazon-robot-framework&quot;&gt;Period 2: New ROS2 Amazon Robot framework&lt;/h3&gt;
+
+&lt;p&gt;ROS2 has a completely &lt;a href=&quot;https://design.ros2.org/articles/changes.html&quot;&gt;different architecture&lt;/a&gt; than ROS1. Also, as this was going to be the first ROS2 exercise for Jderobot, we wanted to make sure that it provides an example of the exercises further to come. We decided to redesign the exercise from ground up.&lt;/p&gt;
+
+&lt;p&gt;The Python and C++ code conversion was relatively easy compared to creating a new robot model and making it work in gazebo. Gazebo plugins are &lt;a href=&quot;https://github.com/ros-simulation/gazebo_ros_pkgs/wiki/ROS-2-Migration:-gazebo_ros_api_plugin&quot;&gt;completely changed&lt;/a&gt; in ROS2 and we couldn’t deploy over model in xacro at that time. Not having much low level experience with Gazebo, &lt;em&gt;porting →redesigning → fixing&lt;/em&gt; the robot model was probably the most challenging part for me in my journey. However, by the end, we had a completely ready Amazon Robot with &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/two-x#gazebo-model-fixes-and-writing-action-plugin&quot;&gt;a working prismatic joint&lt;/a&gt; which can lift the warehouse pallets.&lt;/p&gt;
+
+&lt;h3 id=&quot;period-3-navigation-2-and-multi-robot&quot;&gt;Period 3: Navigation 2 and Multi Robot&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://navigation.ros.org/concepts/index.html&quot;&gt;Navigation 2&lt;/a&gt; is relatively new project in active development. It is a complete redesign for ROS2 from the original &lt;code class=&quot;highlighter-rouge&quot;&gt;move_base&lt;/code&gt; package and therefore I had to spend some time in understanding new concepts such as behaviour trees. The project has a high degree of modularity and it took me a while to perfect the bells and whistles (parameters) to suit our robot.&lt;/p&gt;
+
+&lt;p&gt;The major development, however, was &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/behaviour-trees#amazon-robot-controller&quot;&gt;creating a custom controller&lt;/a&gt; for our Amazon Robot, along with custom behaviour trees, &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/behaviour-trees#creating-followtargets-and-corresponding-nodes&quot;&gt;plugins&lt;/a&gt;, rviz and support for gazebo simulation. It was based on a &lt;a href=&quot;https://github.com/ros-planning/navigation2/pull/1928&quot;&gt;PR&lt;/a&gt;, which is not even merged yet into the official repository. As far as I know, our project is a first of this kind to leverage Navigation 2 in such a way, apart from the officially supported turtlebot3.&lt;/p&gt;
+
+&lt;p&gt;In the end, we managed to get not only the &lt;a href=&quot;https://www.youtube.com/watch?v=xmHCwA0NgjM&amp;amp;feature=emb_title&quot;&gt;single robot warehouse simulation&lt;/a&gt; working, but also &lt;a href=&quot;https://youtu.be/wmAeoyiUyh4&quot;&gt;a multirobot environment&lt;/a&gt; with coordination between the robots. Final leg of the journey included designing exercises for &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/MobileRobots/single_robot_amazon_warehouse/&quot;&gt;single&lt;/a&gt; and &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/MobileRobots/multi_robot_amazon_warehouse/&quot;&gt;multirobot&lt;/a&gt; environment and &lt;a href=&quot;https://twitter.com/JdeRobot/status/1299764121089400837?s=20&quot;&gt;publishing&lt;/a&gt; our work to the wider community. In order for anyone to easily test and start using our work, &lt;a href=&quot;https://hub.docker.com/repository/docker/jderobot/robotics-academy-ros2&quot;&gt;the docker images&lt;/a&gt; were published on the DockerHub.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-deliverables&quot;&gt;Final deliverables&lt;/h2&gt;
+
+&lt;p&gt;The code is spread across different repositories.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale&quot;&gt;Working / Blog / Scratchpad Repository&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/tree/foxy-devel/amazon_robot&quot;&gt;Single Robot ROS2 code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/tree/multirobot-testing/amazon_robot&quot;&gt;Multi Robot ROS2 code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Exercises written for &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/MobileRobots/single_robot_amazon_warehouse/&quot;&gt;single robot&lt;/a&gt; and &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/MobileRobots/multi_robot_amazon_warehouse/&quot;&gt;multi robot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A brief description of how the code is arranged can be found in &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/jde-multibot#single-amazon-robot-package&quot;&gt;this blog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The problems that I faced or the developments that I did while working are also applicable for a lot of other developers. I tried to maintain a thorough writeup of my GSoC journey on our &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/&quot;&gt;collaboration blog&lt;/a&gt;. Each blog has been written keeping an average user in mind, so it should prove an easy entrypoint. Some of the blogs I recommend are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/and-we-have-a-liftoff#why-to-release&quot;&gt;How to release ROS debian packages using bloom&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Creating a new model in gazebo for &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/back-to-the-start&quot;&gt;ROS1&lt;/a&gt; and &lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/two-x#gazebo-model-fixes-and-writing-action-plugin&quot;&gt;ROS2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/level-2#dds&quot;&gt;Introduction to ROS2 from ROS1 perspective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/jde-multibot#single-amazon-robot-package&quot;&gt;Understanding Navigation 2 and behaviour trees&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;videos&quot;&gt;Videos&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Single Robot&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/xmHCwA0NgjM&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Multi Robot&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;embed-container&quot;&gt;
+  &lt;iframe src=&quot;https://www.youtube.com/embed/wmAeoyiUyh4&quot; width=&quot;700&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;timeline&quot;&gt;Timeline&lt;/h2&gt;
+
+&lt;p&gt;You can find a detailed weekly timelines for each phases here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/phase-one-report&quot;&gt;Phase 1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/phase-two-report&quot;&gt;Phase 2&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://theroboticsclub.github.io/colab-gsoc2020-Shreyas_Gokhale/phase-three-report&quot;&gt;Phase 3&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Following is the shorter timeline based on tasks, marking the most important commits and pull requests.&lt;/p&gt;
+
+&lt;h3 id=&quot;task-timeline&quot;&gt;Task Timeline&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Task&lt;/th&gt;
+      &lt;th&gt;Phase&lt;/th&gt;
+      &lt;th&gt;Issues / PRs&lt;/th&gt;
+      &lt;th&gt;Videos&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Porting Amazon Robot exercise from ROS Kinetic (16.04) to ROS Noetic (20.04)&lt;/td&gt;
+      &lt;td&gt;Phase 1&lt;/td&gt;
+      &lt;td&gt;JdeRobot Assets &lt;a href=&quot;https://github.com/JdeRobot/assets/pull/54&quot;&gt;#54&lt;/a&gt; &lt;a href=&quot;https://github.com/JdeRobot/assets/pull/58#event-3488709128&quot;&gt;#58&lt;/a&gt;, &lt;a href=&quot;https://github.com/ros/rosdistro/pull/25236&quot;&gt;ROSDistro&lt;/a&gt;, Jderobot Base &lt;a href=&quot;https://github.com/JdeRobot/base/pull/1401&quot;&gt;1401&lt;/a&gt;, Colab &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/8&quot;&gt;8&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=HtUEAweSmAg&quot;&gt;Video&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Creating a custom robot and warehouse environment in Gazebo&lt;/td&gt;
+      &lt;td&gt;Phase 1, Phase 2, Phase 3&lt;/td&gt;
+      &lt;td&gt;CustomRobots &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/pull/1&quot;&gt;1&lt;/a&gt;, &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/issues/7&quot;&gt;#7&lt;/a&gt; Colab &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/10&quot;&gt;#10&lt;/a&gt; &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/pull/16&quot;&gt;#16&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://youtu.be/F1WELXcg364&quot;&gt;Video&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Making a new ROS2 Foxy amazon robot exercise with single robot&lt;/td&gt;
+      &lt;td&gt;Phase 2, Phase 3&lt;/td&gt;
+      &lt;td&gt;CustomRobots &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/pull/16&quot;&gt;16&lt;/a&gt; &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/issues/7&quot;&gt;#7&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=QtHRuF0IS8E&amp;amp;feature=emb_title&quot;&gt;Video 1&lt;/a&gt; &lt;a href=&quot;https://youtu.be/xmHCwA0NgjM&quot;&gt;Video 2&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Making our robot move around using Navigation 2 stack with custom base&lt;/td&gt;
+      &lt;td&gt;Phase 3&lt;/td&gt;
+      &lt;td&gt;CustomRobots &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/pull/19&quot;&gt;#19&lt;/a&gt; , Navigation 2 &lt;a href=&quot;https://github.com/ros-planning/navigation2/issues/1944&quot;&gt;#1944&lt;/a&gt; , Colab &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/12&quot;&gt;#12&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://youtu.be/n9NwqWQGTmc&quot;&gt;Video&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Extending the environment to be used for multiple robots&lt;/td&gt;
+      &lt;td&gt;Phase 3&lt;/td&gt;
+      &lt;td&gt;CustomRobots &lt;a href=&quot;https://github.com/JdeRobot/CustomRobots/pull/23&quot;&gt;#23&lt;/a&gt; &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/9&quot;&gt;#9&lt;/a&gt; Colab &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/issues/11&quot;&gt;#11&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://youtu.be/wmAeoyiUyh4&quot;&gt;Video&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Making reproducible and portable code using docker&lt;/td&gt;
+      &lt;td&gt;Phase 1, Phase 2, Phase 3&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/8&quot;&gt;Colab&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Designing exercises which are intuitive yet challenging for students.&lt;/td&gt;
+      &lt;td&gt;Phase 3&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/JdeRobot/RoboticsAcademy/pull/586&quot;&gt;Robotics Academy&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;We deviated from the original plan mentioned in the proposal, however we managed to get all the original goals completed (notable exception of charging behaviour of robots). In spite of facing the challenges as predicted in the proposal (availability of packages in ROS2 and complex simulation), the most challenging part was figuring out how software works in absence of documentation or examples.&lt;/p&gt;
+
+&lt;h2 id=&quot;future-work&quot;&gt;Future Work&lt;/h2&gt;
+
+&lt;p&gt;Currently we can successfully run both the exercises for &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/MobileRobots/single_robot_amazon_warehouse/&quot;&gt;Single&lt;/a&gt; and &lt;a href=&quot;https://jderobot.github.io/RoboticsAcademy/exercises/MobileRobots/multi_robot_amazon_warehouse/&quot;&gt;Multirobot&lt;/a&gt;. And all the goals we defined were met. However, the work is not over yet.&lt;/p&gt;
+
+&lt;p&gt;The existing system uses static maps and localisation. However, as our system is dynamic, the use of SLAM could improve the navigation many fold. Sadly, due to driver issues, we were &lt;a href=&quot;https://github.com/SteveMacenski/slam_toolbox/issues/278&quot;&gt;unable to run SLAM toolbox&lt;/a&gt; with our system. In near future, this should be possible and could be even extended with different SLAM algorithms. A tool can be added which can compare results across different algorithms for Path planning, SLAM, task planning. This could be very helpful for benchmarking and in an university research setting.&lt;/p&gt;
+
+&lt;p&gt;One of the intention behind this project was also to create a sort-of template for future exercises in ROS2. Hence it was made sure that all the code is well documented, along with the problems that I faced. We also chose cutting edge software rather than old releases (For example, Foxy vs Eloquent) so that this exercise remains relevant for years to come. But with new releases of ROS2/ Navigation2 and Gazebo the dependencies will change and it would be needed to modify the exercise again.&lt;/p&gt;
+
+&lt;p&gt;I would like to continue contributing to Jderobot regarding different projects. Including new SLAM and navigation exercises and combining them with ML exercises would be a nice project in my opinion. With the help of Web Loader and Docker, moving the whole academy to a cloud based learning platform would also be really cool to work on!&lt;/p&gt;
+
+&lt;p&gt;Because I was working on Navigation 2 for JdeMultibot, I joined their open source community as well. The project that I worked on is something of their interest as well and I will be working on it soon.&lt;/p&gt;
+
+&lt;p&gt;Personally, I will focus on finishing my master thesis at Fraunhofer FOKUS regarding “Multi Robot Collaboration and Mapping” (ROS1). I won’t be able to use my work at GSoC directly, but my learnings will help me immensely.&lt;/p&gt;
+
+&lt;h2 id=&quot;experience&quot;&gt;Experience&lt;/h2&gt;
+
+&lt;p&gt;It was my first time participating in GSoC and it not only met my expectations but went much beyond that. Before GSoC, I was only using the software as tools (for example, using Gazebo to launch pre made robots). I didn’t used to interact on forums. During GSoC, I posted a lot of questions, contacted many people, raised issues and contributed to other open source projects. Now I have a better understanding of how software is developed in open source and how I can do my part in building more. I want to thank everyone who helped me in my journey.&lt;/p&gt;
+
+&lt;p&gt;GSoC introduced me to an amazing community at JdeRobot academy which I feel proud be a part of. I want to thank Prof. &lt;a href=&quot;https://gsyc.urjc.es/jmplaza/&quot;&gt;JoseMaría Cañas&lt;/a&gt; and JdeRobot Admins for the opportunity and guiding my way through the journey (and also bearing with while I ask my stupid questions)&lt;/p&gt;
+
+&lt;p&gt;This project could have been impossible to complete without my mentors, &lt;a href=&quot;https://www.linkedin.com/in/pankhuri-vanjani-767283101/&quot;&gt;Pankhuri&lt;/a&gt; and &lt;a href=&quot;https://github.com/naxvm&quot;&gt;Nacho&lt;/a&gt;, helping me. Every problem I faced, they always knew a way around it. Pankhuri helped me immensely with the project organisation and Nacho even spent a night trying to fix the gazebo issue. I cannot thank them enough!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Good bye!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="gsoc" /><category term="final-report" /><summary type="html"></summary></entry><entry><title type="html">Evaluation 3 Report</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-three-report" rel="alternate" type="text/html" title="Evaluation 3 Report" /><published>2020-08-30T19:00:00+02:00</published><updated>2020-08-30T19:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-three-report</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/phase-three-report">&lt;h1 id=&quot;gsoc-phase-3-report&quot;&gt;GSoC Phase 3 Report&lt;/h1&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -921,99 +1129,4 @@ But sadly, I could not find many well defined robot models for ROS2, except tb3 
       &lt;td&gt; &lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="evaluation" /><summary type="html">GSoC Phase 1 Report</summary></entry><entry><title type="html">Launch Off!</title><link href="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off" rel="alternate" type="text/html" title="Launch Off!" /><published>2020-06-27T10:00:00+02:00</published><updated>2020-06-27T10:00:00+02:00</updated><id>http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off</id><content type="html" xml:base="http://localhost:4000/colab-gsoc2020-Shreyas_Gokhale/launch-off">&lt;blockquote&gt;
-  &lt;p&gt;Issues Fixed:&lt;/p&gt;
-
-  &lt;p&gt;PR &lt;a href=&quot;https://github.com/JdeRobot/assets/pull/58#event-3488709128&quot;&gt;#58&lt;/a&gt; on Jderobot/assets for gazebo model update.&lt;/p&gt;
-
-  &lt;p&gt;PR &lt;a href=&quot;https://github.com/JdeRobot/base/pull/1401&quot;&gt;#1401&lt;/a&gt; on Jderobot/base for connector package.&lt;/p&gt;
-
-  &lt;p&gt;PR &lt;a href=&quot;https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale/pull/8&quot;&gt;#8&lt;/a&gt; on colab repo for launchable docker exercise.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;week-4&quot;&gt;Week 4&lt;/h1&gt;
-
-&lt;p&gt;After last week’s removal of comm, I was pretty confident about being able to run the exercise. But it seemed like the exercise wasn’t ready for that yet! I couldn’t seem to get cmd vel (joystick) working.&lt;/p&gt;
-
-&lt;p&gt;After digging up a bit, I traced the problem back to &lt;code class=&quot;highlighter-rouge&quot;&gt;model.sdf&lt;/code&gt; file. This is gazebo model which describes how our robot looks and behaves like. One major part of gazebo are &lt;a href=&quot;http://gazebosim.org/tutorials?tut=ros_gzplugins&quot;&gt;plugins&lt;/a&gt; and they are binaries which code the functionality, for example lasers and motors. I was getting following error:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;libgazebo_ros_diff_drive.so not found&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;After trying for hours, posting on ROS forum and getting frustrated, I finally found the culprit: &lt;code class=&quot;highlighter-rouge&quot;&gt;gazebo-plugins&lt;/code&gt;  . This package was necessary to run the default plugins and luckily it just got ported to noetic. After fixing some issues with the sdf, the whole exercise is now up and running!&lt;/p&gt;
-
-&lt;h2 id=&quot;amazon-warehouse-exercise&quot;&gt;Amazon Warehouse exercise&lt;/h2&gt;
-
-&lt;p&gt;The objective of this practice is to implement the autonomous robot navigation and pick-and-place logic in warehouse.&lt;/p&gt;
-
-&lt;p&gt;For trying out, you have 2 options:&lt;/p&gt;
-
-&lt;h3 id=&quot;docker-install&quot;&gt;Docker install&lt;/h3&gt;
-
-&lt;p&gt;This is the preferred installation method.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Follow &lt;a href=&quot;https://docs.docker.com/get-docker/&quot;&gt;these instructions&lt;/a&gt; to install docker and docker-compose.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Clone my repo&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Run from the root directory&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; xhost +&lt;span class=&quot;s2&quot;&gt;&quot;local:docker@&quot;&lt;/span&gt;
- docker-compose up &lt;span class=&quot;nt&quot;&gt;--force-recreate&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Sit back, sip a coffee or whatever while the dockerfile is being built. The exercise will be launched automatically once building is finished.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;manual-installation&quot;&gt;Manual Installation&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Follow the instructions on &lt;a href=&quot;http://wiki.ros.org/noetic/Installation/Ubuntu&quot;&gt;ROS Wiki&lt;/a&gt; to install the latest ROS and on &lt;a href=&quot;http://gazebosim.org/tutorials?tut=install_ubuntu&amp;amp;cat=install&quot;&gt;Gazebo Wiki&lt;/a&gt; to install Gazebo 11.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Install all the dependencies&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update
- &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential  
- &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;rosdep init  
- rosdep update
- &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ros-noetic-mavros ros-noetic-gazebo-ros python3-pip ros-noetic-navigation ros-noetic-gazebo-plugins
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Install Jderobot Assets&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ros-noetic-jderobot-assets
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-
-    &lt;p&gt;The model.sdf file needs slight modification (until aptitude packages are updated). So grab the updated file and copy it over to the original file&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; wget https://raw.githubusercontent.com/JdeRobot/assets/noetic-devel/jderobot_assets/models/amazon_warehouse_robot/model.sdf &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;model.sdf&quot;&lt;/span&gt;
- &lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; model.sdf /opt/jderobot/share/jderobot/gazebo/models/amazon_warehouse_robot/model.sdf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Clone my repo&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; git clone https://github.com/TheRoboticsClub/colab-gsoc2020-Shreyas_Gokhale.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Run the exercise&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;exercises/amazon_warehouse/launch 
- roslaunch amazonrobot_1_warehouse.launch map_file:&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;maps/map.yaml 
- python3 amazonWarehouse.py amazonMap.conf amazonConf.yml
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Try to code your solution in &lt;code class=&quot;highlighter-rouge&quot;&gt;mysolution.py&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Let me know if you face any issues or bugs.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Viszlát!&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="amazon-warehouse" /><category term="exercise" /><category term="porting" /><category term="week-4" /><summary type="html">Issues Fixed: PR #58 on Jderobot/assets for gazebo model update. PR #1401 on Jderobot/base for connector package. PR #8 on colab repo for launchable docker exercise.</summary></entry></feed>
+&lt;/table&gt;</content><author><name>Shreyas Gokhale</name><email>me@shreyasgokhale.com</email></author><category term="evaluation" /><summary type="html">GSoC Phase 1 Report</summary></entry></feed>
