@@ -24,7 +24,7 @@ laser-geometry==1.6.4
 mavros==1.0.0
 message-filters==1.14.5
 numpy==1.22.0
-opencv-python==4.2.0.32
+opencv-python==4.8.1.78
 openni2-launch==0.4.2
 pymongo==4.6.3
 pyparsing==2.4.7
